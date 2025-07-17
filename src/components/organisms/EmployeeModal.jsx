@@ -138,7 +138,7 @@ if (formData.name1_c !== "" && isNaN(formData.name1_c)) newErrors.name1_c = "Nam
       newErrors.name7_c = "Please enter a valid email address";
     }
     
-    if (formData.name10_c && !/^[\+]?[1-9][\d]{0,15}$/.test(formData.name10_c.replace(/[\s\-\(\)]/g, ''))) {
+if (formData.name10_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name10_c.replace(/[\s\-()]/g, ''))) {
       newErrors.name10_c = "Please enter a valid phone number";
     }
 
