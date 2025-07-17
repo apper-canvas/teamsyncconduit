@@ -8,7 +8,7 @@ class EmployeeService {
     this.tableName = 'employee_c';
   }
 
-  async getAll() {
+async getAll() {
     try {
       const params = {
         fields: [
@@ -21,7 +21,10 @@ class EmployeeService {
           { field: { Name: "hire_date_c" } },
           { field: { Name: "status_c" } },
           { field: { Name: "avatar_c" } },
-          { field: { Name: "department_id_c" } },
+          { 
+            field: { Name: "department_id_c" },
+            referenceField: { field: { Name: "Name" } }
+          },
           { field: { Name: "Tags" } },
           { field: { Name: "Owner" } }
         ]
@@ -46,7 +49,7 @@ class EmployeeService {
     }
   }
 
-  async getById(id) {
+async getById(id) {
     try {
       const params = {
         fields: [
@@ -59,7 +62,10 @@ class EmployeeService {
           { field: { Name: "hire_date_c" } },
           { field: { Name: "status_c" } },
           { field: { Name: "avatar_c" } },
-          { field: { Name: "department_id_c" } },
+          { 
+            field: { Name: "department_id_c" },
+            referenceField: { field: { Name: "Name" } }
+          },
           { field: { Name: "Tags" } },
           { field: { Name: "Owner" } }
         ]
