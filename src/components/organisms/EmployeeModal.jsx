@@ -348,9 +348,10 @@ name8_c: [],
               )}
             </div>
 
-            <FormField
+<FormField
               label="Name9"
               name="name9_c"
+              type="textarea"
               value={formData.name9_c}
               onChange={handleChange}
               error={errors.name9_c}
