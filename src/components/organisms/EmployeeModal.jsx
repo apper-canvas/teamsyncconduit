@@ -18,7 +18,7 @@ const [formData, setFormData] = useState({
     name5_c: "",
     name6_c: "",
     name7_c: "",
-    name8_c: "",
+name8_c: [],
     name9_c: "",
     name10_c: "",
     name11_c: "",
@@ -51,7 +51,7 @@ setFormData({
         name5_c: employee.name5_c || "",
 name6_c: parseFloat(employee.name6_c) || 0,
         name7_c: employee.name7_c || "",
-        name8_c: employee.name8_c || "",
+name8_c: employee.name8_c ? employee.name8_c.split(',').filter(v => v.trim()) : [],
         name9_c: employee.name9_c || "",
         name10_c: employee.name10_c || "",
         name11_c: employee.name11_c || "",
@@ -101,6 +101,27 @@ const handleChange = (e) => {
     }
   };
 
+  const handleMultiSelectChange = (name, value) => {
+    setFormData(prev => {
+      const currentValues = prev[name] || [];
+      const newValues = currentValues.includes(value)
+        ? currentValues.filter(v => v !== value)
+        : [...currentValues, value];
+      
+      return {
+        ...prev,
+        [name]: newValues
+      };
+    });
+    
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ""
+      }));
+    }
+  };
+
 const validateForm = () => {
     const newErrors = {};
     
@@ -132,10 +153,11 @@ const handleSubmit = async (e) => {
       // Ensure name1_c is sent as an integer and name2_c as Boolean
 const submitData = {
         ...formData,
-name1_c: parseInt(formData.name1_c) || 0,
+        name1_c: parseInt(formData.name1_c) || 0,
         name2_c: Boolean(formData.name2_c),
         name3_c: parseFloat(formData.name3_c) || 0,
-        name6_c: parseFloat(formData.name6_c) || 0
+        name6_c: parseFloat(formData.name6_c) || 0,
+        name8_c: Array.isArray(formData.name8_c) ? formData.name8_c.join(',') : formData.name8_c
       };
       
       if (employee) {
@@ -165,7 +187,7 @@ setFormData({
       name5_c: "",
 name6_c: 0,
       name7_c: "",
-      name8_c: "",
+name8_c: [],
       name9_c: "",
       name10_c: "",
       name11_c: "",
@@ -303,14 +325,28 @@ name6_c: 0,
               error={errors.name7_c}
               placeholder="Enter email address"
             />
-            <FormField
-              label="Name8"
-              name="name8_c"
-              value={formData.name8_c}
-              onChange={handleChange}
-              error={errors.name8_c}
-              placeholder="Enter name8"
-            />
+<div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">Name8</label>
+              <div className="flex flex-wrap gap-2">
+                {['value1', 'value2', 'value3', 'fdffdf', 'check', 'demo', '123', 'check23'].map(option => (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => handleMultiSelectChange('name8_c', option)}
+                    className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                      formData.name8_c.includes(option)
+                        ? 'bg-primary text-white'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+              {errors.name8_c && (
+                <span className="text-red-500 text-sm">{errors.name8_c}</span>
+              )}
+            </div>
 
             <FormField
               label="Name9"
