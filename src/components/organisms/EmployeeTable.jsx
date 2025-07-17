@@ -11,9 +11,12 @@ import { format } from "date-fns";
 const EmployeeTable = ({ employees, departments, onEdit, onRefresh }) => {
   const [deletingId, setDeletingId] = useState(null);
 
-const getDepartmentName = (departmentId) => {
-    const dept = departments.find(d => d.Id === departmentId);
-    return dept ? dept.Name : "Unknown";
+const getDepartmentName = (employee) => {
+    // Access department name from the lookup field that includes referenceField data
+    if (employee.department_id_c && typeof employee.department_id_c === 'object' && employee.department_id_c.Name) {
+      return employee.department_id_c.Name;
+    }
+    return "Unknown";
   };
 
 const handleDelete = async (employee) => {
@@ -77,7 +80,7 @@ const handleDelete = async (employee) => {
                     </div>
                   </td>
 <td className="py-3 px-4">
-                    <span className="text-gray-900">{getDepartmentName(employee.department_id_c)}</span>
+                    <span className="text-gray-900">{getDepartmentName(employee)}</span>
                   </td>
 <td className="py-3 px-4">
                     <span className="text-gray-900">{employee.role_c}</span>
