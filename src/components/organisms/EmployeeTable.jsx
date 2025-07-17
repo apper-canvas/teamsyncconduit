@@ -11,13 +11,13 @@ import { format } from "date-fns";
 const EmployeeTable = ({ employees, departments, onEdit, onRefresh }) => {
   const [deletingId, setDeletingId] = useState(null);
 
-  const getDepartmentName = (departmentId) => {
+const getDepartmentName = (departmentId) => {
     const dept = departments.find(d => d.Id === departmentId);
-    return dept ? dept.name : "Unknown";
+    return dept ? dept.Name : "Unknown";
   };
 
-  const handleDelete = async (employee) => {
-    if (window.confirm(`Are you sure you want to delete ${employee.firstName} ${employee.lastName}?`)) {
+const handleDelete = async (employee) => {
+    if (window.confirm(`Are you sure you want to delete ${employee.first_name_c} ${employee.last_name_c}?`)) {
       setDeletingId(employee.Id);
       try {
         await employeeService.delete(employee.Id);
@@ -63,32 +63,32 @@ const EmployeeTable = ({ employees, departments, onEdit, onRefresh }) => {
                 >
                   <td className="py-3 px-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
+<div className="w-10 h-10 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
                         <span className="text-white font-semibold text-sm">
-                          {employee.firstName[0]}{employee.lastName[0]}
+                          {employee.first_name_c?.[0]}{employee.last_name_c?.[0]}
                         </span>
                       </div>
-                      <div>
+<div>
                         <p className="font-medium text-gray-900">
-                          {employee.firstName} {employee.lastName}
+                          {employee.first_name_c} {employee.last_name_c}
                         </p>
-                        <p className="text-sm text-gray-500">{employee.email}</p>
+                        <p className="text-sm text-gray-500">{employee.email_c}</p>
                       </div>
                     </div>
                   </td>
-                  <td className="py-3 px-4">
-                    <span className="text-gray-900">{getDepartmentName(employee.departmentId)}</span>
+<td className="py-3 px-4">
+                    <span className="text-gray-900">{getDepartmentName(employee.department_id_c)}</span>
                   </td>
-                  <td className="py-3 px-4">
-                    <span className="text-gray-900">{employee.role}</span>
+<td className="py-3 px-4">
+                    <span className="text-gray-900">{employee.role_c}</span>
                   </td>
-                  <td className="py-3 px-4">
+<td className="py-3 px-4">
                     <span className="text-gray-900">
-                      {format(new Date(employee.hireDate), "MMM dd, yyyy")}
+                      {format(new Date(employee.hire_date_c), "MMM dd, yyyy")}
                     </span>
                   </td>
-                  <td className="py-3 px-4">
-                    <StatusBadge status={employee.status} />
+<td className="py-3 px-4">
+                    <StatusBadge status={employee.status_c} />
                   </td>
                   <td className="py-3 px-4">
                     <div className="flex items-center space-x-2">

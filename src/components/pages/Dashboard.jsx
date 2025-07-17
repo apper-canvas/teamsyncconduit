@@ -42,13 +42,13 @@ const Dashboard = () => {
   };
 
   const getAttendanceStats = () => {
-    const today = new Date().toISOString().split("T")[0];
-    const todayAttendance = attendance.filter(record => record.date === today);
+const today = new Date().toISOString().split("T")[0];
+    const todayAttendance = attendance.filter(record => record.date_c === today);
     
     const totalEmployees = employees.length;
-    const presentToday = todayAttendance.filter(record => record.status === "present").length;
-    const absentToday = todayAttendance.filter(record => record.status === "absent").length;
-    const lateToday = todayAttendance.filter(record => record.status === "late").length;
+    const presentToday = todayAttendance.filter(record => record.status_c === "present").length;
+    const absentToday = todayAttendance.filter(record => record.status_c === "absent").length;
+    const lateToday = todayAttendance.filter(record => record.status_c === "late").length;
     
     const attendanceRate = totalEmployees > 0 ? ((presentToday / totalEmployees) * 100).toFixed(1) : 0;
     
@@ -64,9 +64,8 @@ const Dashboard = () => {
   if (loading) return <Loading />;
   if (error) return <Error message={error} onRetry={loadDashboardData} />;
 
-  const stats = getAttendanceStats();
-  const activeEmployees = employees.filter(emp => emp.status === "active").length;
-
+const stats = getAttendanceStats();
+  const activeEmployees = employees.filter(emp => emp.status_c === "active").length;
   return (
     <div className="space-y-6">
       <motion.div

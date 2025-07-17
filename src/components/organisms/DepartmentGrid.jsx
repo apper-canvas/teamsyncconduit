@@ -4,14 +4,14 @@ import Button from "@/components/atoms/Button";
 import ApperIcon from "@/components/ApperIcon";
 
 const DepartmentGrid = ({ departments, employees, onEdit, onDelete }) => {
-  const getEmployeesByDepartment = (departmentId) => {
-    return employees.filter(emp => emp.departmentId === departmentId);
+const getEmployeesByDepartment = (departmentId) => {
+    return employees.filter(emp => emp.department_id_c === departmentId);
   };
 
-  const getDepartmentHead = (departmentId) => {
+const getDepartmentHead = (departmentId) => {
     const dept = departments.find(d => d.Id === departmentId);
-    if (!dept || !dept.headId) return null;
-    return employees.find(emp => emp.Id === dept.headId);
+    if (!dept || !dept.head_id_c) return null;
+    return employees.find(emp => emp.Id === dept.head_id_c);
   };
 
   return (
@@ -29,8 +29,8 @@ const DepartmentGrid = ({ departments, employees, onEdit, onDelete }) => {
           >
             <Card className="h-full bg-gradient-to-br from-white to-blue-50 border-blue-200">
               <CardHeader className="pb-4">
-                <div className="flex items-center justify-between">
-                  <CardTitle className="text-lg">{department.name}</CardTitle>
+<div className="flex items-center justify-between">
+                  <CardTitle className="text-lg">{department.Name}</CardTitle>
                   <div className="flex items-center space-x-1">
                     <Button
                       variant="ghost"
@@ -51,9 +51,8 @@ const DepartmentGrid = ({ departments, employees, onEdit, onDelete }) => {
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <p className="text-gray-600 text-sm">{department.description}</p>
-                
+<CardContent className="space-y-4">
+                <p className="text-gray-600 text-sm">{department.description_c}</p>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span className="text-sm font-medium text-gray-700">Team Members</span>
@@ -64,14 +63,14 @@ const DepartmentGrid = ({ departments, employees, onEdit, onDelete }) => {
                   
                   {head && (
                     <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
+<div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
                         <span className="text-white font-semibold text-xs">
-                          {head.firstName[0]}{head.lastName[0]}
+                          {head.first_name_c?.[0]}{head.last_name_c?.[0]}
                         </span>
                       </div>
-                      <div>
+<div>
                         <p className="text-sm font-medium text-gray-900">
-                          {head.firstName} {head.lastName}
+                          {head.first_name_c} {head.last_name_c}
                         </p>
                         <p className="text-xs text-gray-500">Department Head</p>
                       </div>
@@ -82,9 +81,9 @@ const DepartmentGrid = ({ departments, employees, onEdit, onDelete }) => {
                     <div className="pt-2 border-t border-gray-200">
                       <p className="text-xs text-gray-500 mb-2">Recent Team Members</p>
                       <div className="space-y-1">
-                        {departmentEmployees.slice(0, 3).map(emp => (
+{departmentEmployees.slice(0, 3).map(emp => (
                           <div key={emp.Id} className="text-xs text-gray-600">
-                            {emp.firstName} {emp.lastName} - {emp.role}
+                            {emp.first_name_c} {emp.last_name_c} - {emp.role_c}
                           </div>
                         ))}
                         {departmentEmployees.length > 3 && (

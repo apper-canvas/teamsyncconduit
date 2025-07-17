@@ -4,9 +4,9 @@ import ApperIcon from "@/components/ApperIcon";
 import { format } from "date-fns";
 
 const AttendanceGrid = ({ attendance, employees }) => {
-  const getEmployeeName = (employeeId) => {
+const getEmployeeName = (employeeId) => {
     const employee = employees.find(emp => emp.Id === employeeId);
-    return employee ? `${employee.firstName} ${employee.lastName}` : "Unknown Employee";
+    return employee ? `${employee.first_name_c} ${employee.last_name_c}` : "Unknown Employee";
   };
 
   const formatTime = (timeString) => {
@@ -36,9 +36,9 @@ const AttendanceGrid = ({ attendance, employees }) => {
               </tr>
             </thead>
             <tbody>
-              {attendance.map((record, index) => {
-                const clockInTime = new Date(record.clockIn);
-                const clockOutTime = record.clockOut ? new Date(record.clockOut) : null;
+{attendance.map((record, index) => {
+                const clockInTime = new Date(record.clock_in_c);
+                const clockOutTime = record.clock_out_c ? new Date(record.clock_out_c) : null;
                 const hoursWorked = clockOutTime ? 
                   ((clockOutTime - clockInTime) / (1000 * 60 * 60)).toFixed(1) : 
                   "In Progress";
@@ -53,24 +53,24 @@ const AttendanceGrid = ({ attendance, employees }) => {
                         <div className="w-8 h-8 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
                           <ApperIcon name="User" size={14} className="text-white" />
                         </div>
-                        <span className="font-medium text-gray-900">
-                          {getEmployeeName(record.employeeId)}
+<span className="font-medium text-gray-900">
+                          {getEmployeeName(record.employee_id_c)}
                         </span>
                       </div>
                     </td>
-                    <td className="py-3 px-4">
+<td className="py-3 px-4">
                       <span className="text-gray-900">
-                        {format(new Date(record.date), "MMM dd, yyyy")}
+                        {format(new Date(record.date_c), "MMM dd, yyyy")}
                       </span>
                     </td>
-                    <td className="py-3 px-4">
-                      <span className="text-gray-900">{formatTime(record.clockIn)}</span>
+<td className="py-3 px-4">
+                      <span className="text-gray-900">{formatTime(record.clock_in_c)}</span>
                     </td>
-                    <td className="py-3 px-4">
-                      <span className="text-gray-900">{formatTime(record.clockOut)}</span>
+<td className="py-3 px-4">
+                      <span className="text-gray-900">{formatTime(record.clock_out_c)}</span>
                     </td>
-                    <td className="py-3 px-4">
-                      <StatusBadge status={record.status} />
+<td className="py-3 px-4">
+                      <StatusBadge status={record.status_c} />
                     </td>
                     <td className="py-3 px-4">
                       <span className="text-gray-900 font-medium">

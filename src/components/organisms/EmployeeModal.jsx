@@ -8,31 +8,31 @@ import { employeeService } from "@/services/api/employeeService";
 import { departmentService } from "@/services/api/departmentService";
 
 const EmployeeModal = ({ isOpen, onClose, employee, onSuccess }) => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    role: "",
-    departmentId: "",
-    hireDate: "",
-    status: "active"
+const [formData, setFormData] = useState({
+    first_name_c: "",
+    last_name_c: "",
+    email_c: "",
+    phone_c: "",
+    role_c: "",
+    department_id_c: "",
+    hire_date_c: "",
+    status_c: "active"
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
 
-  useEffect(() => {
+useEffect(() => {
     if (employee) {
       setFormData({
-        firstName: employee.firstName,
-        lastName: employee.lastName,
-        email: employee.email,
-        phone: employee.phone,
-        role: employee.role,
-        departmentId: employee.departmentId,
-        hireDate: employee.hireDate,
-        status: employee.status
+        first_name_c: employee.first_name_c,
+        last_name_c: employee.last_name_c,
+        email_c: employee.email_c,
+        phone_c: employee.phone_c,
+        role_c: employee.role_c,
+        department_id_c: employee.department_id_c,
+        hire_date_c: employee.hire_date_c,
+        status_c: employee.status_c
       });
     }
   }, [employee]);
@@ -67,19 +67,19 @@ const EmployeeModal = ({ isOpen, onClose, employee, onSuccess }) => {
     }
   };
 
-  const validateForm = () => {
+const validateForm = () => {
     const newErrors = {};
     
-    if (!formData.firstName.trim()) newErrors.firstName = "First name is required";
-    if (!formData.lastName.trim()) newErrors.lastName = "Last name is required";
-    if (!formData.email.trim()) newErrors.email = "Email is required";
-    if (!formData.phone.trim()) newErrors.phone = "Phone is required";
-    if (!formData.role.trim()) newErrors.role = "Role is required";
-    if (!formData.departmentId) newErrors.departmentId = "Department is required";
-    if (!formData.hireDate) newErrors.hireDate = "Hire date is required";
+    if (!formData.first_name_c.trim()) newErrors.first_name_c = "First name is required";
+    if (!formData.last_name_c.trim()) newErrors.last_name_c = "Last name is required";
+    if (!formData.email_c.trim()) newErrors.email_c = "Email is required";
+    if (!formData.phone_c.trim()) newErrors.phone_c = "Phone is required";
+    if (!formData.role_c.trim()) newErrors.role_c = "Role is required";
+    if (!formData.department_id_c) newErrors.department_id_c = "Department is required";
+    if (!formData.hire_date_c) newErrors.hire_date_c = "Hire date is required";
     
-    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+if (formData.email_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_c)) {
+      newErrors.email_c = "Please enter a valid email address";
     }
 
     setErrors(newErrors);
@@ -109,16 +109,16 @@ const EmployeeModal = ({ isOpen, onClose, employee, onSuccess }) => {
     }
   };
 
-  const handleClose = () => {
+const handleClose = () => {
     setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      phone: "",
-      role: "",
-      departmentId: "",
-      hireDate: "",
-      status: "active"
+      first_name_c: "",
+      last_name_c: "",
+      email_c: "",
+      phone_c: "",
+      role_c: "",
+      department_id_c: "",
+      hire_date_c: "",
+      status_c: "active"
     });
     setErrors({});
     onClose();
@@ -147,86 +147,85 @@ const EmployeeModal = ({ isOpen, onClose, employee, onSuccess }) => {
 
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <FormField
+<FormField
               label="First Name"
-              name="firstName"
-              value={formData.firstName}
+              name="first_name_c"
+              value={formData.first_name_c}
               onChange={handleChange}
-              error={errors.firstName}
+              error={errors.first_name_c}
               placeholder="Enter first name"
             />
 
-            <FormField
+<FormField
               label="Last Name"
-              name="lastName"
-              value={formData.lastName}
+              name="last_name_c"
+              value={formData.last_name_c}
               onChange={handleChange}
-              error={errors.lastName}
+              error={errors.last_name_c}
               placeholder="Enter last name"
             />
 
-            <FormField
+<FormField
               label="Email"
-              name="email"
+              name="email_c"
               type="email"
-              value={formData.email}
+              value={formData.email_c}
               onChange={handleChange}
-              error={errors.email}
+              error={errors.email_c}
               placeholder="Enter email address"
             />
 
-            <FormField
+<FormField
               label="Phone"
-              name="phone"
-              value={formData.phone}
+              name="phone_c"
+              value={formData.phone_c}
               onChange={handleChange}
-              error={errors.phone}
+              error={errors.phone_c}
               placeholder="Enter phone number"
             />
 
-            <FormField
+<FormField
               label="Role"
-              name="role"
-              value={formData.role}
+              name="role_c"
+              value={formData.role_c}
               onChange={handleChange}
-              error={errors.role}
+              error={errors.role_c}
               placeholder="Enter role"
             />
 
-            <FormField
+<FormField
               label="Department"
-              name="departmentId"
+              name="department_id_c"
               type="select"
-              value={formData.departmentId}
+              value={formData.department_id_c}
               onChange={handleChange}
-              error={errors.departmentId}
+              error={errors.department_id_c}
             >
               <option value="">Select Department</option>
               {departments.map(dept => (
-                <option key={dept.Id} value={dept.Id}>{dept.name}</option>
+                <option key={dept.Id} value={dept.Id}>{dept.Name}</option>
               ))}
             </FormField>
 
-            <FormField
+<FormField
               label="Hire Date"
-              name="hireDate"
+              name="hire_date_c"
               type="date"
-              value={formData.hireDate}
+              value={formData.hire_date_c}
               onChange={handleChange}
-              error={errors.hireDate}
+              error={errors.hire_date_c}
             />
 
-            <FormField
+<FormField
               label="Status"
-              name="status"
+              name="status_c"
               type="select"
-              value={formData.status}
+              value={formData.status_c}
               onChange={handleChange}
-              error={errors.status}
+              error={errors.status_c}
             >
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
-              <option value="terminated">Terminated</option>
             </FormField>
           </div>
 
