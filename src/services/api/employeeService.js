@@ -126,13 +126,13 @@ fields: [
 
   async create(employeeData) {
     try {
-      const params = {
+const params = {
 records: [{
           Name: employeeData.Name || `${employeeData.first_name_c} ${employeeData.last_name_c}`,
           first_name_c: employeeData.first_name_c,
           last_name_c: employeeData.last_name_c,
           name1_c: employeeData.name1_c,
-          name2_c: employeeData.name2_c || "",
+          name2_c: Boolean(employeeData.name2_c),
           name3_c: employeeData.name3_c || "",
           name4_c: employeeData.name4_c || "",
           name5_c: employeeData.name5_c || "",
@@ -191,14 +191,14 @@ records: [{
 
   async update(id, employeeData) {
     try {
-      const params = {
+const params = {
 records: [{
           Id: id,
           Name: employeeData.Name || `${employeeData.first_name_c} ${employeeData.last_name_c}`,
           first_name_c: employeeData.first_name_c,
           last_name_c: employeeData.last_name_c,
           name1_c: employeeData.name1_c,
-          name2_c: employeeData.name2_c || "",
+          name2_c: Boolean(employeeData.name2_c),
           name3_c: employeeData.name3_c || "",
           name4_c: employeeData.name4_c || "",
           name5_c: employeeData.name5_c || "",

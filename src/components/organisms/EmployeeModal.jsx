@@ -1,18 +1,18 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
-import Button from "@/components/atoms/Button";
-import FormField from "@/components/molecules/FormField";
 import ApperIcon from "@/components/ApperIcon";
+import FormField from "@/components/molecules/FormField";
+import Select from "@/components/atoms/Select";
+import Button from "@/components/atoms/Button";
 import { employeeService } from "@/services/api/employeeService";
 import { departmentService } from "@/services/api/departmentService";
-
 const EmployeeModal = ({ isOpen, onClose, employee, onSuccess }) => {
 const [formData, setFormData] = useState({
     first_name_c: "",
     last_name_c: "",
     name1_c: "",
-    name2_c: "",
+    name2_c: false,
     name3_c: "",
     name4_c: "",
     name5_c: "",
@@ -45,7 +45,7 @@ useEffect(() => {
         first_name_c: employee.first_name_c,
         last_name_c: employee.last_name_c,
         name1_c: parseInt(employee.name1_c) || 0,
-        name2_c: employee.name2_c || "",
+        name2_c: employee.name2_c === true || employee.name2_c === "true",
         name3_c: employee.name3_c || "",
         name4_c: employee.name4_c || "",
         name5_c: employee.name5_c || "",
@@ -86,11 +86,11 @@ useEffect(() => {
     }
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
+      [name]: type === 'checkbox' ? checked : value
     }));
     
     if (errors[name]) {
@@ -127,11 +127,13 @@ const handleSubmit = async (e) => {
     if (!validateForm()) return;
 
     setLoading(true);
+    
     try {
-      // Ensure name1_c is sent as an integer
+      // Ensure name1_c is sent as an integer and name2_c as Boolean
       const submitData = {
         ...formData,
-        name1_c: parseInt(formData.name1_c) || 0
+        name1_c: parseInt(formData.name1_c) || 0,
+        name2_c: Boolean(formData.name2_c)
       };
       
       if (employee) {
@@ -155,7 +157,7 @@ setFormData({
       first_name_c: "",
       last_name_c: "",
       name1_c: "",
-      name2_c: "",
+      name2_c: false,
       name3_c: "",
       name4_c: "",
       name5_c: "",
@@ -233,14 +235,22 @@ setFormData({
               placeholder="Enter name1"
 />
 
-            <FormField
-              label="Name2"
-              name="name2_c"
-              value={formData.name2_c}
-              onChange={handleChange}
-              error={errors.name2_c}
-              placeholder="Enter name2"
-            />
+<div className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                id="name2_c"
+                name="name2_c"
+                checked={formData.name2_c}
+                onChange={handleChange}
+                className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2"
+              />
+              <label htmlFor="name2_c" className="text-sm font-medium text-gray-700">
+                Name2
+              </label>
+              {errors.name2_c && (
+                <span className="text-red-500 text-sm">{errors.name2_c}</span>
+              )}
+            </div>
 
             <FormField
               label="Name3"
