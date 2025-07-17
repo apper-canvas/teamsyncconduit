@@ -41,10 +41,10 @@ const [formData, setFormData] = useState({
 
 useEffect(() => {
     if (employee) {
-setFormData({
+      setFormData({
         first_name_c: employee.first_name_c,
         last_name_c: employee.last_name_c,
-        name1_c: employee.name1_c,
+        name1_c: parseInt(employee.name1_c) || 0,
         name2_c: employee.name2_c || "",
         name3_c: employee.name3_c || "",
         name4_c: employee.name4_c || "",
@@ -104,16 +104,16 @@ setFormData({
 const validateForm = () => {
     const newErrors = {};
     
-if (!formData.first_name_c.trim()) newErrors.first_name_c = "First name is required";
+    if (!formData.first_name_c.trim()) newErrors.first_name_c = "First name is required";
     if (!formData.last_name_c.trim()) newErrors.last_name_c = "Last name is required";
-    if (!formData.name1_c || formData.name1_c === "") newErrors.name1_c = "Name1 is required";
+    if (isNaN(formData.name1_c) || formData.name1_c === "") newErrors.name1_c = "Name1 must be a valid number";
     if (!formData.email_c.trim()) newErrors.email_c = "Email is required";
     if (!formData.phone_c.trim()) newErrors.phone_c = "Phone is required";
     if (!formData.role_c.trim()) newErrors.role_c = "Role is required";
     if (!formData.department_id_c) newErrors.department_id_c = "Department is required";
     if (!formData.hire_date_c) newErrors.hire_date_c = "Hire date is required";
     
-if (formData.email_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_c)) {
+    if (formData.email_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_c)) {
       newErrors.email_c = "Please enter a valid email address";
     }
 
@@ -121,18 +121,24 @@ if (formData.email_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_c)) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!validateForm()) return;
 
     setLoading(true);
     try {
+      // Ensure name1_c is sent as an integer
+      const submitData = {
+        ...formData,
+        name1_c: parseInt(formData.name1_c) || 0
+      };
+      
       if (employee) {
-        await employeeService.update(employee.Id, formData);
+        await employeeService.update(employee.Id, submitData);
         toast.success("Employee updated successfully");
       } else {
-        await employeeService.create(formData);
+        await employeeService.create(submitData);
         toast.success("Employee created successfully");
       }
       onSuccess();
