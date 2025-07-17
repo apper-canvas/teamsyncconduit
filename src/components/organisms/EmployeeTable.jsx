@@ -51,7 +51,8 @@ const handleDelete = async (employee) => {
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Department</th>
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Role</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Hire Date</th>
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Name4</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Name4</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700">Name5</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
               </tr>
@@ -95,8 +96,13 @@ const handleDelete = async (employee) => {
                     <span className="text-gray-900">
                       {employee.name4_c ? format(new Date(employee.name4_c), "MMM dd, yyyy") : "-"}
                     </span>
+</td>
+                  <td className="py-3 px-4">
+                    <span className="text-gray-900">
+                      {employee.name5_c ? format(new Date(employee.name5_c), "MMM dd, yyyy HH:mm") : "-"}
+                    </span>
                   </td>
-<td className="py-3 px-4">
+                  <td className="py-3 px-4">
                     <StatusBadge status={employee.status_c} />
                   </td>
                   <td className="py-3 px-4">

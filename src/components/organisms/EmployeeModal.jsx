@@ -267,13 +267,14 @@ setFormData({
               placeholder="Select date"
             />
 
-            <FormField
+<FormField
               label="Name5"
               name="name5_c"
+              type="datetime-local"
               value={formData.name5_c}
               onChange={handleChange}
               error={errors.name5_c}
-              placeholder="Enter name5"
+              placeholder="Select date and time"
             />
 
             <FormField
