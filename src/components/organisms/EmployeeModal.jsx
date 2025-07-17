@@ -372,14 +372,19 @@ name8_c: [],
               placeholder="Enter phone number"
             />
 
-            <FormField
+<FormField
               label="Name11"
               name="name11_c"
+              type="select"
               value={formData.name11_c}
               onChange={handleChange}
               error={errors.name11_c}
-              placeholder="Enter name11"
-            />
+            >
+              <option value="">Select Name11</option>
+              <option value="Option1">Option1</option>
+              <option value="Option2">Option2</option>
+              <option value="Option3">Option3</option>
+            </FormField>
 
             <FormField
               label="Name12"
