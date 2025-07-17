@@ -1,0 +1,98 @@
+[
+  {
+    "Id": 1,
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@teamsync.com",
+    "phone": "+1 (555) 123-4567",
+    "role": "Software Engineer",
+    "departmentId": 1,
+    "hireDate": "2023-01-15",
+    "status": "active",
+    "avatar": ""
+  },
+  {
+    "Id": 2,
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "email": "jane.smith@teamsync.com",
+    "phone": "+1 (555) 234-5678",
+    "role": "Product Manager",
+    "departmentId": 2,
+    "hireDate": "2023-02-01",
+    "status": "active",
+    "avatar": ""
+  },
+  {
+    "Id": 3,
+    "firstName": "Michael",
+    "lastName": "Johnson",
+    "email": "michael.johnson@teamsync.com",
+    "phone": "+1 (555) 345-6789",
+    "role": "UX Designer",
+    "departmentId": 3,
+    "hireDate": "2023-03-10",
+    "status": "active",
+    "avatar": ""
+  },
+  {
+    "Id": 4,
+    "firstName": "Sarah",
+    "lastName": "Williams",
+    "email": "sarah.williams@teamsync.com",
+    "phone": "+1 (555) 456-7890",
+    "role": "HR Manager",
+    "departmentId": 4,
+    "hireDate": "2023-01-20",
+    "status": "active",
+    "avatar": ""
+  },
+  {
+    "Id": 5,
+    "firstName": "David",
+    "lastName": "Brown",
+    "email": "david.brown@teamsync.com",
+    "phone": "+1 (555) 567-8901",
+    "role": "Marketing Specialist",
+    "departmentId": 5,
+    "hireDate": "2023-04-05",
+    "status": "active",
+    "avatar": ""
+  },
+  {
+    "Id": 6,
+    "firstName": "Emily",
+    "lastName": "Davis",
+    "email": "emily.davis@teamsync.com",
+    "phone": "+1 (555) 678-9012",
+    "role": "Senior Developer",
+    "departmentId": 1,
+    "hireDate": "2022-11-15",
+    "status": "active",
+    "avatar": ""
+  },
+  {
+    "Id": 7,
+    "firstName": "Robert",
+    "lastName": "Miller",
+    "email": "robert.miller@teamsync.com",
+    "phone": "+1 (555) 789-0123",
+    "role": "Sales Representative",
+    "departmentId": 6,
+    "hireDate": "2023-05-12",
+    "status": "active",
+    "avatar": ""
+  },
+  {
+    "Id": 8,
+    "firstName": "Lisa",
+    "lastName": "Wilson",
+    "email": "lisa.wilson@teamsync.com",
+    "phone": "+1 (555) 890-1234",
+    "role": "Accountant",
+    "departmentId": 7,
+    "hireDate": "2023-02-28",
+    "status": "inactive",
+    "avatar": ""
+  }
+]

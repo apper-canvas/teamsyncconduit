@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 1,
+    "employeeId": 1,
+    "date": "2024-01-15",
+    "clockIn": "2024-01-15T09:00:00Z",
+    "clockOut": "2024-01-15T17:30:00Z",
+    "status": "present"
+  },
+  {
+    "Id": 2,
+    "employeeId": 2,
+    "date": "2024-01-15",
+    "clockIn": "2024-01-15T09:15:00Z",
+    "clockOut": "2024-01-15T17:45:00Z",
+    "status": "late"
+  },
+  {
+    "Id": 3,
+    "employeeId": 3,
+    "date": "2024-01-15",
+    "clockIn": "2024-01-15T08:45:00Z",
+    "clockOut": "2024-01-15T17:15:00Z",
+    "status": "present"
+  },
+  {
+    "Id": 4,
+    "employeeId": 4,
+    "date": "2024-01-15",
+    "clockIn": "2024-01-15T09:30:00Z",
+    "clockOut": "2024-01-15T18:00:00Z",
+    "status": "late"
+  },
+  {
+    "Id": 5,
+    "employeeId": 5,
+    "date": "2024-01-15",
+    "clockIn": "",
+    "clockOut": "",
+    "status": "absent"
+  },
+  {
+    "Id": 6,
+    "employeeId": 6,
+    "date": "2024-01-15",
+    "clockIn": "2024-01-15T08:30:00Z",
+    "clockOut": "2024-01-15T16:30:00Z",
+    "status": "present"
+  },
+  {
+    "Id": 7,
+    "employeeId": 7,
+    "date": "2024-01-15",
+    "clockIn": "",
+    "clockOut": "",
+    "status": "leave"
+  },
+  {
+    "Id": 8,
+    "employeeId": 8,
+    "date": "2024-01-15",
+    "clockIn": "2024-01-15T09:00:00Z",
+    "clockOut": "2024-01-15T17:00:00Z",
+    "status": "present"
+  },
+  {
+    "Id": 9,
+    "employeeId": 1,
+    "date": "2024-01-16",
+    "clockIn": "2024-01-16T08:55:00Z",
+    "clockOut": "2024-01-16T17:25:00Z",
+    "status": "present"
+  },
+  {
+    "Id": 10,
+    "employeeId": 2,
+    "date": "2024-01-16",
+    "clockIn": "2024-01-16T09:05:00Z",
+    "clockOut": "2024-01-16T17:35:00Z",
+    "status": "present"
+  }
+]

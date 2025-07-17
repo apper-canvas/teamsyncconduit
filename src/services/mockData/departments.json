@@ -1,0 +1,51 @@
+[
+  {
+    "Id": 1,
+    "name": "Engineering",
+    "description": "Software development and technical innovation",
+    "headId": 6,
+    "memberCount": 2
+  },
+  {
+    "Id": 2,
+    "name": "Product",
+    "description": "Product strategy and roadmap management",
+    "headId": 2,
+    "memberCount": 1
+  },
+  {
+    "Id": 3,
+    "name": "Design",
+    "description": "User experience and interface design",
+    "headId": 3,
+    "memberCount": 1
+  },
+  {
+    "Id": 4,
+    "name": "Human Resources",
+    "description": "Employee management and organizational development",
+    "headId": 4,
+    "memberCount": 1
+  },
+  {
+    "Id": 5,
+    "name": "Marketing",
+    "description": "Brand promotion and customer acquisition",
+    "headId": 5,
+    "memberCount": 1
+  },
+  {
+    "Id": 6,
+    "name": "Sales",
+    "description": "Revenue generation and client relationships",
+    "headId": 7,
+    "memberCount": 1
+  },
+  {
+    "Id": 7,
+    "name": "Finance",
+    "description": "Financial planning and accounting operations",
+    "headId": 8,
+    "memberCount": 1
+  }
+]
