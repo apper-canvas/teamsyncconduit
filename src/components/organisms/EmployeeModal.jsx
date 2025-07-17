@@ -112,6 +112,10 @@ if (formData.name1_c !== "" && isNaN(formData.name1_c)) newErrors.name1_c = "Nam
     if (formData.email_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_c)) {
       newErrors.email_c = "Please enter a valid email address";
     }
+    
+    if (formData.name7_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.name7_c)) {
+      newErrors.name7_c = "Please enter a valid email address";
+    }
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -290,15 +294,15 @@ name6_c: 0,
               placeholder="Enter decimal value"
             />
 
-            <FormField
+<FormField
               label="Name7"
               name="name7_c"
+              type="email"
               value={formData.name7_c}
               onChange={handleChange}
               error={errors.name7_c}
-              placeholder="Enter name7"
+              placeholder="Enter email address"
             />
-
             <FormField
               label="Name8"
               name="name8_c"

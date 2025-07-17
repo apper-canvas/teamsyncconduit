@@ -54,6 +54,7 @@ const handleDelete = async (employee) => {
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name4</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name5</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name6</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700">Name7</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
               </tr>
@@ -103,9 +104,14 @@ const handleDelete = async (employee) => {
                       {employee.name5_c ? format(new Date(employee.name5_c), "MMM dd, yyyy HH:mm") : "-"}
                     </span>
 </td>
-                  <td className="py-3 px-4">
+<td className="py-3 px-4">
                     <span className="text-gray-900">
                       {employee.name6_c ? parseFloat(employee.name6_c).toFixed(2) : "-"}
+                    </span>
+                  </td>
+                  <td className="py-3 px-4">
+                    <span className="text-gray-900">
+                      {employee.name7_c || "-"}
                     </span>
                   </td>
                   <td className="py-3 px-4">
