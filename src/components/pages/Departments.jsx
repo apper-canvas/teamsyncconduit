@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import Button from "@/components/atoms/Button";
 import DepartmentGrid from "@/components/organisms/DepartmentGrid";
+import DepartmentModal from "@/components/organisms/DepartmentModal";
 import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
@@ -15,6 +16,7 @@ const Departments = () => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     loadDepartments();
@@ -44,8 +46,16 @@ const Departments = () => {
     }
   };
 
-  const handleAddDepartment = () => {
-    toast.info("Add Department feature coming soon!");
+const handleAddDepartment = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleModalSuccess = () => {
+    loadDepartments();
   };
 
   const handleEditDepartment = (department) => {
@@ -104,8 +114,14 @@ const Departments = () => {
             onAction={handleAddDepartment}
             icon="Building"
           />
-        )}
+)}
       </motion.div>
+
+      <DepartmentModal
+        isOpen={isModalOpen}
+        onClose={handleModalClose}
+        onSuccess={handleModalSuccess}
+      />
     </div>
   );
 };
