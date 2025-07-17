@@ -49,7 +49,7 @@ setFormData({
         name3_c: parseFloat(employee.name3_c) || 0,
         name4_c: employee.name4_c || "",
         name5_c: employee.name5_c || "",
-        name6_c: employee.name6_c || "",
+name6_c: parseFloat(employee.name6_c) || 0,
         name7_c: employee.name7_c || "",
         name8_c: employee.name8_c || "",
         name9_c: employee.name9_c || "",
@@ -105,8 +105,9 @@ const validateForm = () => {
     const newErrors = {};
     
     if (!formData.first_name_c.trim()) newErrors.first_name_c = "First name is required";
-    if (formData.name1_c !== "" && isNaN(formData.name1_c)) newErrors.name1_c = "Name1 must be a valid number";
+if (formData.name1_c !== "" && isNaN(formData.name1_c)) newErrors.name1_c = "Name1 must be a valid number";
     if (formData.name3_c !== "" && (isNaN(formData.name3_c) || isNaN(parseFloat(formData.name3_c)))) newErrors.name3_c = "Name3 must be a valid decimal number";
+    if (formData.name6_c !== "" && (isNaN(formData.name6_c) || isNaN(parseFloat(formData.name6_c)))) newErrors.name6_c = "Name6 must be a valid decimal number";
     
     if (formData.email_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_c)) {
       newErrors.email_c = "Please enter a valid email address";
@@ -127,9 +128,10 @@ const handleSubmit = async (e) => {
       // Ensure name1_c is sent as an integer and name2_c as Boolean
 const submitData = {
         ...formData,
-        name1_c: parseInt(formData.name1_c) || 0,
+name1_c: parseInt(formData.name1_c) || 0,
         name2_c: Boolean(formData.name2_c),
-        name3_c: parseFloat(formData.name3_c) || 0
+        name3_c: parseFloat(formData.name3_c) || 0,
+        name6_c: parseFloat(formData.name6_c) || 0
       };
       
       if (employee) {
@@ -157,7 +159,7 @@ setFormData({
       name3_c: "",
       name4_c: "",
       name5_c: "",
-      name6_c: "",
+name6_c: 0,
       name7_c: "",
       name8_c: "",
       name9_c: "",
@@ -277,13 +279,15 @@ setFormData({
               placeholder="Select date and time"
             />
 
-            <FormField
+<FormField
               label="Name6"
               name="name6_c"
+              type="number"
+              step="0.01"
               value={formData.name6_c}
               onChange={handleChange}
               error={errors.name6_c}
-              placeholder="Enter name6"
+              placeholder="Enter decimal value"
             />
 
             <FormField
