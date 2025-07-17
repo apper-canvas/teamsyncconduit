@@ -386,14 +386,27 @@ name8_c: [],
               <option value="Option3">Option3</option>
             </FormField>
 
-            <FormField
-              label="Name12"
-              name="name12_c"
-              value={formData.name12_c}
-              onChange={handleChange}
-              error={errors.name12_c}
-              placeholder="Enter name12"
-            />
+<div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">Name12</label>
+              <div className="flex flex-col space-y-2">
+                {['Option A', 'Option B', 'Option C', 'Option D'].map(option => (
+                  <label key={option} className="flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      name="name12_c"
+                      value={option}
+                      checked={formData.name12_c === option}
+                      onChange={handleChange}
+                      className="w-4 h-4 text-primary bg-gray-100 border-gray-300 focus:ring-primary focus:ring-2"
+                    />
+                    <span className="text-sm text-gray-700">{option}</span>
+                  </label>
+                ))}
+              </div>
+              {errors.name12_c && (
+                <span className="text-red-500 text-sm">{errors.name12_c}</span>
+              )}
+            </div>
 
             <FormField
               label="Name13"

@@ -51,11 +51,12 @@ const handleDelete = async (employee) => {
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Department</th>
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Role</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Hire Date</th>
-<th className="text-left py-3 px-4 font-semibold text-gray-700">Name4</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700">Name4</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name5</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name6</th>
-<th className="text-left py-3 px-4 font-semibold text-gray-700">Name7</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700">Name7</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name8</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700">Name12</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
               </tr>
@@ -115,7 +116,7 @@ const handleDelete = async (employee) => {
                       {employee.name7_c || "-"}
                     </span>
 </td>
-                  <td className="py-3 px-4">
+<td className="py-3 px-4">
                     <div className="flex flex-wrap gap-1">
                       {employee.name8_c && employee.name8_c.split(',').filter(v => v.trim()).map((value, index) => (
                         <span key={index} className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
@@ -126,6 +127,11 @@ const handleDelete = async (employee) => {
                         <span className="text-gray-500">-</span>
                       )}
                     </div>
+                  </td>
+                  <td className="py-3 px-4">
+                    <span className="text-gray-900">
+                      {employee.name12_c || "-"}
+                    </span>
                   </td>
                   <td className="py-3 px-4">
                     <StatusBadge status={employee.status_c} />
