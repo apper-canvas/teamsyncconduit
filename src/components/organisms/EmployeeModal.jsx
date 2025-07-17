@@ -41,12 +41,12 @@ const [formData, setFormData] = useState({
 
 useEffect(() => {
     if (employee) {
-      setFormData({
+setFormData({
         first_name_c: employee.first_name_c,
         last_name_c: employee.last_name_c,
         name1_c: parseInt(employee.name1_c) || 0,
         name2_c: employee.name2_c === true || employee.name2_c === "true",
-        name3_c: employee.name3_c || "",
+        name3_c: parseFloat(employee.name3_c) || 0,
         name4_c: employee.name4_c || "",
         name5_c: employee.name5_c || "",
         name6_c: employee.name6_c || "",
@@ -106,6 +106,7 @@ const validateForm = () => {
     
     if (!formData.first_name_c.trim()) newErrors.first_name_c = "First name is required";
     if (formData.name1_c !== "" && isNaN(formData.name1_c)) newErrors.name1_c = "Name1 must be a valid number";
+    if (formData.name3_c !== "" && (isNaN(formData.name3_c) || isNaN(parseFloat(formData.name3_c)))) newErrors.name3_c = "Name3 must be a valid decimal number";
     
     if (formData.email_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_c)) {
       newErrors.email_c = "Please enter a valid email address";
@@ -124,10 +125,11 @@ const handleSubmit = async (e) => {
     
     try {
       // Ensure name1_c is sent as an integer and name2_c as Boolean
-      const submitData = {
+const submitData = {
         ...formData,
         name1_c: parseInt(formData.name1_c) || 0,
-        name2_c: Boolean(formData.name2_c)
+        name2_c: Boolean(formData.name2_c),
+        name3_c: parseFloat(formData.name3_c) || 0
       };
       
       if (employee) {
