@@ -12,6 +12,22 @@ const [formData, setFormData] = useState({
     first_name_c: "",
     last_name_c: "",
     name1_c: "",
+    name2_c: "",
+    name3_c: "",
+    name4_c: "",
+    name5_c: "",
+    name6_c: "",
+    name7_c: "",
+    name8_c: "",
+    name9_c: "",
+    name10_c: "",
+    name11_c: "",
+    name12_c: "",
+    name13_c: "",
+    name14_c: "",
+    name15_c: "",
+    name16_c: "",
+    name17_c: "",
     email_c: "",
     phone_c: "",
     role_c: "",
@@ -29,6 +45,22 @@ setFormData({
         first_name_c: employee.first_name_c,
         last_name_c: employee.last_name_c,
         name1_c: employee.name1_c,
+        name2_c: employee.name2_c || "",
+        name3_c: employee.name3_c || "",
+        name4_c: employee.name4_c || "",
+        name5_c: employee.name5_c || "",
+        name6_c: employee.name6_c || "",
+        name7_c: employee.name7_c || "",
+        name8_c: employee.name8_c || "",
+        name9_c: employee.name9_c || "",
+        name10_c: employee.name10_c || "",
+        name11_c: employee.name11_c || "",
+        name12_c: employee.name12_c || "",
+        name13_c: employee.name13_c || "",
+        name14_c: employee.name14_c || "",
+        name15_c: employee.name15_c || "",
+        name16_c: employee.name16_c || "",
+        name17_c: employee.name17_c || "",
         email_c: employee.email_c,
         phone_c: employee.phone_c,
         role_c: employee.role_c,
@@ -117,6 +149,22 @@ setFormData({
       first_name_c: "",
       last_name_c: "",
       name1_c: "",
+      name2_c: "",
+      name3_c: "",
+      name4_c: "",
+      name5_c: "",
+      name6_c: "",
+      name7_c: "",
+      name8_c: "",
+      name9_c: "",
+      name10_c: "",
+      name11_c: "",
+      name12_c: "",
+      name13_c: "",
+      name14_c: "",
+      name15_c: "",
+      name16_c: "",
+      name17_c: "",
       email_c: "",
       phone_c: "",
       role_c: "",
@@ -177,7 +225,152 @@ setFormData({
               onChange={handleChange}
               error={errors.name1_c}
               placeholder="Enter name1"
+/>
+
+            <FormField
+              label="Name2"
+              name="name2_c"
+              value={formData.name2_c}
+              onChange={handleChange}
+              error={errors.name2_c}
+              placeholder="Enter name2"
             />
+
+            <FormField
+              label="Name3"
+              name="name3_c"
+              value={formData.name3_c}
+              onChange={handleChange}
+              error={errors.name3_c}
+              placeholder="Enter name3"
+            />
+
+            <FormField
+              label="Name4"
+              name="name4_c"
+              value={formData.name4_c}
+              onChange={handleChange}
+              error={errors.name4_c}
+              placeholder="Enter name4"
+            />
+
+            <FormField
+              label="Name5"
+              name="name5_c"
+              value={formData.name5_c}
+              onChange={handleChange}
+              error={errors.name5_c}
+              placeholder="Enter name5"
+            />
+
+            <FormField
+              label="Name6"
+              name="name6_c"
+              value={formData.name6_c}
+              onChange={handleChange}
+              error={errors.name6_c}
+              placeholder="Enter name6"
+            />
+
+            <FormField
+              label="Name7"
+              name="name7_c"
+              value={formData.name7_c}
+              onChange={handleChange}
+              error={errors.name7_c}
+              placeholder="Enter name7"
+            />
+
+            <FormField
+              label="Name8"
+              name="name8_c"
+              value={formData.name8_c}
+              onChange={handleChange}
+              error={errors.name8_c}
+              placeholder="Enter name8"
+            />
+
+            <FormField
+              label="Name9"
+              name="name9_c"
+              value={formData.name9_c}
+              onChange={handleChange}
+              error={errors.name9_c}
+              placeholder="Enter name9"
+            />
+
+            <FormField
+              label="Name10"
+              name="name10_c"
+              value={formData.name10_c}
+              onChange={handleChange}
+              error={errors.name10_c}
+              placeholder="Enter name10"
+            />
+
+            <FormField
+              label="Name11"
+              name="name11_c"
+              value={formData.name11_c}
+              onChange={handleChange}
+              error={errors.name11_c}
+              placeholder="Enter name11"
+            />
+
+            <FormField
+              label="Name12"
+              name="name12_c"
+              value={formData.name12_c}
+              onChange={handleChange}
+              error={errors.name12_c}
+              placeholder="Enter name12"
+            />
+
+            <FormField
+              label="Name13"
+              name="name13_c"
+              value={formData.name13_c}
+              onChange={handleChange}
+              error={errors.name13_c}
+              placeholder="Enter name13"
+            />
+
+            <FormField
+              label="Name14"
+              name="name14_c"
+              value={formData.name14_c}
+              onChange={handleChange}
+              error={errors.name14_c}
+              placeholder="Enter name14"
+            />
+
+            <FormField
+              label="Name15"
+              name="name15_c"
+              value={formData.name15_c}
+              onChange={handleChange}
+              error={errors.name15_c}
+              placeholder="Enter name15"
+            />
+
+            <FormField
+              label="Name16"
+              name="name16_c"
+              value={formData.name16_c}
+              onChange={handleChange}
+              error={errors.name16_c}
+              placeholder="Enter name16"
+            />
+
+            <FormField
+              label="Name17"
+              name="name17_c"
+              value={formData.name17_c}
+              onChange={handleChange}
+              error={errors.name17_c}
+              placeholder="Enter name17"
+            />
+
 <FormField
               label="Email"
               name="email_c"
@@ -187,7 +380,6 @@ setFormData({
               error={errors.email_c}
               placeholder="Enter email address"
             />
-
 <FormField
               label="Phone"
               name="phone_c"
