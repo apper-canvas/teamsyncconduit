@@ -132,10 +132,14 @@ if (formData.name1_c !== "" && isNaN(formData.name1_c)) newErrors.name1_c = "Nam
     
     if (formData.email_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_c)) {
       newErrors.email_c = "Please enter a valid email address";
-    }
+}
     
     if (formData.name7_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.name7_c)) {
       newErrors.name7_c = "Please enter a valid email address";
+    }
+    
+    if (formData.name10_c && !/^[\+]?[1-9][\d]{0,15}$/.test(formData.name10_c.replace(/[\s\-\(\)]/g, ''))) {
+      newErrors.name10_c = "Please enter a valid phone number";
     }
 
     setErrors(newErrors);
@@ -358,13 +362,14 @@ name8_c: [],
               placeholder="Enter name9"
             />
 
-            <FormField
+<FormField
               label="Name10"
               name="name10_c"
+              type="tel"
               value={formData.name10_c}
               onChange={handleChange}
               error={errors.name10_c}
-              placeholder="Enter name10"
+              placeholder="Enter phone number"
             />
 
             <FormField
