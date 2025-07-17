@@ -257,13 +257,14 @@ setFormData({
               placeholder="Enter name3"
             />
 
-            <FormField
+<FormField
               label="Name4"
               name="name4_c"
+              type="date"
               value={formData.name4_c}
               onChange={handleChange}
               error={errors.name4_c}
-              placeholder="Enter name4"
+              placeholder="Select date"
             />
 
             <FormField
