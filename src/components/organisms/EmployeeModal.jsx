@@ -74,7 +74,7 @@ const validateForm = () => {
     
 if (!formData.first_name_c.trim()) newErrors.first_name_c = "First name is required";
     if (!formData.last_name_c.trim()) newErrors.last_name_c = "Last name is required";
-    if (!formData.name1_c.trim()) newErrors.name1_c = "Name1 is required";
+    if (!formData.name1_c || formData.name1_c === "") newErrors.name1_c = "Name1 is required";
     if (!formData.email_c.trim()) newErrors.email_c = "Email is required";
     if (!formData.phone_c.trim()) newErrors.phone_c = "Phone is required";
     if (!formData.role_c.trim()) newErrors.role_c = "Role is required";
@@ -172,6 +172,7 @@ setFormData({
 <FormField
               label="Name1"
               name="name1_c"
+              type="number"
               value={formData.name1_c}
               onChange={handleChange}
               error={errors.name1_c}
