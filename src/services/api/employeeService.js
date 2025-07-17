@@ -11,10 +11,11 @@ class EmployeeService {
 async getAll() {
     try {
       const params = {
-        fields: [
+fields: [
           { field: { Name: "Name" } },
           { field: { Name: "first_name_c" } },
           { field: { Name: "last_name_c" } },
+          { field: { Name: "name1_c" } },
           { field: { Name: "email_c" } },
           { field: { Name: "phone_c" } },
           { field: { Name: "role_c" } },
@@ -52,10 +53,11 @@ async getAll() {
 async getById(id) {
     try {
       const params = {
-        fields: [
+fields: [
           { field: { Name: "Name" } },
           { field: { Name: "first_name_c" } },
           { field: { Name: "last_name_c" } },
+          { field: { Name: "name1_c" } },
           { field: { Name: "email_c" } },
           { field: { Name: "phone_c" } },
           { field: { Name: "role_c" } },
@@ -93,10 +95,11 @@ async getById(id) {
   async create(employeeData) {
     try {
       const params = {
-        records: [{
+records: [{
           Name: employeeData.Name || `${employeeData.first_name_c} ${employeeData.last_name_c}`,
           first_name_c: employeeData.first_name_c,
           last_name_c: employeeData.last_name_c,
+          name1_c: employeeData.name1_c,
           email_c: employeeData.email_c,
           phone_c: employeeData.phone_c,
           role_c: employeeData.role_c,
@@ -141,11 +144,12 @@ async getById(id) {
   async update(id, employeeData) {
     try {
       const params = {
-        records: [{
+records: [{
           Id: id,
           Name: employeeData.Name || `${employeeData.first_name_c} ${employeeData.last_name_c}`,
           first_name_c: employeeData.first_name_c,
           last_name_c: employeeData.last_name_c,
+          name1_c: employeeData.name1_c,
           email_c: employeeData.email_c,
           phone_c: employeeData.phone_c,
           role_c: employeeData.role_c,

@@ -11,6 +11,7 @@ const EmployeeModal = ({ isOpen, onClose, employee, onSuccess }) => {
 const [formData, setFormData] = useState({
     first_name_c: "",
     last_name_c: "",
+    name1_c: "",
     email_c: "",
     phone_c: "",
     role_c: "",
@@ -24,9 +25,10 @@ const [formData, setFormData] = useState({
 
 useEffect(() => {
     if (employee) {
-      setFormData({
+setFormData({
         first_name_c: employee.first_name_c,
         last_name_c: employee.last_name_c,
+        name1_c: employee.name1_c,
         email_c: employee.email_c,
         phone_c: employee.phone_c,
         role_c: employee.role_c,
@@ -70,8 +72,9 @@ useEffect(() => {
 const validateForm = () => {
     const newErrors = {};
     
-    if (!formData.first_name_c.trim()) newErrors.first_name_c = "First name is required";
+if (!formData.first_name_c.trim()) newErrors.first_name_c = "First name is required";
     if (!formData.last_name_c.trim()) newErrors.last_name_c = "Last name is required";
+    if (!formData.name1_c.trim()) newErrors.name1_c = "Name1 is required";
     if (!formData.email_c.trim()) newErrors.email_c = "Email is required";
     if (!formData.phone_c.trim()) newErrors.phone_c = "Phone is required";
     if (!formData.role_c.trim()) newErrors.role_c = "Role is required";
@@ -110,9 +113,10 @@ if (formData.email_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_c)) {
   };
 
 const handleClose = () => {
-    setFormData({
+setFormData({
       first_name_c: "",
       last_name_c: "",
+      name1_c: "",
       email_c: "",
       phone_c: "",
       role_c: "",
@@ -163,8 +167,16 @@ const handleClose = () => {
               onChange={handleChange}
               error={errors.last_name_c}
               placeholder="Enter last name"
-            />
+/>
 
+<FormField
+              label="Name1"
+              name="name1_c"
+              value={formData.name1_c}
+              onChange={handleChange}
+              error={errors.name1_c}
+              placeholder="Enter name1"
+            />
 <FormField
               label="Email"
               name="email_c"
