@@ -58,7 +58,8 @@ const handleDelete = async (employee) => {
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name8</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name12</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name13</th>
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Name15</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Name15</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700">Name16</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Website</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
@@ -160,6 +161,23 @@ const handleDelete = async (employee) => {
                               ★
                             </span>
                           ))}
+                        </>
+                      ) : (
+                        <span className="text-gray-500">-</span>
+                      )}
+                    </div>
+</td>
+                  <td className="py-3 px-4">
+                    <div className="flex items-center space-x-2">
+                      {employee.name16_c ? (
+                        <>
+                          <div className="w-20 bg-gray-200 rounded-full h-2">
+                            <div 
+                              className="bg-blue-600 h-2 rounded-full" 
+                              style={{ width: `${(parseInt(employee.name16_c) || 0)}%` }}
+                            ></div>
+                          </div>
+                          <span className="text-sm text-gray-600">{employee.name16_c}</span>
                         </>
                       ) : (
                         <span className="text-gray-500">-</span>

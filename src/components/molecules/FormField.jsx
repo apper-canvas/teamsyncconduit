@@ -16,6 +16,19 @@ const FormField = ({ label, type = "text", error, className, children, ...props 
           className="flex min-h-[80px] w-full rounded-lg border-2 border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 placeholder:text-gray-500 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors duration-200 resize-y"
           {...props}
         />
+      ) : type === "range" ? (
+        <div className="space-y-2">
+          <input
+            type="range"
+            className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+            {...props}
+          />
+          <div className="flex justify-between text-xs text-gray-500">
+            <span>{props.min || 0}</span>
+            <span className="font-medium text-primary">{props.value || 0}</span>
+            <span>{props.max || 100}</span>
+          </div>
+        </div>
       ) : (
         <Input type={type} {...props} />
       )}

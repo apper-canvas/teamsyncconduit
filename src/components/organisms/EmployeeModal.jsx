@@ -476,13 +476,15 @@ department_id_c: "",
               )}
             </div>
 
-            <FormField
-              label="Name16"
+<FormField
+              label="Name16 (Range)"
               name="name16_c"
+              type="range"
               value={formData.name16_c}
               onChange={handleChange}
               error={errors.name16_c}
-              placeholder="Enter name16"
+              min="0"
+              max="100"
             />
 
             <FormField
