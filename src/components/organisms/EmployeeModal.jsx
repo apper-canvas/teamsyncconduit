@@ -35,7 +35,7 @@ email_c: "",
     hire_date_c: "",
     status_c: "active",
 name18_c: [],
-    name19_c: "",
+    name19_c: [],
     name20_c: ""
   });
   const [departments, setDepartments] = useState([]);
@@ -71,7 +71,7 @@ email_c: employee.email_c,
         hire_date_c: employee.hire_date_c,
         status_c: employee.status_c,
 name18_c: employee.name18_c ? employee.name18_c.split(',').filter(v => v.trim()) : [],
-        name19_c: employee.name19_c || "",
+        name19_c: employee.name19_c ? employee.name19_c.split(',').filter(v => v.trim()) : [],
         name20_c: employee.name20_c || ""
       });
     }
@@ -175,7 +175,8 @@ name8_c: Array.isArray(formData.name8_c) ? formData.name8_c.join(',') : formData
         name13_c: Array.isArray(formData.name13_c) ? formData.name13_c.join(',') : formData.name13_c,
         name15_c: parseInt(formData.name15_c) || 0,
 name17_c: Array.isArray(formData.name17_c) ? formData.name17_c.join(',') : formData.name17_c,
-        name18_c: Array.isArray(formData.name18_c) ? formData.name18_c.join(',') : formData.name18_c
+        name18_c: Array.isArray(formData.name18_c) ? formData.name18_c.join(',') : formData.name18_c,
+        name19_c: Array.isArray(formData.name19_c) ? formData.name19_c.join(',') : formData.name19_c
       };
       
       if (employee) {
@@ -222,7 +223,7 @@ email_c: "",
       hire_date_c: "",
       status_c: "active",
 name18_c: [],
-      name19_c: "",
+      name19_c: [],
       name20_c: ""
     });
     setErrors({});
@@ -606,14 +607,28 @@ name18_c: [],
               )}
             </div>
 
-            <FormField
-              label="Name19"
-              name="name19_c"
-              value={formData.name19_c}
-              onChange={handleChange}
-              error={errors.name19_c}
-              placeholder="Enter name19"
-            />
+<div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">Name19</label>
+              <div className="flex flex-wrap gap-2">
+                {['sample1', '22', 'demo', 'prathmesh 3'].map(option => (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => handleMultiSelectChange('name19_c', option)}
+                    className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                      formData.name19_c.includes(option)
+                        ? 'bg-teal-600 text-white'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+              {errors.name19_c && (
+                <span className="text-red-500 text-sm">{errors.name19_c}</span>
+              )}
+            </div>
 
             <FormField
               label="Name20"

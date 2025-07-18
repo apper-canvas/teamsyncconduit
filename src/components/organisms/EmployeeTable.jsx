@@ -212,10 +212,17 @@ const handleDelete = async (employee) => {
                       )}
                     </div>
                   </td>
-                  <td className="py-3 px-4">
-                    <span className="text-gray-900">
-                      {employee.name19_c || "-"}
-                    </span>
+<td className="py-3 px-4">
+                    <div className="flex flex-wrap gap-1">
+                      {employee.name19_c && employee.name19_c.split(',').filter(v => v.trim()).map((value, index) => (
+                        <span key={index} className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
+                          {value.trim()}
+                        </span>
+                      ))}
+                      {(!employee.name19_c || employee.name19_c.split(',').filter(v => v.trim()).length === 0) && (
+                        <span className="text-gray-500">-</span>
+                      )}
+                    </div>
                   </td>
                   <td className="py-3 px-4">
                     <span className="text-gray-900">
