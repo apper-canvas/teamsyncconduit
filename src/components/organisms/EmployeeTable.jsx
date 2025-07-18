@@ -234,9 +234,9 @@ const handleDelete = async (employee) => {
                                 {employee.number1_c || "-"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
+<td className="py-3 px-4">
                             <span className="text-gray-900">
-                                {employee.number2_c || "-"}
+                                {employee.number2_c === true ? "Yes" : employee.number2_c === false ? "No" : "-"}
                             </span>
                         </td>
                         <td className="py-3 px-4">

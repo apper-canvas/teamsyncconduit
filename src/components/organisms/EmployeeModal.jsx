@@ -38,7 +38,7 @@ first_name_c: "",
     name19_c: [],
     name20_c: "",
 number1_c: "",
-    number2_c: 0,
+    number2_c: false,
     number3_c: 0,
     number4_c: 0,
     number5_c: 0,
@@ -90,7 +90,7 @@ setFormData({
         name19_c: employee.name19_c ? employee.name19_c.split(',').filter(v => v.trim()) : [],
         name20_c: employee.name20_c || "",
 number1_c: employee.number1_c || "",
-        number2_c: parseInt(employee.number2_c) || 0,
+        number2_c: employee.number2_c === true || employee.number2_c === "true",
         number3_c: parseInt(employee.number3_c) || 0,
         number4_c: parseInt(employee.number4_c) || 0,
         number5_c: parseInt(employee.number5_c) || 0,
@@ -188,7 +188,6 @@ if (formData.name20_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name20_c.replace
       newErrors.name20_c = "Please enter a valid phone number";
     }
     
-    if (formData.number2_c !== "" && isNaN(formData.number2_c)) newErrors.number2_c = "Number2 must be a valid number";
     if (formData.number3_c !== "" && isNaN(formData.number3_c)) newErrors.number3_c = "Number3 must be a valid number";
     if (formData.number4_c !== "" && isNaN(formData.number4_c)) newErrors.number4_c = "Number4 must be a valid number";
     if (formData.number5_c !== "" && isNaN(formData.number5_c)) newErrors.number5_c = "Number5 must be a valid number";
@@ -229,7 +228,7 @@ name17_c: Array.isArray(formData.name17_c) ? formData.name17_c.join(',') : formD
         name18_c: Array.isArray(formData.name18_c) ? formData.name18_c.join(',') : formData.name18_c,
         name19_c: Array.isArray(formData.name19_c) ? formData.name19_c.join(',') : formData.name19_c,
 number1_c: formData.number1_c || "",
-        number2_c: parseInt(formData.number2_c) || 0,
+number2_c: Boolean(formData.number2_c),
         number3_c: parseInt(formData.number3_c) || 0,
         number4_c: parseInt(formData.number4_c) || 0,
         number5_c: parseInt(formData.number5_c) || 0,
@@ -292,7 +291,7 @@ setFormData({
       name19_c: [],
       name20_c: "",
 number1_c: "",
-      number2_c: 0,
+      number2_c: false,
       number3_c: 0,
       number4_c: 0,
       number5_c: 0,
@@ -732,15 +731,22 @@ placeholder="Enter phone number"
               placeholder="Enter number1"
             />
 
-            <FormField
-              label="Number2"
-              name="number2_c"
-              type="number"
-              value={formData.number2_c}
-              onChange={handleChange}
-              error={errors.number2_c}
-              placeholder="Enter number2"
-            />
+<div className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                id="number2_c"
+                name="number2_c"
+                checked={formData.number2_c}
+                onChange={handleChange}
+                className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2"
+              />
+              <label htmlFor="number2_c" className="text-sm font-medium text-gray-700">
+                Number2
+              </label>
+              {errors.number2_c && (
+                <span className="text-red-500 text-sm">{errors.number2_c}</span>
+              )}
+            </div>
 
             <FormField
               label="Number3"
