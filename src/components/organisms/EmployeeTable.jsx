@@ -59,7 +59,8 @@ const handleDelete = async (employee) => {
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name12</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name13</th>
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name15</th>
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Name16</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Name16</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700">Name17</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Website</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
@@ -180,6 +181,18 @@ const handleDelete = async (employee) => {
                           <span className="text-sm text-gray-600">{employee.name16_c}</span>
                         </>
                       ) : (
+                        <span className="text-gray-500">-</span>
+                      )}
+                    </div>
+</td>
+                  <td className="py-3 px-4">
+                    <div className="flex flex-wrap gap-1">
+                      {employee.name17_c && employee.name17_c.split(',').filter(v => v.trim()).map((value, index) => (
+                        <span key={index} className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                          {value.trim()}
+                        </span>
+                      ))}
+                      {(!employee.name17_c || employee.name17_c.split(',').filter(v => v.trim()).length === 0) && (
                         <span className="text-gray-500">-</span>
                       )}
                     </div>
