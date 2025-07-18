@@ -244,9 +244,9 @@ const handleDelete = async (employee) => {
                                 {employee.number3_c ? `$${parseFloat(employee.number3_c).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : "-"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
+<td className="py-3 px-4">
                             <span className="text-gray-900">
-                                {employee.number4_c || "-"}
+                                {employee.number4_c ? format(new Date(employee.number4_c), "MMM dd, yyyy") : "-"}
                             </span>
                         </td>
                         <td className="py-3 px-4">
