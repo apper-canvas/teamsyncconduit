@@ -239,9 +239,9 @@ const handleDelete = async (employee) => {
                                 {employee.number2_c === true ? "Yes" : employee.number2_c === false ? "No" : "-"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
+<td className="py-3 px-4">
                             <span className="text-gray-900">
-                                {employee.number3_c || "-"}
+                                {employee.number3_c ? `$${parseFloat(employee.number3_c).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : "-"}
                             </span>
                         </td>
                         <td className="py-3 px-4">

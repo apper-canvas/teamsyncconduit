@@ -91,7 +91,7 @@ setFormData({
         name20_c: employee.name20_c || "",
 number1_c: employee.number1_c || "",
         number2_c: employee.number2_c === true || employee.number2_c === "true",
-        number3_c: parseInt(employee.number3_c) || 0,
+        number3_c: parseFloat(employee.number3_c) || 0,
         number4_c: parseInt(employee.number4_c) || 0,
         number5_c: parseInt(employee.number5_c) || 0,
         number6_c: parseInt(employee.number6_c) || 0,
@@ -186,9 +186,9 @@ if (formData.name10_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name10_c.replace
     
 if (formData.name20_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name20_c.replace(/[\s\-()]/g, ''))) {
       newErrors.name20_c = "Please enter a valid phone number";
-    }
+}
     
-    if (formData.number3_c !== "" && isNaN(formData.number3_c)) newErrors.number3_c = "Number3 must be a valid number";
+    if (formData.number3_c !== "" && (isNaN(formData.number3_c) || isNaN(parseFloat(formData.number3_c)))) newErrors.number3_c = "Number3 must be a valid currency amount";
     if (formData.number4_c !== "" && isNaN(formData.number4_c)) newErrors.number4_c = "Number4 must be a valid number";
     if (formData.number5_c !== "" && isNaN(formData.number5_c)) newErrors.number5_c = "Number5 must be a valid number";
     if (formData.number6_c !== "" && isNaN(formData.number6_c)) newErrors.number6_c = "Number6 must be a valid number";
@@ -228,8 +228,8 @@ name17_c: Array.isArray(formData.name17_c) ? formData.name17_c.join(',') : formD
         name18_c: Array.isArray(formData.name18_c) ? formData.name18_c.join(',') : formData.name18_c,
         name19_c: Array.isArray(formData.name19_c) ? formData.name19_c.join(',') : formData.name19_c,
 number1_c: formData.number1_c || "",
-number2_c: Boolean(formData.number2_c),
-        number3_c: parseInt(formData.number3_c) || 0,
+        number2_c: Boolean(formData.number2_c),
+        number3_c: parseFloat(formData.number3_c) || 0,
         number4_c: parseInt(formData.number4_c) || 0,
         number5_c: parseInt(formData.number5_c) || 0,
         number6_c: parseInt(formData.number6_c) || 0,
@@ -748,14 +748,14 @@ placeholder="Enter phone number"
               )}
             </div>
 
-            <FormField
-              label="Number3"
+<FormField
+              label="Number3 (Currency)"
               name="number3_c"
-              type="number"
+              type="text"
               value={formData.number3_c}
               onChange={handleChange}
               error={errors.number3_c}
-              placeholder="Enter number3"
+              placeholder="Enter currency amount (e.g., 1234.56)"
             />
 
             <FormField
