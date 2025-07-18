@@ -39,9 +39,9 @@ first_name_c: "",
     name20_c: "",
 number1_c: "",
     number2_c: false,
-    number3_c: 0,
+number3_c: 0,
     number4_c: "",
-    number5_c: 0,
+    number5_c: "",
     number6_c: 0,
     number7_c: 0,
     number8_c: 0,
@@ -91,9 +91,9 @@ setFormData({
         name20_c: employee.name20_c || "",
 number1_c: employee.number1_c || "",
         number2_c: employee.number2_c === true || employee.number2_c === "true",
-        number3_c: parseFloat(employee.number3_c) || 0,
+number3_c: parseFloat(employee.number3_c) || 0,
         number4_c: employee.number4_c || "",
-        number5_c: parseInt(employee.number5_c) || 0,
+        number5_c: employee.number5_c || "",
         number6_c: parseInt(employee.number6_c) || 0,
         number7_c: parseInt(employee.number7_c) || 0,
         number8_c: parseInt(employee.number8_c) || 0,
@@ -190,7 +190,7 @@ if (formData.name20_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name20_c.replace
     
 if (formData.number3_c !== "" && (isNaN(formData.number3_c) || isNaN(parseFloat(formData.number3_c)))) newErrors.number3_c = "Number3 must be a valid currency amount";
     // number4_c is now a date field, no number validation needed
-    if (formData.number5_c !== "" && isNaN(formData.number5_c)) newErrors.number5_c = "Number5 must be a valid number";
+    // number5_c is now a datetime field, no number validation needed
     if (formData.number6_c !== "" && isNaN(formData.number6_c)) newErrors.number6_c = "Number6 must be a valid number";
     if (formData.number7_c !== "" && isNaN(formData.number7_c)) newErrors.number7_c = "Number7 must be a valid number";
     if (formData.number8_c !== "" && isNaN(formData.number8_c)) newErrors.number8_c = "Number8 must be a valid number";
@@ -231,7 +231,7 @@ number1_c: formData.number1_c || "",
         number2_c: Boolean(formData.number2_c),
 number3_c: parseFloat(formData.number3_c) || 0,
         number4_c: formData.number4_c || "",
-        number5_c: parseInt(formData.number5_c) || 0,
+        number5_c: formData.number5_c || "",
         number6_c: parseInt(formData.number6_c) || 0,
         number7_c: parseInt(formData.number7_c) || 0,
         number8_c: parseInt(formData.number8_c) || 0,
@@ -292,9 +292,9 @@ setFormData({
       name20_c: "",
 number1_c: "",
 number2_c: false,
-      number3_c: 0,
+number3_c: 0,
       number4_c: "",
-      number5_c: 0,
+      number5_c: "",
       number6_c: 0,
       number7_c: 0,
       number8_c: 0,
@@ -768,14 +768,14 @@ placeholder="Enter phone number"
               placeholder="Select date"
             />
 
-            <FormField
+<FormField
               label="Number5"
               name="number5_c"
-              type="number"
+              type="datetime-local"
               value={formData.number5_c}
               onChange={handleChange}
               error={errors.number5_c}
-              placeholder="Enter number5"
+              placeholder="Select date and time"
             />
 
             <FormField
