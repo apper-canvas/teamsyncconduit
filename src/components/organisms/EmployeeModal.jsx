@@ -25,7 +25,7 @@ name8_c: [],
 name12_c: "",
     name13_c: [],
     name14_c: "",
-    name15_c: "",
+name15_c: 0,
     name16_c: "",
     name17_c: "",
     email_c: "",
@@ -58,7 +58,7 @@ name8_c: employee.name8_c ? employee.name8_c.split(',').filter(v => v.trim()) : 
 name12_c: employee.name12_c || "",
         name13_c: employee.name13_c ? employee.name13_c.split(',').filter(v => v.trim()) : [],
         name14_c: employee.name14_c || "",
-        name15_c: employee.name15_c || "",
+name15_c: parseInt(employee.name15_c) || 0,
         name16_c: employee.name16_c || "",
         name17_c: employee.name17_c || "",
         email_c: employee.email_c,
@@ -129,7 +129,7 @@ const validateForm = () => {
 if (formData.name1_c !== "" && isNaN(formData.name1_c)) newErrors.name1_c = "Name1 must be a valid number";
     if (formData.name3_c !== "" && (isNaN(formData.name3_c) || isNaN(parseFloat(formData.name3_c)))) newErrors.name3_c = "Name3 must be a valid decimal number";
     if (formData.name6_c !== "" && (isNaN(formData.name6_c) || isNaN(parseFloat(formData.name6_c)))) newErrors.name6_c = "Name6 must be a valid decimal number";
-    
+    if (formData.name15_c !== 0 && (formData.name15_c < 1 || formData.name15_c > 5)) newErrors.name15_c = "Rating must be between 1 and 5";
     if (formData.email_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_c)) {
       newErrors.email_c = "Please enter a valid email address";
 }
@@ -142,10 +142,10 @@ if (formData.name7_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.name7_c)) {
       newErrors.name10_c = "Please enter a valid phone number";
     }
     
-    if (formData.name14_c && !/^https?:\/\/.+\..+/.test(formData.name14_c)) {
+if (formData.name14_c && !/^https?:\/\/.+\..+/.test(formData.name14_c)) {
       newErrors.name14_c = "Please enter a valid website URL (e.g., https://example.com)";
     }
-
+    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -166,7 +166,8 @@ const submitData = {
         name3_c: parseFloat(formData.name3_c) || 0,
         name6_c: parseFloat(formData.name6_c) || 0,
         name8_c: Array.isArray(formData.name8_c) ? formData.name8_c.join(',') : formData.name8_c,
-        name13_c: Array.isArray(formData.name13_c) ? formData.name13_c.join(',') : formData.name13_c
+        name13_c: Array.isArray(formData.name13_c) ? formData.name13_c.join(',') : formData.name13_c,
+        name15_c: parseInt(formData.name15_c) || 0
       };
       
       if (employee) {
@@ -203,13 +204,13 @@ name8_c: [],
       name12_c: "",
       name13_c: [],
       name14_c: "",
-      name15_c: "",
+name15_c: 0,
       name16_c: "",
       name17_c: "",
       email_c: "",
       phone_c: "",
       role_c: "",
-      department_id_c: "",
+department_id_c: "",
       hire_date_c: "",
       status_c: "active"
     });
@@ -445,14 +446,35 @@ name8_c: [],
               placeholder="Enter website URL (e.g., https://example.com)"
             />
 
-            <FormField
-              label="Name15"
-              name="name15_c"
-              value={formData.name15_c}
-              onChange={handleChange}
-              error={errors.name15_c}
-              placeholder="Enter name15"
-            />
+<div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">Name15 (Rating)</label>
+              <div className="flex items-center space-x-1">
+                {[1, 2, 3, 4, 5].map(star => (
+                  <button
+                    key={star}
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, name15_c: star }))}
+                    className={`text-2xl transition-colors hover:scale-110 ${
+                      star <= formData.name15_c ? 'text-yellow-400' : 'text-gray-300 hover:text-yellow-200'
+                    }`}
+                  >
+                    ★
+                  </button>
+                ))}
+                {formData.name15_c > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, name15_c: 0 }))}
+                    className="ml-2 text-sm text-gray-500 hover:text-gray-700"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
+              {errors.name15_c && (
+                <span className="text-red-500 text-sm">{errors.name15_c}</span>
+              )}
+            </div>
 
             <FormField
               label="Name16"

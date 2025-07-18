@@ -58,6 +58,7 @@ const handleDelete = async (employee) => {
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name8</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name12</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name13</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700">Name15</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Website</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
@@ -146,6 +147,24 @@ const handleDelete = async (employee) => {
                         <span className="text-gray-500">-</span>
                       )}
 </div>
+                  </td>
+<td className="py-3 px-4">
+                    <div className="flex items-center">
+                      {employee.name15_c ? (
+                        <>
+                          {[1, 2, 3, 4, 5].map(star => (
+                            <span
+                              key={star}
+                              className={`text-lg ${star <= employee.name15_c ? 'text-yellow-400' : 'text-gray-300'}`}
+                            >
+                              ★
+                            </span>
+                          ))}
+                        </>
+                      ) : (
+                        <span className="text-gray-500">-</span>
+                      )}
+                    </div>
                   </td>
                   <td className="py-3 px-4">
                     {employee.name14_c ? (
