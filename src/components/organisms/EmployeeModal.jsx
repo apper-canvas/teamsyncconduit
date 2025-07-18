@@ -37,7 +37,22 @@ email_c: "",
 name18_c: [],
     name19_c: [],
     name20_c: "",
-    number1_c: ""
+number1_c: "",
+    number2_c: "",
+    number3_c: "",
+    number4_c: "",
+    number5_c: "",
+    number6_c: "",
+    number7_c: "",
+    number8_c: "",
+    number9_c: "",
+    number10_c: "",
+    number11_c: "",
+    number12_c: "",
+    number13_c: "",
+    number14_c: "",
+    number15_c: "",
+    number16_c: ""
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -74,7 +89,22 @@ email_c: employee.email_c,
 name18_c: employee.name18_c ? employee.name18_c.split(',').filter(v => v.trim()) : [],
         name19_c: employee.name19_c ? employee.name19_c.split(',').filter(v => v.trim()) : [],
         name20_c: employee.name20_c || "",
-        number1_c: employee.number1_c || ""
+number1_c: employee.number1_c || "",
+        number2_c: employee.number2_c || "",
+        number3_c: employee.number3_c || "",
+        number4_c: employee.number4_c || "",
+        number5_c: employee.number5_c || "",
+        number6_c: employee.number6_c || "",
+        number7_c: employee.number7_c || "",
+        number8_c: employee.number8_c || "",
+        number9_c: employee.number9_c || "",
+        number10_c: employee.number10_c || "",
+        number11_c: employee.number11_c || "",
+        number12_c: employee.number12_c || "",
+        number13_c: employee.number13_c || "",
+        number14_c: employee.number14_c || "",
+        number15_c: employee.number15_c || "",
+        number16_c: employee.number16_c || ""
       });
     }
   }, [employee]);
@@ -158,8 +188,22 @@ if (formData.name20_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name20_c.replace
       newErrors.name20_c = "Please enter a valid phone number";
     }
     
-    if (formData.number1_c !== "" && isNaN(formData.number1_c)) newErrors.number1_c = "Number1 must be a valid number";
-    
+if (formData.number1_c !== "" && isNaN(formData.number1_c)) newErrors.number1_c = "Number1 must be a valid number";
+    if (formData.number2_c !== "" && isNaN(formData.number2_c)) newErrors.number2_c = "Number2 must be a valid number";
+    if (formData.number3_c !== "" && isNaN(formData.number3_c)) newErrors.number3_c = "Number3 must be a valid number";
+    if (formData.number4_c !== "" && isNaN(formData.number4_c)) newErrors.number4_c = "Number4 must be a valid number";
+    if (formData.number5_c !== "" && isNaN(formData.number5_c)) newErrors.number5_c = "Number5 must be a valid number";
+    if (formData.number6_c !== "" && isNaN(formData.number6_c)) newErrors.number6_c = "Number6 must be a valid number";
+    if (formData.number7_c !== "" && isNaN(formData.number7_c)) newErrors.number7_c = "Number7 must be a valid number";
+    if (formData.number8_c !== "" && isNaN(formData.number8_c)) newErrors.number8_c = "Number8 must be a valid number";
+    if (formData.number9_c !== "" && isNaN(formData.number9_c)) newErrors.number9_c = "Number9 must be a valid number";
+    if (formData.number10_c !== "" && isNaN(formData.number10_c)) newErrors.number10_c = "Number10 must be a valid number";
+    if (formData.number11_c !== "" && isNaN(formData.number11_c)) newErrors.number11_c = "Number11 must be a valid number";
+    if (formData.number12_c !== "" && isNaN(formData.number12_c)) newErrors.number12_c = "Number12 must be a valid number";
+    if (formData.number13_c !== "" && isNaN(formData.number13_c)) newErrors.number13_c = "Number13 must be a valid number";
+    if (formData.number14_c !== "" && isNaN(formData.number14_c)) newErrors.number14_c = "Number14 must be a valid number";
+    if (formData.number15_c !== "" && isNaN(formData.number15_c)) newErrors.number15_c = "Number15 must be a valid number";
+    if (formData.number16_c !== "" && isNaN(formData.number16_c)) newErrors.number16_c = "Number16 must be a valid number";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -185,7 +229,22 @@ name8_c: Array.isArray(formData.name8_c) ? formData.name8_c.join(',') : formData
 name17_c: Array.isArray(formData.name17_c) ? formData.name17_c.join(',') : formData.name17_c,
         name18_c: Array.isArray(formData.name18_c) ? formData.name18_c.join(',') : formData.name18_c,
         name19_c: Array.isArray(formData.name19_c) ? formData.name19_c.join(',') : formData.name19_c,
-        number1_c: parseInt(formData.number1_c) || 0
+number1_c: parseInt(formData.number1_c) || 0,
+        number2_c: parseInt(formData.number2_c) || 0,
+        number3_c: parseInt(formData.number3_c) || 0,
+        number4_c: parseInt(formData.number4_c) || 0,
+        number5_c: parseInt(formData.number5_c) || 0,
+        number6_c: parseInt(formData.number6_c) || 0,
+        number7_c: parseInt(formData.number7_c) || 0,
+        number8_c: parseInt(formData.number8_c) || 0,
+        number9_c: parseInt(formData.number9_c) || 0,
+        number10_c: parseInt(formData.number10_c) || 0,
+        number11_c: parseInt(formData.number11_c) || 0,
+        number12_c: parseInt(formData.number12_c) || 0,
+        number13_c: parseInt(formData.number13_c) || 0,
+        number14_c: parseInt(formData.number14_c) || 0,
+        number15_c: parseInt(formData.number15_c) || 0,
+        number16_c: parseInt(formData.number16_c) || 0
       };
       if (employee) {
         await employeeService.update(employee.Id, submitData);
@@ -233,7 +292,22 @@ email_c: "",
 name18_c: [],
       name19_c: [],
       name20_c: "",
-      number1_c: ""
+number1_c: "",
+      number2_c: "",
+      number3_c: "",
+      number4_c: "",
+      number5_c: "",
+      number6_c: "",
+      number7_c: "",
+      number8_c: "",
+      number9_c: "",
+      number10_c: "",
+      number11_c: "",
+      number12_c: "",
+      number13_c: "",
+      number14_c: "",
+      number15_c: "",
+      number16_c: ""
     });
     setErrors({});
     onClose();
@@ -657,6 +731,156 @@ placeholder="Enter phone number"
               onChange={handleChange}
               error={errors.number1_c}
               placeholder="Enter number1"
+/>
+
+            <FormField
+              label="Number2"
+              name="number2_c"
+              type="number"
+              value={formData.number2_c}
+              onChange={handleChange}
+              error={errors.number2_c}
+              placeholder="Enter number2"
+            />
+
+            <FormField
+              label="Number3"
+              name="number3_c"
+              type="number"
+              value={formData.number3_c}
+              onChange={handleChange}
+              error={errors.number3_c}
+              placeholder="Enter number3"
+            />
+
+            <FormField
+              label="Number4"
+              name="number4_c"
+              type="number"
+              value={formData.number4_c}
+              onChange={handleChange}
+              error={errors.number4_c}
+              placeholder="Enter number4"
+            />
+
+            <FormField
+              label="Number5"
+              name="number5_c"
+              type="number"
+              value={formData.number5_c}
+              onChange={handleChange}
+              error={errors.number5_c}
+              placeholder="Enter number5"
+            />
+
+            <FormField
+              label="Number6"
+              name="number6_c"
+              type="number"
+              value={formData.number6_c}
+              onChange={handleChange}
+              error={errors.number6_c}
+              placeholder="Enter number6"
+            />
+
+            <FormField
+              label="Number7"
+              name="number7_c"
+              type="number"
+              value={formData.number7_c}
+              onChange={handleChange}
+              error={errors.number7_c}
+              placeholder="Enter number7"
+            />
+
+            <FormField
+              label="Number8"
+              name="number8_c"
+              type="number"
+              value={formData.number8_c}
+              onChange={handleChange}
+              error={errors.number8_c}
+              placeholder="Enter number8"
+            />
+
+            <FormField
+              label="Number9"
+              name="number9_c"
+              type="number"
+              value={formData.number9_c}
+              onChange={handleChange}
+              error={errors.number9_c}
+              placeholder="Enter number9"
+            />
+
+            <FormField
+              label="Number10"
+              name="number10_c"
+              type="number"
+              value={formData.number10_c}
+              onChange={handleChange}
+              error={errors.number10_c}
+              placeholder="Enter number10"
+            />
+
+            <FormField
+              label="Number11"
+              name="number11_c"
+              type="number"
+              value={formData.number11_c}
+              onChange={handleChange}
+              error={errors.number11_c}
+              placeholder="Enter number11"
+            />
+
+            <FormField
+              label="Number12"
+              name="number12_c"
+              type="number"
+              value={formData.number12_c}
+              onChange={handleChange}
+              error={errors.number12_c}
+              placeholder="Enter number12"
+            />
+
+            <FormField
+              label="Number13"
+              name="number13_c"
+              type="number"
+              value={formData.number13_c}
+              onChange={handleChange}
+              error={errors.number13_c}
+              placeholder="Enter number13"
+            />
+
+            <FormField
+              label="Number14"
+              name="number14_c"
+              type="number"
+              value={formData.number14_c}
+              onChange={handleChange}
+              error={errors.number14_c}
+              placeholder="Enter number14"
+            />
+
+            <FormField
+              label="Number15"
+              name="number15_c"
+              type="number"
+              value={formData.number15_c}
+              onChange={handleChange}
+              error={errors.number15_c}
+              placeholder="Enter number15"
+            />
+
+            <FormField
+              label="Number16"
+              name="number16_c"
+              type="number"
+              value={formData.number16_c}
+              onChange={handleChange}
+              error={errors.number16_c}
+              placeholder="Enter number16"
             />
           </div>
 

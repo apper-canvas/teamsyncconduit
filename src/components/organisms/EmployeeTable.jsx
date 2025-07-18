@@ -62,7 +62,22 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name17</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name19</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name20</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number1</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Number1</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number2</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number3</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number4</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number5</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number6</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number7</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number8</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number9</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number10</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number11</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number12</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number13</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number14</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number15</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number16</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Website</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
@@ -214,9 +229,84 @@ const handleDelete = async (employee) => {
                                 {employee.name20_c || "-"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
+<td className="py-3 px-4">
                             <span className="text-gray-900">
                                 {employee.number1_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number2_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number3_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number4_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number5_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number6_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number7_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number8_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number9_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number10_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number11_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number12_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number13_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number14_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number15_c || "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.number16_c || "-"}
                             </span>
                         </td>
                         <td className="py-3 px-4">

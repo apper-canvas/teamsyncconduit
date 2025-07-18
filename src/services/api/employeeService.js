@@ -45,8 +45,24 @@ fields: [
             field: { Name: "department_id_c" },
             referenceField: { field: { Name: "Name" } }
           },
-          { field: { Name: "Tags" } },
-          { field: { Name: "Owner" } }
+{ field: { Name: "Tags" } },
+          { field: { Name: "Owner" } },
+          { field: { Name: "number1_c" } },
+          { field: { Name: "number2_c" } },
+          { field: { Name: "number3_c" } },
+          { field: { Name: "number4_c" } },
+          { field: { Name: "number5_c" } },
+          { field: { Name: "number6_c" } },
+          { field: { Name: "number7_c" } },
+          { field: { Name: "number8_c" } },
+          { field: { Name: "number9_c" } },
+          { field: { Name: "number10_c" } },
+          { field: { Name: "number11_c" } },
+          { field: { Name: "number12_c" } },
+          { field: { Name: "number13_c" } },
+          { field: { Name: "number14_c" } },
+          { field: { Name: "number15_c" } },
+          { field: { Name: "number16_c" } }
         ]
       };
 
@@ -106,8 +122,24 @@ fields: [
             field: { Name: "department_id_c" },
             referenceField: { field: { Name: "Name" } }
           },
-          { field: { Name: "Tags" } },
-          { field: { Name: "Owner" } }
+{ field: { Name: "Tags" } },
+          { field: { Name: "Owner" } },
+          { field: { Name: "number1_c" } },
+          { field: { Name: "number2_c" } },
+          { field: { Name: "number3_c" } },
+          { field: { Name: "number4_c" } },
+          { field: { Name: "number5_c" } },
+          { field: { Name: "number6_c" } },
+          { field: { Name: "number7_c" } },
+          { field: { Name: "number8_c" } },
+          { field: { Name: "number9_c" } },
+          { field: { Name: "number10_c" } },
+          { field: { Name: "number11_c" } },
+          { field: { Name: "number12_c" } },
+          { field: { Name: "number13_c" } },
+          { field: { Name: "number14_c" } },
+          { field: { Name: "number15_c" } },
+          { field: { Name: "number16_c" } }
         ]
       };
 
@@ -164,8 +196,24 @@ name18_c: employeeData.name18_c || "",
           status_c: employeeData.status_c,
           avatar_c: employeeData.avatar_c || "",
           department_id_c: parseInt(employeeData.department_id_c),
-          Tags: employeeData.Tags || "",
-          Owner: employeeData.Owner
+Tags: employeeData.Tags || "",
+          Owner: employeeData.Owner,
+          number1_c: parseInt(employeeData.number1_c) || 0,
+          number2_c: parseInt(employeeData.number2_c) || 0,
+          number3_c: parseInt(employeeData.number3_c) || 0,
+          number4_c: parseInt(employeeData.number4_c) || 0,
+          number5_c: parseInt(employeeData.number5_c) || 0,
+          number6_c: parseInt(employeeData.number6_c) || 0,
+          number7_c: parseInt(employeeData.number7_c) || 0,
+          number8_c: parseInt(employeeData.number8_c) || 0,
+          number9_c: parseInt(employeeData.number9_c) || 0,
+          number10_c: parseInt(employeeData.number10_c) || 0,
+          number11_c: parseInt(employeeData.number11_c) || 0,
+          number12_c: parseInt(employeeData.number12_c) || 0,
+          number13_c: parseInt(employeeData.number13_c) || 0,
+          number14_c: parseInt(employeeData.number14_c) || 0,
+          number15_c: parseInt(employeeData.number15_c) || 0,
+          number16_c: parseInt(employeeData.number16_c) || 0
         }]
       };
 
@@ -233,8 +281,24 @@ name18_c: employeeData.name18_c || "",
           status_c: employeeData.status_c,
           avatar_c: employeeData.avatar_c,
           department_id_c: parseInt(employeeData.department_id_c),
-          Tags: employeeData.Tags,
-          Owner: employeeData.Owner
+Tags: employeeData.Tags,
+          Owner: employeeData.Owner,
+          number1_c: parseInt(employeeData.number1_c) || 0,
+          number2_c: parseInt(employeeData.number2_c) || 0,
+          number3_c: parseInt(employeeData.number3_c) || 0,
+          number4_c: parseInt(employeeData.number4_c) || 0,
+          number5_c: parseInt(employeeData.number5_c) || 0,
+          number6_c: parseInt(employeeData.number6_c) || 0,
+          number7_c: parseInt(employeeData.number7_c) || 0,
+          number8_c: parseInt(employeeData.number8_c) || 0,
+          number9_c: parseInt(employeeData.number9_c) || 0,
+          number10_c: parseInt(employeeData.number10_c) || 0,
+          number11_c: parseInt(employeeData.number11_c) || 0,
+          number12_c: parseInt(employeeData.number12_c) || 0,
+          number13_c: parseInt(employeeData.number13_c) || 0,
+          number14_c: parseInt(employeeData.number14_c) || 0,
+          number15_c: parseInt(employeeData.number15_c) || 0,
+          number16_c: parseInt(employeeData.number16_c) || 0
         }]
       };
 
