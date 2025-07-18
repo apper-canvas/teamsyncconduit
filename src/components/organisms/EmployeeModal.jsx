@@ -28,12 +28,15 @@ name12_c: "",
 name15_c: 0,
     name16_c: "",
     name17_c: [],
-    email_c: "",
+email_c: "",
     phone_c: "",
     role_c: "",
     department_id_c: "",
     hire_date_c: "",
-    status_c: "active"
+    status_c: "active",
+    name18_c: "",
+    name19_c: "",
+    name20_c: ""
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -61,12 +64,15 @@ name12_c: employee.name12_c || "",
 name15_c: parseInt(employee.name15_c) || 0,
         name16_c: employee.name16_c || "",
         name17_c: employee.name17_c ? employee.name17_c.split(',').filter(v => v.trim()) : [],
-        email_c: employee.email_c,
+email_c: employee.email_c,
         phone_c: employee.phone_c,
         role_c: employee.role_c,
         department_id_c: employee.department_id_c,
         hire_date_c: employee.hire_date_c,
-        status_c: employee.status_c
+        status_c: employee.status_c,
+        name18_c: employee.name18_c || "",
+        name19_c: employee.name19_c || "",
+        name20_c: employee.name20_c || ""
       });
     }
   }, [employee]);
@@ -208,12 +214,15 @@ name8_c: [],
 name15_c: 0,
       name16_c: "",
       name17_c: [],
-      email_c: "",
+email_c: "",
       phone_c: "",
       role_c: "",
-department_id_c: "",
+      department_id_c: "",
       hire_date_c: "",
-      status_c: "active"
+      status_c: "active",
+      name18_c: "",
+      name19_c: "",
+      name20_c: ""
     });
     setErrors({});
     onClose();
@@ -570,8 +579,35 @@ department_id_c: "",
               error={errors.status_c}
             >
               <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
+<option value="inactive">Inactive</option>
             </FormField>
+
+            <FormField
+              label="Name18"
+              name="name18_c"
+              value={formData.name18_c}
+              onChange={handleChange}
+              error={errors.name18_c}
+              placeholder="Enter name18"
+            />
+
+            <FormField
+              label="Name19"
+              name="name19_c"
+              value={formData.name19_c}
+              onChange={handleChange}
+              error={errors.name19_c}
+              placeholder="Enter name19"
+            />
+
+            <FormField
+              label="Name20"
+              name="name20_c"
+              value={formData.name20_c}
+              onChange={handleChange}
+              error={errors.name20_c}
+              placeholder="Enter name20"
+            />
           </div>
 
           <div className="flex justify-end space-x-4 pt-4 border-t border-gray-200">
