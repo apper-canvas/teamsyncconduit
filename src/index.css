@@ -145,9 +145,8 @@ background-size: 200px 100%;
 }
 
 .slider::-moz-range-track {
-  height: 8px;
+height: 8px;
   border-radius: 4px;
   background: #e5e7eb;
   border: none;
-}
 }
