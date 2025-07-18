@@ -37,7 +37,7 @@ first_name_c: "",
     name18_c: [],
     name19_c: [],
     name20_c: "",
-    number1_c: 0,
+number1_c: "",
     number2_c: 0,
     number3_c: 0,
     number4_c: 0,
@@ -89,7 +89,7 @@ setFormData({
         name18_c: employee.name18_c ? employee.name18_c.split(',').filter(v => v.trim()) : [],
         name19_c: employee.name19_c ? employee.name19_c.split(',').filter(v => v.trim()) : [],
         name20_c: employee.name20_c || "",
-        number1_c: parseInt(employee.number1_c) || 0,
+number1_c: employee.number1_c || "",
         number2_c: parseInt(employee.number2_c) || 0,
         number3_c: parseInt(employee.number3_c) || 0,
         number4_c: parseInt(employee.number4_c) || 0,
@@ -188,7 +188,6 @@ if (formData.name20_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name20_c.replace
       newErrors.name20_c = "Please enter a valid phone number";
     }
     
-if (formData.number1_c !== "" && isNaN(formData.number1_c)) newErrors.number1_c = "Number1 must be a valid number";
     if (formData.number2_c !== "" && isNaN(formData.number2_c)) newErrors.number2_c = "Number2 must be a valid number";
     if (formData.number3_c !== "" && isNaN(formData.number3_c)) newErrors.number3_c = "Number3 must be a valid number";
     if (formData.number4_c !== "" && isNaN(formData.number4_c)) newErrors.number4_c = "Number4 must be a valid number";
@@ -229,7 +228,7 @@ name8_c: Array.isArray(formData.name8_c) ? formData.name8_c.join(',') : formData
 name17_c: Array.isArray(formData.name17_c) ? formData.name17_c.join(',') : formData.name17_c,
         name18_c: Array.isArray(formData.name18_c) ? formData.name18_c.join(',') : formData.name18_c,
         name19_c: Array.isArray(formData.name19_c) ? formData.name19_c.join(',') : formData.name19_c,
-number1_c: parseInt(formData.number1_c) || 0,
+number1_c: formData.number1_c || "",
         number2_c: parseInt(formData.number2_c) || 0,
         number3_c: parseInt(formData.number3_c) || 0,
         number4_c: parseInt(formData.number4_c) || 0,
@@ -292,7 +291,7 @@ setFormData({
       name18_c: [],
       name19_c: [],
       name20_c: "",
-      number1_c: 0,
+number1_c: "",
       number2_c: 0,
       number3_c: 0,
       number4_c: 0,
@@ -354,15 +353,15 @@ setFormData({
               placeholder="Enter last name"
 />
 
-<FormField
+            <FormField
               label="Name1"
               name="name1_c"
-              type="number"
+              type="text"
               value={formData.name1_c}
               onChange={handleChange}
               error={errors.name1_c}
               placeholder="Enter name1"
-/>
+            />
 
 <div className="flex items-center space-x-2">
               <input
@@ -723,15 +722,15 @@ setFormData({
 placeholder="Enter phone number"
             />
 
-            <FormField
+<FormField
               label="Number1"
               name="number1_c"
-              type="number"
+              type="text"
               value={formData.number1_c}
               onChange={handleChange}
               error={errors.number1_c}
               placeholder="Enter number1"
-/>
+            />
 
             <FormField
               label="Number2"
