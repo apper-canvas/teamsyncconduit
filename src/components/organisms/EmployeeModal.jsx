@@ -36,7 +36,8 @@ email_c: "",
     status_c: "active",
 name18_c: [],
     name19_c: [],
-    name20_c: ""
+    name20_c: "",
+    number1_c: ""
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -72,7 +73,8 @@ email_c: employee.email_c,
         status_c: employee.status_c,
 name18_c: employee.name18_c ? employee.name18_c.split(',').filter(v => v.trim()) : [],
         name19_c: employee.name19_c ? employee.name19_c.split(',').filter(v => v.trim()) : [],
-        name20_c: employee.name20_c || ""
+        name20_c: employee.name20_c || "",
+        number1_c: employee.number1_c || ""
       });
     }
   }, [employee]);
@@ -152,9 +154,11 @@ if (formData.name10_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name10_c.replace
       newErrors.name14_c = "Please enter a valid website URL (e.g., https://example.com)";
     }
     
-    if (formData.name20_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name20_c.replace(/[\s\-()]/g, ''))) {
+if (formData.name20_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name20_c.replace(/[\s\-()]/g, ''))) {
       newErrors.name20_c = "Please enter a valid phone number";
     }
+    
+    if (formData.number1_c !== "" && isNaN(formData.number1_c)) newErrors.number1_c = "Number1 must be a valid number";
     
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -180,9 +184,9 @@ name8_c: Array.isArray(formData.name8_c) ? formData.name8_c.join(',') : formData
         name15_c: parseInt(formData.name15_c) || 0,
 name17_c: Array.isArray(formData.name17_c) ? formData.name17_c.join(',') : formData.name17_c,
         name18_c: Array.isArray(formData.name18_c) ? formData.name18_c.join(',') : formData.name18_c,
-        name19_c: Array.isArray(formData.name19_c) ? formData.name19_c.join(',') : formData.name19_c
+        name19_c: Array.isArray(formData.name19_c) ? formData.name19_c.join(',') : formData.name19_c,
+        number1_c: parseInt(formData.number1_c) || 0
       };
-      
       if (employee) {
         await employeeService.update(employee.Id, submitData);
         toast.success("Employee updated successfully");
@@ -228,7 +232,8 @@ email_c: "",
       status_c: "active",
 name18_c: [],
       name19_c: [],
-      name20_c: ""
+      name20_c: "",
+      number1_c: ""
     });
     setErrors({});
     onClose();
@@ -641,7 +646,17 @@ name18_c: [],
               value={formData.name20_c}
               onChange={handleChange}
               error={errors.name20_c}
-              placeholder="Enter phone number"
+placeholder="Enter phone number"
+            />
+
+            <FormField
+              label="Number1"
+              name="number1_c"
+              type="number"
+              value={formData.number1_c}
+              onChange={handleChange}
+              error={errors.number1_c}
+              placeholder="Enter number1"
             />
           </div>
 
