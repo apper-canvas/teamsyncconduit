@@ -254,9 +254,9 @@ const handleDelete = async (employee) => {
                                 {employee.number5_c || "-"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
+<td className="py-3 px-4">
                             <span className="text-gray-900">
-                                {employee.number6_c || "-"}
+                                {employee.number6_c ? parseFloat(employee.number6_c).toFixed(2) : "-"}
                             </span>
                         </td>
                         <td className="py-3 px-4">
