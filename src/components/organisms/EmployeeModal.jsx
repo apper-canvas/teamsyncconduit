@@ -144,12 +144,16 @@ if (formData.name7_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.name7_c)) {
       newErrors.name7_c = "Please enter a valid email address";
     }
     
-    if (formData.name10_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name10_c.replace(/[\s\-()]/g, ''))) {
+if (formData.name10_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name10_c.replace(/[\s\-()]/g, ''))) {
       newErrors.name10_c = "Please enter a valid phone number";
     }
     
-if (formData.name14_c && !/^https?:\/\/.+\..+/.test(formData.name14_c)) {
+    if (formData.name14_c && !/^https?:\/\/.+\..+/.test(formData.name14_c)) {
       newErrors.name14_c = "Please enter a valid website URL (e.g., https://example.com)";
+    }
+    
+    if (formData.name20_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name20_c.replace(/[\s\-()]/g, ''))) {
+      newErrors.name20_c = "Please enter a valid phone number";
     }
     
     setErrors(newErrors);
@@ -630,13 +634,14 @@ name18_c: [],
               )}
             </div>
 
-            <FormField
-              label="Name20"
+<FormField
+              label="Phone Number"
               name="name20_c"
+              type="tel"
               value={formData.name20_c}
               onChange={handleChange}
               error={errors.name20_c}
-              placeholder="Enter name20"
+              placeholder="Enter phone number"
             />
           </div>
 
