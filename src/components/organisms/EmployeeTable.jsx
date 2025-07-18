@@ -51,13 +51,14 @@ const handleDelete = async (employee) => {
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Department</th>
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Role</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Hire Date</th>
-                <th className="text-left py-3 px-4 font-semibold text-gray-700">Name4</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Name4</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name5</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name6</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name7</th>
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name8</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name12</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name13</th>
+                <th className="text-left py-3 px-4 font-semibold text-gray-700">Website</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                 <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
               </tr>
@@ -144,7 +145,21 @@ const handleDelete = async (employee) => {
                       {(!employee.name13_c || employee.name13_c.split(',').filter(v => v.trim()).length === 0) && (
                         <span className="text-gray-500">-</span>
                       )}
-                    </div>
+</div>
+                  </td>
+                  <td className="py-3 px-4">
+                    {employee.name14_c ? (
+                      <a 
+                        href={employee.name14_c.startsWith('http') ? employee.name14_c : `https://${employee.name14_c}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 hover:underline"
+                      >
+                        {employee.name14_c}
+                      </a>
+                    ) : (
+                      <span className="text-gray-500">-</span>
+                    )}
                   </td>
                   <td className="py-3 px-4">
                     <StatusBadge status={employee.status_c} />

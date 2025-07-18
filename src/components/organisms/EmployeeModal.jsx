@@ -134,12 +134,16 @@ if (formData.name1_c !== "" && isNaN(formData.name1_c)) newErrors.name1_c = "Nam
       newErrors.email_c = "Please enter a valid email address";
 }
     
-    if (formData.name7_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.name7_c)) {
+if (formData.name7_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.name7_c)) {
       newErrors.name7_c = "Please enter a valid email address";
     }
     
-if (formData.name10_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name10_c.replace(/[\s\-()]/g, ''))) {
+    if (formData.name10_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name10_c.replace(/[\s\-()]/g, ''))) {
       newErrors.name10_c = "Please enter a valid phone number";
+    }
+    
+    if (formData.name14_c && !/^https?:\/\/.+\..+/.test(formData.name14_c)) {
+      newErrors.name14_c = "Please enter a valid website URL (e.g., https://example.com)";
     }
 
     setErrors(newErrors);
@@ -431,13 +435,14 @@ name8_c: [],
               )}
             </div>
 
-            <FormField
-              label="Name14"
+<FormField
+              label="Website"
               name="name14_c"
+              type="url"
               value={formData.name14_c}
               onChange={handleChange}
               error={errors.name14_c}
-              placeholder="Enter name14"
+              placeholder="Enter website URL (e.g., https://example.com)"
             />
 
             <FormField
