@@ -50,7 +50,7 @@ number10_c: "",
 number11_c: "",
 number12_c: "",
     number13_c: [],
-    number14_c: 0,
+number14_c: "",
     number15_c: 0,
     number16_c: 0
   });
@@ -102,7 +102,7 @@ number10_c: employee.number10_c || "",
 number11_c: employee.number11_c || "",
 number12_c: employee.number12_c || "",
         number13_c: employee.number13_c ? employee.number13_c.toString().split(',').filter(Boolean) : [],
-        number14_c: parseInt(employee.number14_c) || 0,
+number14_c: employee.number14_c || "",
         number15_c: parseInt(employee.number15_c) || 0,
         number16_c: parseInt(employee.number16_c) || 0
       });
@@ -198,7 +198,7 @@ if (formData.number10_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.number10_c.rep
     }
 // number12_c is now a radio field, no number validation needed
     if (Array.isArray(formData.number13_c) && formData.number13_c.some(val => isNaN(val))) newErrors.number13_c = "Number13 values must be valid numbers";
-    if (formData.number14_c !== "" && isNaN(formData.number14_c)) newErrors.number14_c = "Number14 must be a valid number";
+if (formData.number14_c && !/^https?:\/\/.+\..+/.test(formData.number14_c)) newErrors.number14_c = "Please enter a valid website URL (e.g., https://example.com)";
     if (formData.number15_c !== "" && isNaN(formData.number15_c)) newErrors.number15_c = "Number15 must be a valid number";
     if (formData.number16_c !== "" && isNaN(formData.number16_c)) newErrors.number16_c = "Number16 must be a valid number";
     setErrors(newErrors);
@@ -239,7 +239,7 @@ number10_c: formData.number10_c || "",
 number11_c: formData.number11_c || "",
 number12_c: formData.number12_c || "",
         number13_c: Array.isArray(formData.number13_c) ? formData.number13_c.join(',') : formData.number13_c,
-        number14_c: parseInt(formData.number14_c) || 0,
+number14_c: formData.number14_c || "",
         number15_c: parseInt(formData.number15_c) || 0,
         number16_c: parseInt(formData.number16_c) || 0
       };
@@ -301,7 +301,7 @@ number9_c: "",
 number10_c: "",
 number11_c: "",
       number13_c: [],
-      number14_c: 0,
+number14_c: "",
       number15_c: 0,
       number16_c: 0
     });
@@ -900,14 +900,14 @@ placeholder="Enter phone number"
               )}
             </div>
 
-            <FormField
-              label="Number14"
+<FormField
+              label="Website"
               name="number14_c"
-              type="number"
+              type="url"
               value={formData.number14_c}
               onChange={handleChange}
               error={errors.number14_c}
-              placeholder="Enter number14"
+              placeholder="Enter website URL (e.g., https://example.com)"
             />
 
             <FormField

@@ -75,7 +75,7 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number11</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number12</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number13</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number14</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Website</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number15</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number16</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Website</th>
@@ -313,10 +313,14 @@ const handleDelete = async (employee) => {
                                 {(!employee.number13_c || employee.number13_c.split(",").filter(v => v.trim()).length === 0) && <span className="text-gray-500">-</span>}
                             </div>
                         </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.number14_c || "-"}
-                            </span>
+<td className="py-3 px-4">
+                            {employee.number14_c ? <a
+                                href={employee.number14_c.startsWith("http") ? employee.number14_c : `https://${employee.number14_c}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-600 hover:text-blue-800 hover:underline">
+                                {employee.number14_c}
+                            </a> : <span className="text-gray-500">-</span>}
                         </td>
                         <td className="py-3 px-4">
                             <span className="text-gray-900">

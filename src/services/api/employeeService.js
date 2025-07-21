@@ -210,7 +210,7 @@ number9_c: employeeData.number9_c || "",
 number11_c: employeeData.number11_c || "",
 number12_c: employeeData.number12_c || "",
           number13_c: parseInt(employeeData.number13_c) || 0,
-          number14_c: parseInt(employeeData.number14_c) || 0,
+number14_c: employeeData.number14_c || "",
           number15_c: parseInt(employeeData.number15_c) || 0,
           number16_c: parseInt(employeeData.number16_c) || 0
         }]
@@ -295,7 +295,7 @@ number8_c: Array.isArray(employeeData.number8_c) ? employeeData.number8_c.join('
 number11_c: employeeData.number11_c || "",
 number12_c: employeeData.number12_c || "",
 number13_c: Array.isArray(employeeData.number13_c) ? employeeData.number13_c.join(',') : employeeData.number13_c || "",
-          number14_c: parseInt(employeeData.number14_c) || 0,
+number14_c: employeeData.number14_c || "",
           number15_c: parseInt(employeeData.number15_c) || 0,
           number16_c: parseInt(employeeData.number16_c) || 0
         }]
