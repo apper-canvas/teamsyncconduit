@@ -332,10 +332,19 @@ const handleDelete = async (employee) => {
                                 </> : <span className="text-gray-500">-</span>}
                             </div>
                         </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.number16_c || "-"}
-                            </span>
+<td className="py-3 px-4">
+                            <div className="flex items-center space-x-2">
+                                {employee.number16_c ? <>
+                                    <div className="w-20 bg-gray-200 rounded-full h-2">
+                                        <div
+                                            className="bg-blue-600 h-2 rounded-full"
+                                            style={{
+                                                width: `${parseInt(employee.number16_c) || 0}%`
+                                            }}></div>
+                                    </div>
+                                    <span className="text-sm text-gray-600">{employee.number16_c}%</span>
+                                </> : <span className="text-gray-500">-</span>}
+                            </div>
                         </td>
                         <td className="py-3 px-4">
                             {employee.name14_c ? <a

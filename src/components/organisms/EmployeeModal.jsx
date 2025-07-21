@@ -941,14 +941,16 @@ placeholder="Enter phone number"
               )}
             </div>
 
-            <FormField
-              label="Number16"
+<FormField
+              label="Number16 (Range)"
               name="number16_c"
-              type="number"
+              type="range"
               value={formData.number16_c}
               onChange={handleChange}
               error={errors.number16_c}
-              placeholder="Enter number16"
+              min="0"
+              max="100"
+              placeholder="Select range value (0-100)"
             />
           </div>
 
