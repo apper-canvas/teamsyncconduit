@@ -6,7 +6,7 @@ import ApperIcon from "@/components/ApperIcon";
 import StatusBadge from "@/components/molecules/StatusBadge";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/atoms/Card";
 import Button from "@/components/atoms/Button";
-import { employeeService } from "@/services/api/employeeService";
+import employeeService from "@/services/api/employeeService";
 
 const EmployeeTable = ({ employees, departments, onEdit, onRefresh }) => {
   const [deletingId, setDeletingId] = useState(null);
