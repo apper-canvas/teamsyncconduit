@@ -877,15 +877,28 @@ placeholder="Enter phone number"
               )}
             </div>
 
-            <FormField
-              label="Number13"
-              name="number13_c"
-              type="number"
-              value={formData.number13_c}
-              onChange={handleChange}
-              error={errors.number13_c}
-              placeholder="Enter number13"
-            />
+<div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">Number13</label>
+              <div className="flex flex-wrap gap-2">
+                {['tag1', 'tag2', 'tag3', 'option1', 'option2', 'sample', 'demo', 'test'].map(option => (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => handleMultiSelectChange('number13_c', option)}
+                    className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                      formData.number13_c.includes(option)
+                        ? 'bg-red-600 text-white'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+              {errors.number13_c && (
+                <span className="text-red-500 text-sm">{errors.number13_c}</span>
+              )}
+            </div>
 
             <FormField
               label="Number14"
