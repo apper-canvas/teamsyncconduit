@@ -218,14 +218,14 @@ const handleSubmit = async (e) => {
     try {
       // Ensure name1_c is sent as an integer and name2_c as Boolean
 const submitData = {
-        ...formData,
+...formData,
         name1_c: parseInt(formData.name1_c) || 0,
         name2_c: Boolean(formData.name2_c),
         name3_c: parseFloat(formData.name3_c) || 0,
         name6_c: parseFloat(formData.name6_c) || 0,
 name8_c: Array.isArray(formData.name8_c) ? formData.name8_c.join(',') : formData.name8_c,
         name13_c: Array.isArray(formData.name13_c) ? formData.name13_c.join(',') : formData.name13_c,
-        name15_c: parseInt(formData.name15_c) || 0,
+        name15_c: formData.name15_c || "",
 name17_c: Array.isArray(formData.name17_c) ? formData.name17_c.join(',') : formData.name17_c,
         name18_c: Array.isArray(formData.name18_c) ? formData.name18_c.join(',') : formData.name18_c,
         name19_c: Array.isArray(formData.name19_c) ? formData.name19_c.join(',') : formData.name19_c,
@@ -243,7 +243,7 @@ number11_c: formData.number11_c || "",
 number12_c: formData.number12_c || "",
         number13_c: Array.isArray(formData.number13_c) ? formData.number13_c.join(',') : formData.number13_c,
 number14_c: formData.number14_c || "",
-        number15_c: parseInt(formData.number15_c) || 0,
+        number15_c: formData.number15_c || "",
         number16_c: parseInt(formData.number16_c) || 0,
         checkbox1_c: Boolean(formData.checkbox1_c)
       };
