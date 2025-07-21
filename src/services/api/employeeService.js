@@ -29,9 +29,12 @@ fields: [
           { field: { Name: "phone_c" } },
           { field: { Name: "role_c" } },
           { field: { Name: "hire_date_c" } },
-          { field: { Name: "status_c" } },
+{ field: { Name: "status_c" } },
           { field: { Name: "avatar_c" } },
-          { field: { Name: "department_id_c" } },
+          { 
+            field: { Name: "department_id_c" },
+            referenceField: { field: { Name: "Name" } }
+          },
           { field: { Name: "name1_c" } },
           { field: { Name: "name2_c" } },
           { field: { Name: "name3_c" } },
@@ -128,9 +131,12 @@ fields: [
           { field: { Name: "phone_c" } },
           { field: { Name: "role_c" } },
           { field: { Name: "hire_date_c" } },
-          { field: { Name: "status_c" } },
+{ field: { Name: "status_c" } },
           { field: { Name: "avatar_c" } },
-          { field: { Name: "department_id_c" } },
+          { 
+            field: { Name: "department_id_c" },
+            referenceField: { field: { Name: "Name" } }
+          },
           { field: { Name: "name1_c" } },
           { field: { Name: "name2_c" } },
           { field: { Name: "name3_c" } },
