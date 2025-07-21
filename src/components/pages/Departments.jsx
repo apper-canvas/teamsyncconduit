@@ -8,9 +8,8 @@ import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
 import ApperIcon from "@/components/ApperIcon";
-import { departmentService } from "@/services/api/departmentService";
-import { employeeService } from "@/services/api/employeeService";
-
+import departmentService from "@/services/api/departmentService";
+import employeeService from "@/services/api/employeeService";
 const Departments = () => {
   const [departments, setDepartments] = useState([]);
   const [employees, setEmployees] = useState([]);
