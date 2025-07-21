@@ -92,6 +92,17 @@ const getDepartmentHead = (departmentId) => {
                           </div>
                         )}
                       </div>
+</div>
+                  )}
+                  
+                  {department.date1_c && (
+                    <div className="pt-2 border-t border-gray-200">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-gray-700">Date1</span>
+                        <span className="text-sm text-gray-600">
+                          {new Date(department.date1_c).toLocaleDateString()}
+                        </span>
+                      </div>
                     </div>
                   )}
                 </div>
