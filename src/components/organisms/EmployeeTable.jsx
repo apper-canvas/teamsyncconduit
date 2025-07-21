@@ -71,7 +71,7 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number7</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number8</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number9</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number10</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Phone Number</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number11</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number12</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number13</th>
@@ -288,7 +288,7 @@ const handleDelete = async (employee) => {
                                 )}
                             </div>
                         </td>
-                        <td className="py-3 px-4">
+<td className="py-3 px-4">
                             <span className="text-gray-900">
                                 {employee.number10_c || "-"}
                             </span>
