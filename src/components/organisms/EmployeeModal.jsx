@@ -48,7 +48,7 @@ number8_c: [],
 number9_c: "",
 number10_c: "",
 number11_c: "",
-    number12_c: 0,
+number12_c: "",
     number13_c: 0,
     number14_c: 0,
     number15_c: 0,
@@ -100,7 +100,7 @@ number8_c: employee.number8_c ? employee.number8_c.split(',').filter(v => v.trim
 number9_c: employee.number9_c || "",
 number10_c: employee.number10_c || "",
 number11_c: employee.number11_c || "",
-        number12_c: parseInt(employee.number12_c) || 0,
+number12_c: employee.number12_c || "",
         number13_c: parseInt(employee.number13_c) || 0,
         number14_c: parseInt(employee.number14_c) || 0,
         number15_c: parseInt(employee.number15_c) || 0,
@@ -196,7 +196,7 @@ if (formData.number7_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.number7_c)
 if (formData.number10_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.number10_c.replace(/[\s\-()]/g, ''))) {
       newErrors.number10_c = "Please enter a valid phone number";
     }
-    if (formData.number12_c !== "" && isNaN(formData.number12_c)) newErrors.number12_c = "Number12 must be a valid number";
+// number12_c is now a radio field, no number validation needed
     if (formData.number13_c !== "" && isNaN(formData.number13_c)) newErrors.number13_c = "Number13 must be a valid number";
     if (formData.number14_c !== "" && isNaN(formData.number14_c)) newErrors.number14_c = "Number14 must be a valid number";
     if (formData.number15_c !== "" && isNaN(formData.number15_c)) newErrors.number15_c = "Number15 must be a valid number";
@@ -237,7 +237,7 @@ number8_c: Array.isArray(formData.number8_c) ? formData.number8_c.join(',') : fo
 number9_c: formData.number9_c || "",
 number10_c: formData.number10_c || "",
 number11_c: formData.number11_c || "",
-        number12_c: parseInt(formData.number12_c) || 0,
+number12_c: formData.number12_c || "",
         number13_c: parseInt(formData.number13_c) || 0,
         number14_c: parseInt(formData.number14_c) || 0,
         number15_c: parseInt(formData.number15_c) || 0,
@@ -293,14 +293,14 @@ number1_c: "",
 number2_c: false,
 number3_c: 0,
       number4_c: "",
-      number5_c: "",
+number12_c: formData.number12_c || "",
 number6_c: 0.00,
 number7_c: "",
 number8_c: [],
 number9_c: "",
 number10_c: "",
 number11_c: "",
-      number12_c: 0,
+number12_c: "",
       number13_c: 0,
       number14_c: 0,
       number15_c: 0,
@@ -856,15 +856,27 @@ placeholder="Enter phone number"
               <option value="Option D">Option D</option>
             </FormField>
 
-            <FormField
-              label="Number12"
-              name="number12_c"
-              type="number"
-              value={formData.number12_c}
-              onChange={handleChange}
-              error={errors.number12_c}
-              placeholder="Enter number12"
-            />
+<div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">Number12</label>
+              <div className="flex flex-col space-y-2">
+                {['Option 1', 'Option 2', 'Option 3', 'Option 4'].map(option => (
+                  <label key={option} className="flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      name="number12_c"
+                      value={option}
+                      checked={formData.number12_c === option}
+                      onChange={handleChange}
+                      className="w-4 h-4 text-primary bg-gray-100 border-gray-300 focus:ring-primary focus:ring-2"
+                    />
+                    <span className="text-sm text-gray-700">{option}</span>
+                  </label>
+                ))}
+              </div>
+              {errors.number12_c && (
+                <span className="text-red-500 text-sm">{errors.number12_c}</span>
+              )}
+            </div>
 
             <FormField
               label="Number13"
