@@ -985,9 +985,8 @@ max="100"
               type="date"
               value={formData.date1_c}
               onChange={handleChange}
-              error={errors.date1_c}
+error={errors.date1_c}
             />
-          </div>
           </div>
 
           <div className="flex justify-end space-x-4 pt-4 border-t border-gray-200">
