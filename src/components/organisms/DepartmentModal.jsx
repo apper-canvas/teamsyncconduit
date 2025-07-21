@@ -61,16 +61,16 @@ const [formData, setFormData] = useState({
     
     setLoading(true);
     
-    try {
+try {
       const departmentData = {
         Name: formData.Name,
         description_c: formData.description_c,
         head_id_c: formData.head_id_c ? parseInt(formData.head_id_c) : null,
         member_count_c: formData.member_count_c,
         Tags: formData.Tags,
-        Owner: formData.Owner
+        Owner: formData.Owner,
+        date1_c: formData.date1_c
       };
-      
       await departmentService.create(departmentData);
       toast.success("Department created successfully!");
       
