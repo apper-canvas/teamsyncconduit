@@ -11,7 +11,7 @@ const EmployeeModal = ({ isOpen, onClose, employee, onSuccess }) => {
 const [formData, setFormData] = useState({
 first_name_c: "",
     last_name_c: "",
-    name1_c: 0,
+name1_c: "",
     name2_c: false,
     name3_c: 0,
     name4_c: "",
@@ -65,7 +65,7 @@ useEffect(() => {
 setFormData({
         first_name_c: employee.first_name_c || "",
         last_name_c: employee.last_name_c || "",
-        name1_c: parseInt(employee.name1_c) || 0,
+name1_c: employee.name1_c || "",
         name2_c: employee.name2_c === true || employee.name2_c === "true",
         name3_c: parseFloat(employee.name3_c) || 0,
         name4_c: employee.name4_c || "",
@@ -168,7 +168,6 @@ const validateForm = () => {
     const newErrors = {};
     
     if (!formData.first_name_c.trim()) newErrors.first_name_c = "First name is required";
-if (formData.name1_c !== "" && isNaN(formData.name1_c)) newErrors.name1_c = "Name1 must be a valid number";
     if (formData.name3_c !== "" && (isNaN(formData.name3_c) || isNaN(parseFloat(formData.name3_c)))) newErrors.name3_c = "Name3 must be a valid decimal number";
     if (formData.name6_c !== "" && (isNaN(formData.name6_c) || isNaN(parseFloat(formData.name6_c)))) newErrors.name6_c = "Name6 must be a valid decimal number";
     if (formData.name15_c !== 0 && (formData.name15_c < 1 || formData.name15_c > 5)) newErrors.name15_c = "Rating must be between 1 and 5";
@@ -221,7 +220,7 @@ const handleSubmit = async (e) => {
       // Ensure name1_c is sent as an integer and name2_c as Boolean
 const submitData = {
 ...formData,
-        name1_c: parseInt(formData.name1_c) || 0,
+name1_c: formData.name1_c || "",
         name2_c: Boolean(formData.name2_c),
         name3_c: parseFloat(formData.name3_c) || 0,
         name6_c: parseFloat(formData.name6_c) || 0,
@@ -270,7 +269,7 @@ const handleClose = () => {
 setFormData({
       first_name_c: "",
       last_name_c: "",
-      name1_c: 0,
+name1_c: "",
       name2_c: false,
       name3_c: 0,
       name4_c: "",
@@ -361,13 +360,13 @@ number15_c: 0,
 />
 
             <FormField
-              label="Name1"
+label="Name1"
               name="name1_c"
-              type="text"
+              type="date"
               value={formData.name1_c}
               onChange={handleChange}
               error={errors.name1_c}
-              placeholder="Enter name1"
+              placeholder="Select date"
             />
 
 <div className="flex items-center space-x-2">
