@@ -61,8 +61,10 @@ fields: [
           { field: { Name: "number12_c" } },
           { field: { Name: "number13_c" } },
           { field: { Name: "number14_c" } },
-          { field: { Name: "number15_c" } },
-          { field: { Name: "number16_c" } }
+{ field: { Name: "number15_c" } },
+          { field: { Name: "number16_c" } },
+          { field: { Name: "checkbox1_c" } },
+          { field: { Name: "date1_c" } }
         ]
       };
 
@@ -138,8 +140,10 @@ fields: [
           { field: { Name: "number12_c" } },
           { field: { Name: "number13_c" } },
           { field: { Name: "number14_c" } },
-          { field: { Name: "number15_c" } },
-          { field: { Name: "number16_c" } }
+{ field: { Name: "number15_c" } },
+          { field: { Name: "number16_c" } },
+          { field: { Name: "checkbox1_c" } },
+          { field: { Name: "date1_c" } }
         ]
       };
 
@@ -211,8 +215,10 @@ number11_c: employeeData.number11_c || "",
 number12_c: employeeData.number12_c || "",
           number13_c: parseInt(employeeData.number13_c) || 0,
 number14_c: employeeData.number14_c || "",
-          number15_c: employeeData.number15_c || "",
-          number16_c: parseInt(employeeData.number16_c) || 0
+number15_c: employeeData.number15_c || "",
+          number16_c: parseInt(employeeData.number16_c) || 0,
+          checkbox1_c: Boolean(employeeData.checkbox1_c),
+          date1_c: employeeData.date1_c || ""
         }]
       };
 
@@ -296,8 +302,10 @@ number11_c: employeeData.number11_c || "",
 number12_c: employeeData.number12_c || "",
 number13_c: Array.isArray(employeeData.number13_c) ? employeeData.number13_c.join(',') : employeeData.number13_c || "",
 number14_c: employeeData.number14_c || "",
-          number15_c: employeeData.number15_c || "",
-          number16_c: parseInt(employeeData.number16_c) || 0
+number15_c: employeeData.number15_c || "",
+          number16_c: parseInt(employeeData.number16_c) || 0,
+          checkbox1_c: Boolean(employeeData.checkbox1_c),
+          date1_c: employeeData.date1_c || ""
         }]
       };
 

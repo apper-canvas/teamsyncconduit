@@ -79,7 +79,8 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number15</th>
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Number16</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Website</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Checkbox1</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Checkbox1</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Date1</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
                     </tr>
@@ -358,7 +359,12 @@ const handleDelete = async (employee) => {
                         </td>
                         <td className="py-3 px-4">
                             <span className="text-gray-900">
-                                {employee.checkbox1_c === true ? "Yes" : employee.checkbox1_c === false ? "No" : "-"}
+{employee.checkbox1_c === true ? "Yes" : employee.checkbox1_c === false ? "No" : "-"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.date1_c ? format(new Date(employee.date1_c), "MMM dd, yyyy") : "-"}
                             </span>
                         </td>
                         <td className="py-3 px-4">

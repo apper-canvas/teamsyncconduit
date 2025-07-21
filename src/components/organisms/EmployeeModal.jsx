@@ -7,6 +7,9 @@ import Select from "@/components/atoms/Select";
 import Button from "@/components/atoms/Button";
 import { employeeService } from "@/services/api/employeeService";
 import { departmentService } from "@/services/api/departmentService";
+import { departmentService } from "@/services/mockData/departments.json";
+import { departmentService } from "@/services/mockData/employees.json";
+import { departmentService } from "@/services/mockData/attendance.json";
 const EmployeeModal = ({ isOpen, onClose, employee, onSuccess }) => {
 const [formData, setFormData] = useState({
 first_name_c: "",
@@ -51,9 +54,10 @@ number11_c: "",
 number12_c: "",
     number13_c: [],
 number14_c: "",
-    number15_c: 0,
+number15_c: 0,
     number16_c: 0,
-    checkbox1_c: false
+    checkbox1_c: false,
+    date1_c: ""
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -104,9 +108,10 @@ number11_c: employee.number11_c || "",
 number12_c: employee.number12_c || "",
         number13_c: employee.number13_c ? employee.number13_c.toString().split(',').filter(Boolean) : [],
 number14_c: employee.number14_c || "",
-        number15_c: parseInt(employee.number15_c) || 0,
+number15_c: parseInt(employee.number15_c) || 0,
         number16_c: parseInt(employee.number16_c) || 0,
-        checkbox1_c: employee.checkbox1_c === true || employee.checkbox1_c === "true"
+        checkbox1_c: employee.checkbox1_c === true || employee.checkbox1_c === "true",
+        date1_c: employee.date1_c || ""
       });
     }
   }, [employee]);
@@ -243,9 +248,10 @@ number11_c: formData.number11_c || "",
 number12_c: formData.number12_c || "",
         number13_c: Array.isArray(formData.number13_c) ? formData.number13_c.join(',') : formData.number13_c,
 number14_c: formData.number14_c || "",
-        number15_c: formData.number15_c || "",
+number15_c: formData.number15_c || "",
         number16_c: parseInt(formData.number16_c) || 0,
-        checkbox1_c: Boolean(formData.checkbox1_c)
+        checkbox1_c: Boolean(formData.checkbox1_c),
+        date1_c: formData.date1_c || ""
       };
       if (employee) {
         await employeeService.update(employee.Id, submitData);
@@ -307,9 +313,10 @@ number11_c: "",
 number12_c: "",
       number13_c: [],
 number14_c: "",
-      number15_c: 0,
+number15_c: 0,
       number16_c: 0,
-      checkbox1_c: false
+      checkbox1_c: false,
+      date1_c: ""
     });
     setErrors({});
     onClose();
@@ -972,8 +979,18 @@ max="100"
               </label>
               {errors.checkbox1_c && (
                 <span className="text-red-500 text-sm">{errors.checkbox1_c}</span>
-              )}
-</div>
+)}
+            </div>
+
+            <FormField
+              label="Date1"
+              name="date1_c"
+              type="date"
+              value={formData.date1_c}
+              onChange={handleChange}
+              error={errors.date1_c}
+            />
+          </div>
           </div>
 
           <div className="flex justify-end space-x-4 pt-4 border-t border-gray-200">
