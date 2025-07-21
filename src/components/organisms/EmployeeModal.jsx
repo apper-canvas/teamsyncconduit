@@ -220,34 +220,60 @@ const handleSubmit = async (e) => {
       // Ensure name1_c is sent as an integer and name2_c as Boolean
 const submitData = {
 ...formData,
-name1_c: formData.name1_c || "",
+        // Date fields - format as YYYY-MM-DD
+        name1_c: formData.name1_c ? new Date(formData.name1_c).toISOString().split('T')[0] : "",
+        name4_c: formData.name4_c ? new Date(formData.name4_c).toISOString().split('T')[0] : "",
+        number4_c: formData.number4_c ? new Date(formData.number4_c).toISOString().split('T')[0] : "",
+        
+        // DateTime fields - format as ISO 8601
+        name5_c: formData.name5_c ? new Date(formData.name5_c).toISOString() : "",
+        number5_c: formData.number5_c ? new Date(formData.number5_c).toISOString() : "",
+        
+        // Email fields - ensure proper email format
+        email_c: formData.email_c && formData.email_c.includes('@') ? formData.email_c : "",
+        name7_c: formData.name7_c && formData.name7_c.includes('@') ? formData.name7_c : "",
+        number7_c: formData.number7_c && formData.number7_c.includes('@') ? formData.number7_c : "",
+        
+        // Boolean fields
         name2_c: Boolean(formData.name2_c),
+        number2_c: Boolean(formData.number2_c),
+        checkbox1_c: Boolean(formData.checkbox1_c),
+        
+        // Currency/Decimal fields
         name3_c: parseFloat(formData.name3_c) || 0,
         name6_c: parseFloat(formData.name6_c) || 0,
-name8_c: Array.isArray(formData.name8_c) ? formData.name8_c.join(',') : formData.name8_c,
-        name13_c: Array.isArray(formData.name13_c) ? formData.name13_c.join(',') : formData.name13_c,
-        name15_c: formData.name15_c || "",
-name17_c: Array.isArray(formData.name17_c) ? formData.name17_c.join(',') : formData.name17_c,
-        name18_c: Array.isArray(formData.name18_c) ? formData.name18_c.join(',') : formData.name18_c,
-        name19_c: Array.isArray(formData.name19_c) ? formData.name19_c.join(',') : formData.name19_c,
-number1_c: formData.number1_c || "",
-        number2_c: Boolean(formData.number2_c),
-number3_c: parseFloat(formData.number3_c) || 0,
-        number4_c: formData.number4_c || "",
-        number5_c: formData.number5_c || "",
-number6_c: parseFloat(formData.number6_c) || 0.00,
-number7_c: formData.number7_c || "",
-number8_c: Array.isArray(formData.number8_c) ? formData.number8_c.join(',') : formData.number8_c,
-number9_c: formData.number9_c || "",
-number10_c: formData.number10_c || "",
-number11_c: formData.number11_c || "",
-number12_c: formData.number12_c || "",
-        number13_c: Array.isArray(formData.number13_c) ? formData.number13_c.join(',') : formData.number13_c,
-number14_c: formData.number14_c || "",
-number15_c: formData.number15_c || "",
+        number3_c: parseFloat(formData.number3_c) || 0,
+        number6_c: parseFloat(formData.number6_c) || 0,
+        
+        // Number fields
+        name15_c: parseInt(formData.name15_c) || 0,
+        number8_c: parseInt(formData.number8_c) || 0,
+        number11_c: parseInt(formData.number11_c) || 0,
+        number12_c: parseInt(formData.number12_c) || 0,
+        number13_c: parseInt(formData.number13_c) || 0,
         number16_c: parseInt(formData.number16_c) || 0,
-        checkbox1_c: Boolean(formData.checkbox1_c),
-        date1_c: formData.date1_c || ""
+        date1_c: parseInt(formData.date1_c) || 0,
+        
+        // MultiPicklist and Tag fields - join arrays
+        name8_c: Array.isArray(formData.name8_c) ? formData.name8_c.join(',') : formData.name8_c || "",
+        name13_c: Array.isArray(formData.name13_c) ? formData.name13_c.join(',') : formData.name13_c || "",
+        name17_c: Array.isArray(formData.name17_c) ? formData.name17_c.join(',') : formData.name17_c || "",
+        name18_c: Array.isArray(formData.name18_c) ? formData.name18_c.join(',') : formData.name18_c || "",
+        name19_c: Array.isArray(formData.name19_c) ? formData.name19_c.join(',') : formData.name19_c || "",
+        
+        // Text and other string fields
+        number1_c: formData.number1_c || "",
+        name9_c: formData.name9_c || "",
+        name10_c: formData.name10_c || "",
+        name11_c: formData.name11_c || "",
+        name12_c: formData.name12_c || "",
+        name14_c: formData.name14_c || "",
+        name16_c: formData.name16_c || "",
+        name20_c: formData.name20_c || "",
+        number9_c: formData.number9_c || "",
+        number10_c: formData.number10_c || "",
+        number14_c: formData.number14_c || "",
+        number15_c: formData.number15_c || ""
       };
       if (employee) {
         await employeeService.update(employee.Id, submitData);
