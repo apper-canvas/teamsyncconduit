@@ -293,7 +293,7 @@ const handleDelete = async (employee) => {
                                 {employee.number10_c || "-"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
+<td className="py-3 px-4">
                             <span className="text-gray-900">
                                 {employee.number11_c || "-"}
                             </span>
