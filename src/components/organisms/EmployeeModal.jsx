@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
-import { employeeService } from "@/services/api/employeeService";
+import employeeService from "@/services/api/employeeService";
 import ApperIcon from "@/components/ApperIcon";
 import FormField from "@/components/molecules/FormField";
 import Select from "@/components/atoms/Select";
