@@ -45,7 +45,7 @@ number3_c: 0,
 number6_c: 0.00,
 number7_c: "",
 number8_c: [],
-    number9_c: 0,
+number9_c: "",
     number10_c: 0,
     number11_c: 0,
     number12_c: 0,
@@ -97,7 +97,7 @@ number3_c: parseFloat(employee.number3_c) || 0,
 number6_c: parseFloat(employee.number6_c) || 0.00,
 number7_c: employee.number7_c || "",
 number8_c: employee.number8_c ? employee.number8_c.split(',').filter(v => v.trim()) : [],
-        number9_c: parseInt(employee.number9_c) || 0,
+number9_c: employee.number9_c || "",
         number10_c: parseInt(employee.number10_c) || 0,
         number11_c: parseInt(employee.number11_c) || 0,
         number12_c: parseInt(employee.number12_c) || 0,
@@ -193,7 +193,6 @@ if (formData.number3_c !== "" && (isNaN(formData.number3_c) || isNaN(parseFloat(
     // number5_c is now a datetime field, no number validation needed
 if (formData.number6_c !== "" && (isNaN(formData.number6_c) || isNaN(parseFloat(formData.number6_c)))) newErrors.number6_c = "Number6 must be a valid decimal number";
 if (formData.number7_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.number7_c)) newErrors.number7_c = "Please enter a valid email address";
-    if (formData.number9_c !== "" && isNaN(formData.number9_c)) newErrors.number9_c = "Number9 must be a valid number";
     if (formData.number10_c !== "" && isNaN(formData.number10_c)) newErrors.number10_c = "Number10 must be a valid number";
     if (formData.number11_c !== "" && isNaN(formData.number11_c)) newErrors.number11_c = "Number11 must be a valid number";
     if (formData.number12_c !== "" && isNaN(formData.number12_c)) newErrors.number12_c = "Number12 must be a valid number";
@@ -234,7 +233,7 @@ number3_c: parseFloat(formData.number3_c) || 0,
 number6_c: parseFloat(formData.number6_c) || 0.00,
 number7_c: formData.number7_c || "",
 number8_c: Array.isArray(formData.number8_c) ? formData.number8_c.join(',') : formData.number8_c,
-        number9_c: parseInt(formData.number9_c) || 0,
+number9_c: formData.number9_c || "",
         number10_c: parseInt(formData.number10_c) || 0,
         number11_c: parseInt(formData.number11_c) || 0,
         number12_c: parseInt(formData.number12_c) || 0,
@@ -297,7 +296,7 @@ number3_c: 0,
 number6_c: 0.00,
 number7_c: "",
 number8_c: [],
-      number9_c: 0,
+number9_c: "",
       number10_c: 0,
       number11_c: 0,
       number12_c: 0,
@@ -821,14 +820,14 @@ placeholder="Enter phone number"
               )}
             </div>
 
-            <FormField
+<FormField
               label="Number9"
               name="number9_c"
-              type="number"
+              type="textarea"
               value={formData.number9_c}
               onChange={handleChange}
               error={errors.number9_c}
-              placeholder="Enter number9"
+              placeholder="Enter multiline text for number9"
             />
 
             <FormField

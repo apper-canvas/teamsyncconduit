@@ -274,10 +274,19 @@ const handleDelete = async (employee) => {
                                 {(!employee.number8_c || employee.number8_c.split(",").filter(v => v.trim()).length === 0) && <span className="text-gray-500">-</span>}
                             </div>
                         </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.number9_c || "-"}
-                            </span>
+<td className="py-3 px-4">
+                            <div className="text-gray-900 max-w-xs">
+                                {employee.number9_c ? (
+                                    <div className="whitespace-pre-wrap text-sm leading-relaxed">
+                                        {employee.number9_c.length > 100 
+                                            ? `${employee.number9_c.substring(0, 100)}...` 
+                                            : employee.number9_c
+                                        }
+                                    </div>
+                                ) : (
+                                    <span className="text-gray-500">-</span>
+                                )}
+                            </div>
                         </td>
                         <td className="py-3 px-4">
                             <span className="text-gray-900">
