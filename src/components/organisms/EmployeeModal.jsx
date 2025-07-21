@@ -44,7 +44,7 @@ number3_c: 0,
     number5_c: "",
 number6_c: 0.00,
 number7_c: "",
-    number8_c: 0,
+number8_c: [],
     number9_c: 0,
     number10_c: 0,
     number11_c: 0,
@@ -96,7 +96,7 @@ number3_c: parseFloat(employee.number3_c) || 0,
         number5_c: employee.number5_c || "",
 number6_c: parseFloat(employee.number6_c) || 0.00,
 number7_c: employee.number7_c || "",
-        number8_c: parseInt(employee.number8_c) || 0,
+number8_c: employee.number8_c ? employee.number8_c.split(',').filter(v => v.trim()) : [],
         number9_c: parseInt(employee.number9_c) || 0,
         number10_c: parseInt(employee.number10_c) || 0,
         number11_c: parseInt(employee.number11_c) || 0,
@@ -193,7 +193,6 @@ if (formData.number3_c !== "" && (isNaN(formData.number3_c) || isNaN(parseFloat(
     // number5_c is now a datetime field, no number validation needed
 if (formData.number6_c !== "" && (isNaN(formData.number6_c) || isNaN(parseFloat(formData.number6_c)))) newErrors.number6_c = "Number6 must be a valid decimal number";
 if (formData.number7_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.number7_c)) newErrors.number7_c = "Please enter a valid email address";
-    if (formData.number8_c !== "" && isNaN(formData.number8_c)) newErrors.number8_c = "Number8 must be a valid number";
     if (formData.number9_c !== "" && isNaN(formData.number9_c)) newErrors.number9_c = "Number9 must be a valid number";
     if (formData.number10_c !== "" && isNaN(formData.number10_c)) newErrors.number10_c = "Number10 must be a valid number";
     if (formData.number11_c !== "" && isNaN(formData.number11_c)) newErrors.number11_c = "Number11 must be a valid number";
@@ -234,7 +233,7 @@ number3_c: parseFloat(formData.number3_c) || 0,
         number5_c: formData.number5_c || "",
 number6_c: parseFloat(formData.number6_c) || 0.00,
 number7_c: formData.number7_c || "",
-        number8_c: parseInt(formData.number8_c) || 0,
+number8_c: Array.isArray(formData.number8_c) ? formData.number8_c.join(',') : formData.number8_c,
         number9_c: parseInt(formData.number9_c) || 0,
         number10_c: parseInt(formData.number10_c) || 0,
         number11_c: parseInt(formData.number11_c) || 0,
@@ -297,7 +296,7 @@ number3_c: 0,
       number5_c: "",
 number6_c: 0.00,
 number7_c: "",
-      number8_c: 0,
+number8_c: [],
       number9_c: 0,
       number10_c: 0,
       number11_c: 0,
@@ -799,15 +798,28 @@ placeholder="Enter phone number"
               placeholder="Enter email address"
             />
 
-            <FormField
-              label="Number8"
-              name="number8_c"
-              type="number"
-              value={formData.number8_c}
-              onChange={handleChange}
-              error={errors.number8_c}
-              placeholder="Enter number8"
-            />
+<div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">Number8</label>
+              <div className="flex flex-wrap gap-2">
+                {['option1', 'option2', 'option3', 'value1', 'value2', 'sample'].map(option => (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => handleMultiSelectChange('number8_c', option)}
+                    className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+                      formData.number8_c.includes(option)
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+              {errors.number8_c && (
+                <span className="text-red-500 text-sm">{errors.number8_c}</span>
+              )}
+            </div>
 
             <FormField
               label="Number9"
