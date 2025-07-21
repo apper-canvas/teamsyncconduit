@@ -52,7 +52,8 @@ number12_c: "",
     number13_c: [],
 number14_c: "",
     number15_c: 0,
-    number16_c: 0
+    number16_c: 0,
+    checkbox1_c: false
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -104,7 +105,8 @@ number12_c: employee.number12_c || "",
         number13_c: employee.number13_c ? employee.number13_c.toString().split(',').filter(Boolean) : [],
 number14_c: employee.number14_c || "",
         number15_c: parseInt(employee.number15_c) || 0,
-        number16_c: parseInt(employee.number16_c) || 0
+        number16_c: parseInt(employee.number16_c) || 0,
+        checkbox1_c: employee.checkbox1_c === true || employee.checkbox1_c === "true"
       });
     }
   }, [employee]);
@@ -242,7 +244,8 @@ number12_c: formData.number12_c || "",
         number13_c: Array.isArray(formData.number13_c) ? formData.number13_c.join(',') : formData.number13_c,
 number14_c: formData.number14_c || "",
         number15_c: parseInt(formData.number15_c) || 0,
-        number16_c: parseInt(formData.number16_c) || 0
+        number16_c: parseInt(formData.number16_c) || 0,
+        checkbox1_c: Boolean(formData.checkbox1_c)
       };
       if (employee) {
         await employeeService.update(employee.Id, submitData);
@@ -294,17 +297,19 @@ number1_c: "",
 number2_c: false,
 number3_c: 0,
       number4_c: "",
-number12_c: formData.number12_c || "",
+      number5_c: "",
 number6_c: 0.00,
 number7_c: "",
 number8_c: [],
 number9_c: "",
 number10_c: "",
 number11_c: "",
+number12_c: "",
       number13_c: [],
 number14_c: "",
       number15_c: 0,
-      number16_c: 0
+      number16_c: 0,
+      checkbox1_c: false
     });
     setErrors({});
     onClose();
@@ -949,9 +954,26 @@ placeholder="Enter phone number"
               onChange={handleChange}
               error={errors.number16_c}
               min="0"
-              max="100"
+max="100"
               placeholder="Select range value (0-100)"
             />
+
+            <div className="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                id="checkbox1_c"
+                name="checkbox1_c"
+                checked={formData.checkbox1_c}
+                onChange={handleChange}
+                className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2"
+              />
+              <label htmlFor="checkbox1_c" className="text-sm font-medium text-gray-700">
+                Checkbox1
+              </label>
+              {errors.checkbox1_c && (
+                <span className="text-red-500 text-sm">{errors.checkbox1_c}</span>
+              )}
+</div>
           </div>
 
           <div className="flex justify-end space-x-4 pt-4 border-t border-gray-200">
