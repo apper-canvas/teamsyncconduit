@@ -8,13 +8,14 @@ import ApperIcon from "@/components/ApperIcon";
 import departmentService from "@/services/api/departmentService";
 
 const DepartmentModal = ({ isOpen, onClose, onSuccess }) => {
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     Name: "",
     description_c: "",
     head_id_c: "",
     member_count_c: 0,
     Tags: "",
-    Owner: ""
+    Owner: "",
+    date1_c: ""
   });
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
@@ -74,13 +75,14 @@ const DepartmentModal = ({ isOpen, onClose, onSuccess }) => {
       toast.success("Department created successfully!");
       
       // Reset form
-      setFormData({
+setFormData({
         Name: "",
         description_c: "",
         head_id_c: "",
         member_count_c: 0,
         Tags: "",
-        Owner: ""
+        Owner: "",
+        date1_c: ""
       });
       
       onSuccess();
@@ -94,13 +96,14 @@ const DepartmentModal = ({ isOpen, onClose, onSuccess }) => {
 
   const handleClose = () => {
     if (!loading) {
-      setFormData({
+setFormData({
         Name: "",
         description_c: "",
         head_id_c: "",
         member_count_c: 0,
         Tags: "",
-        Owner: ""
+        Owner: "",
+        date1_c: ""
       });
       setErrors({});
       onClose();
@@ -217,8 +220,20 @@ const DepartmentModal = ({ isOpen, onClose, onSuccess }) => {
                 disabled={loading}
                 placeholder="Enter owner"
               />
-            </div>
+</div>
 
+            <div>
+              <Label htmlFor="date1_c">Date1</Label>
+              <Input
+                id="date1_c"
+                name="date1_c"
+                type="date"
+                value={formData.date1_c}
+                onChange={handleChange}
+                disabled={loading}
+                className="w-full"
+              />
+            </div>
             <div className="flex justify-end space-x-3 pt-4">
               <Button
                 type="button"

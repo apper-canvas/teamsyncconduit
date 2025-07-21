@@ -17,13 +17,14 @@ const departmentService = {
       const tableName = 'department_c';
       
       const params = {
-        fields: [
+fields: [
           { field: { Name: "Name" } },
           { field: { Name: "Tags" } },
           { field: { Name: "Owner" } },
           { field: { Name: "description_c" } },
           { field: { Name: "head_id_c" } },
           { field: { Name: "member_count_c" } },
+          { field: { Name: "date1_c" } },
           { field: { Name: "CreatedOn" } },
           { field: { Name: "CreatedBy" } },
           { field: { Name: "ModifiedOn" } },
@@ -72,13 +73,14 @@ const departmentService = {
       const tableName = 'department_c';
       
       const params = {
-        fields: [
+fields: [
           { field: { Name: "Name" } },
           { field: { Name: "Tags" } },
           { field: { Name: "Owner" } },
           { field: { Name: "description_c" } },
           { field: { Name: "head_id_c" } },
           { field: { Name: "member_count_c" } },
+          { field: { Name: "date1_c" } },
           { field: { Name: "CreatedOn" } },
           { field: { Name: "CreatedBy" } },
           { field: { Name: "ModifiedOn" } },
@@ -110,13 +112,14 @@ const departmentService = {
       const tableName = 'department_c';
       
       // Filter to only include Updateable fields
-      const updateableFields = {
+const updateableFields = {
         Name: departmentData.Name,
         Tags: departmentData.Tags,
         Owner: departmentData.Owner ? parseInt(departmentData.Owner) : undefined,
         description_c: departmentData.description_c,
         head_id_c: departmentData.head_id_c,
-        member_count_c: departmentData.member_count_c
+        member_count_c: departmentData.member_count_c,
+        date1_c: departmentData.date1_c
       };
 
       // Remove undefined fields
@@ -177,14 +180,15 @@ const departmentService = {
       const tableName = 'department_c';
       
       // Filter to only include Updateable fields
-      const updateableFields = {
+const updateableFields = {
         Id: parseInt(id),
         Name: departmentData.Name,
         Tags: departmentData.Tags,
         Owner: departmentData.Owner ? parseInt(departmentData.Owner) : undefined,
         description_c: departmentData.description_c,
         head_id_c: departmentData.head_id_c,
-        member_count_c: departmentData.member_count_c
+        member_count_c: departmentData.member_count_c,
+        date1_c: departmentData.date1_c
       };
 
       // Remove undefined fields (except Id)
