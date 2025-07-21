@@ -197,9 +197,10 @@ if (formData.number10_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.number10_c.rep
       newErrors.number10_c = "Please enter a valid phone number";
     }
 // number12_c is now a radio field, no number validation needed
+// number12_c is now a radio field, no number validation needed
     if (Array.isArray(formData.number13_c) && formData.number13_c.some(val => isNaN(val))) newErrors.number13_c = "Number13 values must be valid numbers";
 if (formData.number14_c && !/^https?:\/\/.+\..+/.test(formData.number14_c)) newErrors.number14_c = "Please enter a valid website URL (e.g., https://example.com)";
-    if (formData.number15_c !== "" && isNaN(formData.number15_c)) newErrors.number15_c = "Number15 must be a valid number";
+if (formData.number15_c !== 0 && (formData.number15_c < 1 || formData.number15_c > 5)) newErrors.number15_c = "Rating must be between 1 and 5";
     if (formData.number16_c !== "" && isNaN(formData.number16_c)) newErrors.number16_c = "Number16 must be a valid number";
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -910,15 +911,35 @@ placeholder="Enter phone number"
               placeholder="Enter website URL (e.g., https://example.com)"
             />
 
-            <FormField
-              label="Number15"
-              name="number15_c"
-              type="number"
-              value={formData.number15_c}
-              onChange={handleChange}
-              error={errors.number15_c}
-              placeholder="Enter number15"
-            />
+<div className="space-y-2">
+              <label className="text-sm font-medium text-gray-700">Number15 (Rating)</label>
+              <div className="flex items-center space-x-1">
+                {[1, 2, 3, 4, 5].map(star => (
+                  <button
+                    key={star}
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, number15_c: star }))}
+                    className={`text-2xl transition-colors hover:scale-110 ${
+                      star <= formData.number15_c ? 'text-yellow-400' : 'text-gray-300 hover:text-yellow-200'
+                    }`}
+                  >
+                    ★
+                  </button>
+                ))}
+                {formData.number15_c > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, number15_c: 0 }))}
+                    className="ml-2 text-sm text-gray-500 hover:text-gray-700"
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
+              {errors.number15_c && (
+                <span className="text-red-500 text-sm">{errors.number15_c}</span>
+              )}
+            </div>
 
             <FormField
               label="Number16"

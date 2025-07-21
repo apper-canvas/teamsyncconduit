@@ -322,10 +322,15 @@ const handleDelete = async (employee) => {
                                 {employee.number14_c}
                             </a> : <span className="text-gray-500">-</span>}
                         </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.number15_c || "-"}
-                            </span>
+<td className="py-3 px-4">
+                            <div className="flex items-center">
+                                {employee.number15_c ? <>
+                                    {[1, 2, 3, 4, 5].map(star => <span
+                                        key={star}
+                                        className={`text-lg ${star <= employee.number15_c ? "text-yellow-400" : "text-gray-300"}`}>★
+                                                                    </span>)}
+                                </> : <span className="text-gray-500">-</span>}
+                            </div>
                         </td>
                         <td className="py-3 px-4">
                             <span className="text-gray-900">
