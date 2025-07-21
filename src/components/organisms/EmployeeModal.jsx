@@ -6,7 +6,7 @@ import ApperIcon from "@/components/ApperIcon";
 import FormField from "@/components/molecules/FormField";
 import Select from "@/components/atoms/Select";
 import Button from "@/components/atoms/Button";
-import { departmentService } from "@/services/api/departmentService";
+import departmentService from "@/services/api/departmentService";
 const EmployeeModal = ({ isOpen, onClose, employee, onSuccess }) => {
 const [formData, setFormData] = useState({
 first_name_c: "",
