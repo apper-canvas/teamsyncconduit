@@ -366,8 +366,10 @@ const employeeService = {
             Operator: "EqualTo",
             Values: [status]
           }
-        ]
-return await this.getAll(filterOptions);
+]
+      };
+      
+      return await this.getAll(filterOptions);
     } catch (error) {
       console.error('Error fetching employees by status:', error);
       return [];

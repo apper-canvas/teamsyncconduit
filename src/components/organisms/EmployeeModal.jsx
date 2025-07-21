@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
+import { employeeService } from "@/services/api/employeeService";
 import ApperIcon from "@/components/ApperIcon";
 import FormField from "@/components/molecules/FormField";
 import Select from "@/components/atoms/Select";
 import Button from "@/components/atoms/Button";
-import { employeeService } from "@/services/api/employeeService";
 import { departmentService } from "@/services/api/departmentService";
-import { departmentService } from "@/services/mockData/departments.json";
-import { departmentService } from "@/services/mockData/employees.json";
-import { departmentService } from "@/services/mockData/attendance.json";
 const EmployeeModal = ({ isOpen, onClose, employee, onSuccess }) => {
 const [formData, setFormData] = useState({
 first_name_c: "",
