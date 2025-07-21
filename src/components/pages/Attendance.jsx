@@ -8,8 +8,7 @@ import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
 import ApperIcon from "@/components/ApperIcon";
 import { attendanceService } from "@/services/api/attendanceService";
-import { employeeService } from "@/services/api/employeeService";
-
+import employeeService from "@/services/api/employeeService";
 const Attendance = () => {
   const [attendance, setAttendance] = useState([]);
   const [employees, setEmployees] = useState([]);
