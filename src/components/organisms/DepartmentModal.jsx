@@ -5,7 +5,7 @@ import Button from "@/components/atoms/Button";
 import Input from "@/components/atoms/Input";
 import Label from "@/components/atoms/Label";
 import ApperIcon from "@/components/ApperIcon";
-import { departmentService } from "@/services/api/departmentService";
+import departmentService from "@/services/api/departmentService";
 
 const DepartmentModal = ({ isOpen, onClose, onSuccess }) => {
   const [formData, setFormData] = useState({
