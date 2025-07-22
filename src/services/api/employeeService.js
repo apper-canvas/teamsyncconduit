@@ -114,7 +114,7 @@ fields: [
         ]
       };
       
-      const response = await apperClient.getRecordById(tableName, parseInt(id), params);
+const response = await apperClient.getRecordById(tableName, parseInt(id), params);
       
       if (!response || !response.data) {
         return null;
@@ -122,10 +122,11 @@ fields: [
       
       return response.data;
     } catch (error) {
+      console.error('Error fetching employee by ID:', error);
       if (error?.response?.data?.message) {
-        console.error(`Error fetching employee with ID ${id}:`, error?.response?.data?.message);
+        toast.error(error.response.data.message);
       } else {
-        console.error(error.message);
+        toast.error('Failed to fetch employee');
       }
       return null;
     }
@@ -152,11 +153,10 @@ const updateableFields = {
         avatar_c: employeeData.avatar_c,
         department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
         checkbox1_c: employeeData.checkbox1_c,
-        boolean1_c: employeeData.boolean1_c || null, // Date field type - send null for empty
+boolean1_c: employeeData.boolean1_c || null, // Date field type - send null for empty
         boolean2_c: employeeData.boolean2_c,
-        date1_c: employeeData.date1_c ? parseInt(employeeData.date1_c) || null : null, // Number type field
+        date1_c: employeeData.date1_c || null, // Date field type - send as date string or null
       };
-
       // Remove undefined fields
       Object.keys(updateableFields).forEach(key => {
         if (updateableFields[key] === undefined) {
@@ -230,11 +230,10 @@ const updateableFields = {
         avatar_c: employeeData.avatar_c,
         department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
         checkbox1_c: employeeData.checkbox1_c,
-        boolean1_c: employeeData.boolean1_c || null, // Date field type - send null for empty
+boolean1_c: employeeData.boolean1_c || null, // Date field type - send null for empty
         boolean2_c: employeeData.boolean2_c,
-        date1_c: employeeData.date1_c ? parseInt(employeeData.date1_c) || null : null, // Number type field
+        date1_c: employeeData.date1_c || null, // Date field type - send as date string or null
       };
-
       // Remove undefined fields (except Id)
       Object.keys(updateableFields).forEach(key => {
         if (key !== 'Id' && updateableFields[key] === undefined) {
