@@ -220,7 +220,7 @@ return (
               onChange={handleChange}
               error={errors.department_id_c}
             >
-<option key="" value="">Select Department</option>
+<option key="select-placeholder" value="">Select Department</option>
               {departments.map(dept => (
                 <option key={dept.Id} value={dept.Id}>{dept.Name}</option>
               ))}
