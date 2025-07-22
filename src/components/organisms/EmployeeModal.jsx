@@ -17,6 +17,7 @@ const [formData, setFormData] = useState({
     department_id_c: "",
     hire_date_c: "",
     status_c: "active",
+    name1_c: "",
 checkbox1_c: false,
     boolean1_c: "",
     boolean2_c: false,
@@ -40,6 +41,7 @@ setFormData({
         department_id_c: employee.department_id_c || "",
         hire_date_c: employee.hire_date_c || "",
         status_c: employee.status_c || "active",
+        name1_c: employee.name1_c || "",
 checkbox1_c: employee.checkbox1_c || false,
         boolean1_c: employee.boolean1_c || "",
         boolean2_c: employee.boolean2_c || false,
@@ -131,6 +133,7 @@ const submitData = {
         email_c: formData.email_c && formData.email_c.includes('@') ? formData.email_c : null,
         // Date fields - ensure proper ISO format (YYYY-MM-DD) 
         hire_date_c: formData.hire_date_c || null,
+        name1_c: formData.name1_c || null, // Date type field
 boolean1_c: formData.boolean1_c || null, // This is actually a Date field type
         // Email fields - date1_c is Email type, send as string
         date1_c: formData.date1_c || null,
@@ -164,6 +167,7 @@ setFormData({
       department_id_c: "",
       hire_date_c: "",
       status_c: "active",
+      name1_c: "",
 checkbox1_c: false,
       boolean1_c: "",
       boolean2_c: false,
@@ -355,6 +359,15 @@ type="email"
               onChange={handleChange}
               error={errors.decimal2_c}
 placeholder="Enter decimal value"
+/>
+
+            <FormField
+              label="Name1"
+              name="name1_c"
+              type="date"
+              value={formData.name1_c}
+              onChange={handleChange}
+              error={errors.name1_c}
             />
 
 <FormField
