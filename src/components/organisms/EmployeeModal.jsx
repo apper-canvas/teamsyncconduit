@@ -220,7 +220,7 @@ return (
               onChange={handleChange}
               error={errors.department_id_c}
             >
-              <option value="">Select Department</option>
+<option key="" value="">Select Department</option>
               {departments.map(dept => (
                 <option key={dept.Id} value={dept.Id}>{dept.Name}</option>
               ))}
@@ -243,8 +243,8 @@ return (
               onChange={handleChange}
               error={errors.status_c}
             >
-              <option value="active">Active</option>
-              <option value="inactive">Inactive</option>
+<option key="active" value="active">Active</option>
+              <option key="inactive" value="inactive">Inactive</option>
             </FormField>
 
 
