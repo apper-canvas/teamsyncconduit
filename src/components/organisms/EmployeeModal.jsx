@@ -357,15 +357,14 @@ type="email"
 placeholder="Enter decimal value"
             />
 
-            <FormField
+<FormField
               label="Multilinetext1"
               name="multilinetext1_c"
-              type="textarea"
+              type="text"
               value={formData.multilinetext1_c}
               onChange={handleChange}
               error={errors.multilinetext1_c}
-              placeholder="Enter multiline text"
-              rows={4}
+              placeholder="Enter text"
             />
           </div>
 

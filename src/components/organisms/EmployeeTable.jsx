@@ -135,14 +135,9 @@ const handleDelete = async (employee) => {
                                 {employee.decimal2_c ? parseFloat(employee.decimal2_c).toFixed(2) : "0.00"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900" title={employee.multilinetext1_c}>
-                                {employee.multilinetext1_c ? 
-                                    (employee.multilinetext1_c.length > 50 ? 
-                                        employee.multilinetext1_c.substring(0, 50) + "..." : 
-                                        employee.multilinetext1_c
-                                    ) : "N/A"
-                                }
+<td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.multilinetext1_c || "N/A"}
                             </span>
                         </td>
                             <td className="py-3 px-4">
