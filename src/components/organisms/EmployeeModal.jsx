@@ -37,7 +37,6 @@ name1_c: "",
     name18_c: [],
     name19_c: [],
     name20_c: "",
-number1_c: "",
     number2_c: false,
 number3_c: 0,
     number4_c: "",
@@ -91,7 +90,6 @@ name1_c: employee.name1_c || "",
         name18_c: employee.name18_c ? employee.name18_c.split(',').filter(v => v.trim()) : [],
         name19_c: employee.name19_c ? employee.name19_c.split(',').filter(v => v.trim()) : [],
         name20_c: employee.name20_c || "",
-number1_c: employee.number1_c || "",
         number2_c: employee.number2_c === true || employee.number2_c === "true",
 number3_c: parseFloat(employee.number3_c) || 0,
         number4_c: employee.number4_c || "",
@@ -321,7 +319,6 @@ name1_c: "",
       name18_c: [],
       name19_c: [],
       name20_c: "",
-number1_c: "",
 number2_c: false,
 number3_c: 0,
       number4_c: "",
@@ -754,15 +751,6 @@ label="Name1"
 placeholder="Enter phone number"
             />
 
-<FormField
-              label="Number1"
-              name="number1_c"
-              type="text"
-              value={formData.number1_c}
-              onChange={handleChange}
-              error={errors.number1_c}
-              placeholder="Enter number1"
-            />
 
 <div className="flex items-center space-x-2">
               <input

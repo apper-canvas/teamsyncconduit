@@ -45,7 +45,7 @@ const handleDelete = async (employee) => {
         <div className="overflow-x-auto">
             <table className="w-full table-auto">
                 <thead>
-                    <tr className="bg-gradient-to-r from-gray-50 to-gray-100">
+<tr className="bg-gradient-to-r from-gray-50 to-gray-100">
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Employee</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Department</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Role</th>
@@ -63,7 +63,6 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name17</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name19</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name20</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number1</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number2</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number3</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number4</th>
@@ -235,11 +234,6 @@ const handleDelete = async (employee) => {
                         <td className="py-3 px-4">
                             <span className="text-gray-900">
                                 {employee.name20_c || "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.number1_c || "-"}
                             </span>
                         </td>
                         <td className="py-3 px-4">
