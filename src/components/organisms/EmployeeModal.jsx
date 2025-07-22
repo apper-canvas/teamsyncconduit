@@ -213,16 +213,16 @@ return (
             />
 
             <FormField
-              label="Department"
+label="Department"
               name="department_id_c"
               type="select"
               value={formData.department_id_c}
               onChange={handleChange}
               error={errors.department_id_c}
             >
-<option key="select-placeholder" value="">Select Department</option>
-              {departments.map(dept => (
-                <option key={dept.Id} value={dept.Id}>{dept.Name}</option>
+              <option key="select-placeholder" value="">Select Department</option>
+              {departments.map((dept, index) => (
+                <option key={dept.Id || `dept-${index}`} value={dept.Id}>{dept.Name}</option>
               ))}
             </FormField>
 
