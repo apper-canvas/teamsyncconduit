@@ -39,8 +39,9 @@ fields: [
           { field: { Name: "boolean1_c" } },
           { field: { Name: "boolean2_c" } },
           { field: { Name: "date1_c" } },
-          { field: { Name: "decimal1_c" } },
+{ field: { Name: "decimal1_c" } },
           { field: { Name: "decimal2_c" } },
+          { field: { Name: "multilinetext1_c" } },
           { field: { Name: "CreatedOn" } },
           { field: { Name: "CreatedBy" } },
           { field: { Name: "ModifiedOn" } },
@@ -109,8 +110,9 @@ fields: [
           { field: { Name: "boolean1_c" } },
           { field: { Name: "boolean2_c" } },
           { field: { Name: "date1_c" } },
-          { field: { Name: "decimal1_c" } },
+{ field: { Name: "decimal1_c" } },
           { field: { Name: "decimal2_c" } },
+          { field: { Name: "multilinetext1_c" } },
           { field: { Name: "CreatedOn" } },
           { field: { Name: "CreatedBy" } },
           { field: { Name: "ModifiedOn" } },
@@ -182,6 +184,7 @@ date1_c: employeeData.date1_c || null, // Email type
         boolean2_c: employeeData.boolean2_c, // Boolean type
 decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
         decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
+        multilinetext1_c: employeeData.multilinetext1_c, // MultilineText type
       };
       // Remove undefined fields
       Object.keys(updateableFields).forEach(key => {
@@ -281,6 +284,7 @@ date1_c: employeeData.date1_c || null, // Email type
         boolean2_c: employeeData.boolean2_c, // Boolean type
 decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
         decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
+        multilinetext1_c: employeeData.multilinetext1_c, // MultilineText type
       };
       // Remove undefined fields (except Id)
       Object.keys(updateableFields).forEach(key => {

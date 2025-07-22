@@ -20,9 +20,10 @@ const [formData, setFormData] = useState({
 checkbox1_c: false,
     boolean1_c: "",
     boolean2_c: false,
-date1_c: "",
-decimal1_c: 0,
+    date1_c: "",
+    decimal1_c: 0,
     decimal2_c: "",
+    multilinetext1_c: "",
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -39,12 +40,13 @@ setFormData({
         department_id_c: employee.department_id_c || "",
         hire_date_c: employee.hire_date_c || "",
         status_c: employee.status_c || "active",
-        checkbox1_c: employee.checkbox1_c || false,
+checkbox1_c: employee.checkbox1_c || false,
         boolean1_c: employee.boolean1_c || "",
         boolean2_c: employee.boolean2_c || false,
-date1_c: employee.date1_c || "",
-decimal1_c: employee.decimal1_c || 0,
+        date1_c: employee.date1_c || "",
+        decimal1_c: employee.decimal1_c || 0,
         decimal2_c: employee.decimal2_c || "",
+        multilinetext1_c: employee.multilinetext1_c || "",
       });
     }
   }, [employee]);
@@ -162,12 +164,13 @@ setFormData({
       department_id_c: "",
       hire_date_c: "",
       status_c: "active",
-      checkbox1_c: false,
+checkbox1_c: false,
       boolean1_c: "",
       boolean2_c: false,
-date1_c: "",
-decimal1_c: 0,
+      date1_c: "",
+      decimal1_c: 0,
       decimal2_c: "",
+      multilinetext1_c: "",
     });
     setErrors({});
     onClose();
@@ -351,7 +354,18 @@ type="email"
               value={formData.decimal2_c}
               onChange={handleChange}
               error={errors.decimal2_c}
-              placeholder="Enter decimal value"
+placeholder="Enter decimal value"
+            />
+
+            <FormField
+              label="Multilinetext1"
+              name="multilinetext1_c"
+              type="textarea"
+              value={formData.multilinetext1_c}
+              onChange={handleChange}
+              error={errors.multilinetext1_c}
+              placeholder="Enter multiline text"
+              rows={4}
             />
           </div>
 
