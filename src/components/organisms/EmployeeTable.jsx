@@ -45,12 +45,14 @@ const handleDelete = async (employee) => {
         <div className="overflow-x-auto">
             <table className="w-full table-auto">
                 <thead>
-                    <tr className="bg-gradient-to-r from-gray-50 to-gray-100">
+<tr className="bg-gradient-to-r from-gray-50 to-gray-100">
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Employee</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Department</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Role</th>
-<th className="text-left py-3 px-4 font-semibold text-gray-700">Hire Date</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Hire Date</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Boolean1 Date</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Decimal1</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Decimal2</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
                     </tr>
@@ -97,9 +99,19 @@ const handleDelete = async (employee) => {
                                 {employee.hire_date_c ? format(new Date(employee.hire_date_c), "MMM dd, yyyy") : "N/A"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
+<td className="py-3 px-4">
                             <span className="text-gray-900">
                                 {employee.boolean1_c ? format(new Date(employee.boolean1_c), "MMM dd, yyyy") : "N/A"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.decimal1_c ? parseFloat(employee.decimal1_c).toFixed(2) : "0.00"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.decimal2_c ? parseFloat(employee.decimal2_c).toFixed(2) : "0.00"}
                             </span>
                         </td>
                             <td className="py-3 px-4">

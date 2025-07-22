@@ -39,6 +39,8 @@ fields: [
           { field: { Name: "boolean1_c" } },
           { field: { Name: "boolean2_c" } },
           { field: { Name: "date1_c" } },
+          { field: { Name: "decimal1_c" } },
+          { field: { Name: "decimal2_c" } },
           { field: { Name: "CreatedOn" } },
           { field: { Name: "CreatedBy" } },
           { field: { Name: "ModifiedOn" } },
@@ -107,6 +109,8 @@ fields: [
           { field: { Name: "boolean1_c" } },
           { field: { Name: "boolean2_c" } },
           { field: { Name: "date1_c" } },
+          { field: { Name: "decimal1_c" } },
+          { field: { Name: "decimal2_c" } },
           { field: { Name: "CreatedOn" } },
           { field: { Name: "CreatedBy" } },
           { field: { Name: "ModifiedOn" } },
@@ -153,9 +157,11 @@ const updateableFields = {
         avatar_c: employeeData.avatar_c,
         department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
         checkbox1_c: employeeData.checkbox1_c,
-boolean1_c: employeeData.boolean1_c || null, // Date field type - send null for empty
+        boolean1_c: employeeData.boolean1_c || null, // Date field type - send null for empty
         boolean2_c: employeeData.boolean2_c,
         date1_c: employeeData.date1_c || null, // Date field type - send as date string or null
+        decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null,
+        decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null,
       };
       // Remove undefined fields
       Object.keys(updateableFields).forEach(key => {
@@ -230,9 +236,11 @@ const updateableFields = {
         avatar_c: employeeData.avatar_c,
         department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
         checkbox1_c: employeeData.checkbox1_c,
-boolean1_c: employeeData.boolean1_c || null, // Date field type - send null for empty
+        boolean1_c: employeeData.boolean1_c || null, // Date field type - send null for empty
         boolean2_c: employeeData.boolean2_c,
         date1_c: employeeData.date1_c || null, // Date field type - send as date string or null
+        decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null,
+        decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null,
       };
       // Remove undefined fields (except Id)
       Object.keys(updateableFields).forEach(key => {

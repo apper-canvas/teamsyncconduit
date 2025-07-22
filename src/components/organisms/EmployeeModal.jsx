@@ -21,6 +21,8 @@ const [formData, setFormData] = useState({
     boolean1_c: "",
     boolean2_c: false,
     date1_c: "",
+    decimal1_c: "",
+    decimal2_c: "",
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -41,6 +43,8 @@ setFormData({
         boolean1_c: employee.boolean1_c || "",
         boolean2_c: employee.boolean2_c || false,
         date1_c: employee.date1_c || "",
+        decimal1_c: employee.decimal1_c || "",
+        decimal2_c: employee.decimal2_c || "",
       });
     }
   }, [employee]);
@@ -125,6 +129,9 @@ const submitData = {
         boolean1_c: formData.boolean1_c || null, // This is actually a Date field type
         // Number fields - date1_c is Number type, not Date, so convert to integer
         date1_c: formData.date1_c ? parseInt(formData.date1_c) || null : null,
+        // Decimal fields - convert to proper decimal format
+        decimal1_c: formData.decimal1_c ? parseFloat(formData.decimal1_c) || null : null,
+        decimal2_c: formData.decimal2_c ? parseFloat(formData.decimal2_c) || null : null,
       };
       if (employee) {
         await employeeService.update(employee.Id, submitData);
@@ -156,6 +163,8 @@ setFormData({
       boolean1_c: "",
       boolean2_c: false,
       date1_c: "",
+      decimal1_c: "",
+      decimal2_c: "",
     });
     setErrors({});
     onClose();
@@ -289,13 +298,35 @@ label="Department"
               error={errors.boolean2_c}
             />
 
-            <FormField
+<FormField
               label="Date1"
               name="date1_c"
               type="date"
               value={formData.date1_c}
               onChange={handleChange}
               error={errors.date1_c}
+            />
+
+            <FormField
+              label="Decimal1"
+              name="decimal1_c"
+              type="number"
+              step="0.01"
+              value={formData.decimal1_c}
+              onChange={handleChange}
+              error={errors.decimal1_c}
+              placeholder="Enter decimal value"
+            />
+
+            <FormField
+              label="Decimal2"
+              name="decimal2_c"
+              type="number"
+              step="0.01"
+              value={formData.decimal2_c}
+              onChange={handleChange}
+              error={errors.decimal2_c}
+              placeholder="Enter decimal value"
             />
           </div>
 
