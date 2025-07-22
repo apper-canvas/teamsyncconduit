@@ -184,7 +184,7 @@ date1_c: employeeData.date1_c || null, // Email type
         boolean2_c: employeeData.boolean2_c, // Boolean type
 decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
         decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
-        multilinetext1_c: employeeData.multilinetext1_c, // MultilineText type
+multilinetext1_c: employeeData.multilinetext1_c, // Text type
       };
       // Remove undefined fields
       Object.keys(updateableFields).forEach(key => {
@@ -284,7 +284,7 @@ date1_c: employeeData.date1_c || null, // Email type
         boolean2_c: employeeData.boolean2_c, // Boolean type
 decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
         decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
-        multilinetext1_c: employeeData.multilinetext1_c, // MultilineText type
+multilinetext1_c: employeeData.multilinetext1_c, // Text type
       };
       // Remove undefined fields (except Id)
       Object.keys(updateableFields).forEach(key => {

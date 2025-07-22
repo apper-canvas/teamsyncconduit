@@ -131,11 +131,11 @@ const submitData = {
         email_c: formData.email_c && formData.email_c.includes('@') ? formData.email_c : null,
         // Date fields - ensure proper ISO format (YYYY-MM-DD) 
         hire_date_c: formData.hire_date_c || null,
-        boolean1_c: formData.boolean1_c || null, // This is actually a Date field type
-        // Date fields - date1_c is Date type, format as ISO date string
-date1_c: formData.date1_c || null,
+boolean1_c: formData.boolean1_c || null, // This is actually a Date field type
+        // Email fields - date1_c is Email type, send as string
+        date1_c: formData.date1_c || null,
         // Decimal fields - convert to proper decimal format
-decimal1_c: formData.decimal1_c ? parseInt(formData.decimal1_c) || null : null,
+        decimal1_c: formData.decimal1_c ? parseInt(formData.decimal1_c) || null : null,
         decimal2_c: formData.decimal2_c ? parseFloat(formData.decimal2_c) || null : null,
       };
       if (employee) {
