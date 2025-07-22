@@ -17,7 +17,7 @@ const [formData, setFormData] = useState({
     department_id_c: "",
     hire_date_c: "",
     status_c: "active",
-    checkbox1_c: false,
+checkbox1_c: false,
     boolean1_c: "",
     boolean2_c: false,
     date1_c: "",
@@ -119,7 +119,7 @@ const handleSubmit = async (e) => {
     setLoading(true);
     
 try {
-      // Format data properly for database submission according to field types
+// Format data properly for database submission according to field types
 const submitData = {
         ...formData,
         // Email fields - send null instead of empty string for validation
@@ -127,8 +127,8 @@ const submitData = {
         // Date fields - ensure proper ISO format (YYYY-MM-DD) 
         hire_date_c: formData.hire_date_c || null,
         boolean1_c: formData.boolean1_c || null, // This is actually a Date field type
-        // Number fields - date1_c is Number type, not Date, so convert to integer
-        date1_c: formData.date1_c ? parseInt(formData.date1_c) || null : null,
+        // Date fields - date1_c is Date type, format as ISO date string
+        date1_c: formData.date1_c || null,
         // Decimal fields - convert to proper decimal format
         decimal1_c: formData.decimal1_c ? parseFloat(formData.decimal1_c) || null : null,
         decimal2_c: formData.decimal2_c ? parseFloat(formData.decimal2_c) || null : null,
