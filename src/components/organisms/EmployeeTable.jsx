@@ -231,8 +231,7 @@ const handleDelete = async (employee) => {
                                 {employee.name20_c || "-"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
-                            <td className="py-3 px-4">
+<td className="py-3 px-4">
                                 <span className="text-gray-900">
                                     {employee.number7_c || "-"}
                                 </span>
@@ -349,7 +348,7 @@ const handleDelete = async (employee) => {
                                     </Button>
                                 </div>
                             </td>
-                        </td></motion.tr>)}
+                        </motion.tr>)}
                 </tbody>
             </table>
         </div>
