@@ -50,8 +50,9 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Department</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Role</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Hire Date</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Boolean1 Date</th>
-<th className="text-left py-3 px-4 font-semibold text-gray-700">Rating</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Boolean1 Date</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Date1 Email</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Rating</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Decimal2</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
@@ -102,6 +103,11 @@ const handleDelete = async (employee) => {
 <td className="py-3 px-4">
                             <span className="text-gray-900">
                                 {employee.boolean1_c ? format(new Date(employee.boolean1_c), "MMM dd, yyyy") : "N/A"}
+                            </span>
+                        </td>
+<td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.date1_c || "N/A"}
                             </span>
                         </td>
 <td className="py-3 px-4">

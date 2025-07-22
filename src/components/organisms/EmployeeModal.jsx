@@ -20,7 +20,7 @@ const [formData, setFormData] = useState({
 checkbox1_c: false,
     boolean1_c: "",
     boolean2_c: false,
-    date1_c: "",
+date1_c: "",
 decimal1_c: 0,
     decimal2_c: "",
   });
@@ -42,7 +42,7 @@ setFormData({
         checkbox1_c: employee.checkbox1_c || false,
         boolean1_c: employee.boolean1_c || "",
         boolean2_c: employee.boolean2_c || false,
-        date1_c: employee.date1_c || "",
+date1_c: employee.date1_c || "",
 decimal1_c: employee.decimal1_c || 0,
         decimal2_c: employee.decimal2_c || "",
       });
@@ -107,6 +107,9 @@ const validateForm = () => {
 if (formData.email_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_c)) {
       newErrors.email_c = "Please enter a valid email address";
     }
+    if (formData.date1_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.date1_c)) {
+      newErrors.date1_c = "Please enter a valid email address";
+    }
     
 setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -128,7 +131,7 @@ const submitData = {
         hire_date_c: formData.hire_date_c || null,
         boolean1_c: formData.boolean1_c || null, // This is actually a Date field type
         // Date fields - date1_c is Date type, format as ISO date string
-        date1_c: formData.date1_c || null,
+date1_c: formData.date1_c || null,
         // Decimal fields - convert to proper decimal format
 decimal1_c: formData.decimal1_c ? parseInt(formData.decimal1_c) || null : null,
         decimal2_c: formData.decimal2_c ? parseFloat(formData.decimal2_c) || null : null,
@@ -162,7 +165,7 @@ setFormData({
       checkbox1_c: false,
       boolean1_c: "",
       boolean2_c: false,
-      date1_c: "",
+date1_c: "",
 decimal1_c: 0,
       decimal2_c: "",
     });
@@ -301,10 +304,11 @@ label="Department"
 <FormField
               label="Date1"
               name="date1_c"
-              type="date"
+type="email"
               value={formData.date1_c}
               onChange={handleChange}
               error={errors.date1_c}
+              placeholder="Enter email address"
             />
 
 <div className="space-y-2">

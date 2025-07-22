@@ -177,7 +177,7 @@ const updateableFields = {
         name19_c: employeeData.name19_c, // Tag type
         name20_c: employeeData.name20_c, // Phone type
         checkbox1_c: employeeData.checkbox1_c, // Boolean type
-        date1_c: employeeData.date1_c || null, // Date type
+date1_c: employeeData.date1_c || null, // Email type
         boolean1_c: employeeData.boolean1_c || null, // Date type (changed from Boolean)
         boolean2_c: employeeData.boolean2_c, // Boolean type
 decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
@@ -276,7 +276,7 @@ const updateableFields = {
         name19_c: employeeData.name19_c, // Tag type
         name20_c: employeeData.name20_c, // Phone type
         checkbox1_c: employeeData.checkbox1_c, // Boolean type
-        date1_c: employeeData.date1_c || null, // Date type
+date1_c: employeeData.date1_c || null, // Email type
         boolean1_c: employeeData.boolean1_c || null, // Date type (changed from Boolean)
         boolean2_c: employeeData.boolean2_c, // Boolean type
 decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
