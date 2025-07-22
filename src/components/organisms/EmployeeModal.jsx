@@ -107,7 +107,6 @@ if (formData.email_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_c)) {
 setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
-
 const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -116,15 +115,16 @@ const handleSubmit = async (e) => {
     setLoading(true);
     
 try {
-      // Format dates properly for database submission
+      // Format data properly for database submission according to field types
 const submitData = {
         ...formData,
-        // Email fields - ensure proper email format
-        email_c: formData.email_c && formData.email_c.includes('@') ? formData.email_c : "",
-        // Date fields - ensure proper ISO format (YYYY-MM-DD)
-        hire_date_c: formData.hire_date_c || "",
-        boolean1_c: formData.boolean1_c || "",
-        date1_c: formData.date1_c || "",
+        // Email fields - send null instead of empty string for validation
+        email_c: formData.email_c && formData.email_c.includes('@') ? formData.email_c : null,
+        // Date fields - ensure proper ISO format (YYYY-MM-DD) 
+        hire_date_c: formData.hire_date_c || null,
+        boolean1_c: formData.boolean1_c || null, // This is actually a Date field type
+        // Number fields - date1_c is Number type, not Date, so convert to integer
+        date1_c: formData.date1_c ? parseInt(formData.date1_c) || null : null,
       };
       if (employee) {
         await employeeService.update(employee.Id, submitData);

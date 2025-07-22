@@ -144,17 +144,17 @@ const updateableFields = {
         Owner: employeeData.Owner ? parseInt(employeeData.Owner) : undefined,
         first_name_c: employeeData.first_name_c,
         last_name_c: employeeData.last_name_c,
-        email_c: employeeData.email_c,
+        email_c: employeeData.email_c || null, // Send null instead of empty string
         phone_c: employeeData.phone_c,
         role_c: employeeData.role_c,
-        hire_date_c: employeeData.hire_date_c || "",
+        hire_date_c: employeeData.hire_date_c || null,
         status_c: employeeData.status_c,
         avatar_c: employeeData.avatar_c,
         department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
         checkbox1_c: employeeData.checkbox1_c,
-        boolean1_c: employeeData.boolean1_c || "",
+        boolean1_c: employeeData.boolean1_c || null, // Date field type - send null for empty
         boolean2_c: employeeData.boolean2_c,
-        date1_c: employeeData.date1_c || "",
+        date1_c: employeeData.date1_c ? parseInt(employeeData.date1_c) || null : null, // Number type field
       };
 
       // Remove undefined fields
@@ -222,17 +222,17 @@ const updateableFields = {
         Owner: employeeData.Owner ? parseInt(employeeData.Owner) : undefined,
         first_name_c: employeeData.first_name_c,
         last_name_c: employeeData.last_name_c,
-        email_c: employeeData.email_c,
+        email_c: employeeData.email_c || null, // Send null instead of empty string
         phone_c: employeeData.phone_c,
         role_c: employeeData.role_c,
-        hire_date_c: employeeData.hire_date_c || "",
+        hire_date_c: employeeData.hire_date_c || null,
         status_c: employeeData.status_c,
         avatar_c: employeeData.avatar_c,
         department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
         checkbox1_c: employeeData.checkbox1_c,
-        boolean1_c: employeeData.boolean1_c || "",
+        boolean1_c: employeeData.boolean1_c || null, // Date field type - send null for empty
         boolean2_c: employeeData.boolean2_c,
-        date1_c: employeeData.date1_c || "",
+        date1_c: employeeData.date1_c ? parseInt(employeeData.date1_c) || null : null, // Number type field
       };
 
       // Remove undefined fields (except Id)
