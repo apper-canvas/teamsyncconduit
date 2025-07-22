@@ -29,12 +29,14 @@ fields: [
           { field: { Name: "phone_c" } },
           { field: { Name: "role_c" } },
           { field: { Name: "hire_date_c" } },
-{ field: { Name: "status_c" } },
+          { field: { Name: "status_c" } },
           { field: { Name: "avatar_c" } },
           { 
             field: { Name: "department_id_c" },
             referenceField: { field: { Name: "Name" } }
           },
+          { field: { Name: "boolean1_c" } },
+          { field: { Name: "boolean2_c" } },
           { field: { Name: "CreatedOn" } },
           { field: { Name: "CreatedBy" } },
           { field: { Name: "ModifiedOn" } },
@@ -93,12 +95,14 @@ fields: [
           { field: { Name: "phone_c" } },
           { field: { Name: "role_c" } },
           { field: { Name: "hire_date_c" } },
-{ field: { Name: "status_c" } },
+          { field: { Name: "status_c" } },
           { field: { Name: "avatar_c" } },
           { 
             field: { Name: "department_id_c" },
             referenceField: { field: { Name: "Name" } }
           },
+          { field: { Name: "boolean1_c" } },
+          { field: { Name: "boolean2_c" } },
           { field: { Name: "CreatedOn" } },
           { field: { Name: "CreatedBy" } },
           { field: { Name: "ModifiedOn" } },
@@ -143,6 +147,8 @@ const updateableFields = {
         status_c: employeeData.status_c,
         avatar_c: employeeData.avatar_c,
         department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
+        boolean1_c: employeeData.boolean1_c,
+        boolean2_c: employeeData.boolean2_c,
       };
 
       // Remove undefined fields
@@ -217,6 +223,8 @@ const updateableFields = {
         status_c: employeeData.status_c,
         avatar_c: employeeData.avatar_c,
         department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
+        boolean1_c: employeeData.boolean1_c,
+        boolean2_c: employeeData.boolean2_c,
       };
 
       // Remove undefined fields (except Id)

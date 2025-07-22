@@ -29,6 +29,14 @@ const FormField = ({ label, type = "text", error, className, children, ...props 
             <span>{props.max || 100}</span>
           </div>
         </div>
+) : type === "checkbox" ? (
+        <div className="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            className="h-4 w-4 text-primary bg-white border-2 border-gray-300 rounded focus:ring-primary focus:ring-2 focus:ring-offset-2 transition-colors duration-200"
+            {...props}
+          />
+        </div>
       ) : (
         <Input type={type} {...props} />
       )}

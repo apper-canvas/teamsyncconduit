@@ -9,14 +9,16 @@ import employeeService from "@/services/api/employeeService";
 import departmentService from "@/services/api/departmentService";
 const EmployeeModal = ({ isOpen, onClose, employee, onSuccess }) => {
 const [formData, setFormData] = useState({
-first_name_c: "",
+    first_name_c: "",
     last_name_c: "",
-email_c: "",
+    email_c: "",
     phone_c: "",
     role_c: "",
     department_id_c: "",
     hire_date_c: "",
     status_c: "active",
+    boolean1_c: false,
+    boolean2_c: false,
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -27,12 +29,14 @@ useEffect(() => {
 setFormData({
         first_name_c: employee.first_name_c || "",
         last_name_c: employee.last_name_c || "",
-email_c: employee.email_c || "",
+        email_c: employee.email_c || "",
         phone_c: employee.phone_c || "",
         role_c: employee.role_c || "",
         department_id_c: employee.department_id_c || "",
         hire_date_c: employee.hire_date_c || "",
         status_c: employee.status_c || "active",
+        boolean1_c: employee.boolean1_c || false,
+        boolean2_c: employee.boolean2_c || false,
       });
     }
   }, [employee]);
@@ -134,12 +138,14 @@ const handleClose = () => {
 setFormData({
       first_name_c: "",
       last_name_c: "",
-email_c: "",
+      email_c: "",
       phone_c: "",
       role_c: "",
       department_id_c: "",
       hire_date_c: "",
       status_c: "active",
+      boolean1_c: false,
+      boolean2_c: false,
     });
     setErrors({});
     onClose();
@@ -245,8 +251,25 @@ label="Department"
             >
 <option key="active" value="active">Active</option>
               <option key="inactive" value="inactive">Inactive</option>
-            </FormField>
+</FormField>
 
+            <FormField
+              label="Boolean1"
+              name="boolean1_c"
+              type="checkbox"
+              checked={formData.boolean1_c}
+              onChange={handleChange}
+              error={errors.boolean1_c}
+            />
+
+            <FormField
+              label="Boolean2"
+              name="boolean2_c"
+              type="checkbox"
+              checked={formData.boolean2_c}
+              onChange={handleChange}
+              error={errors.boolean2_c}
+            />
 
           </div>
 
