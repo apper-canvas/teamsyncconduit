@@ -50,7 +50,7 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Department</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Role</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Hire Date</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Name1</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Name1</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name4</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name5</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name6</th>
@@ -63,19 +63,6 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name17</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name19</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name20</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number7</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number8</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number9</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Phone Number</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number11</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number12</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number13</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Website</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number15</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number16</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Website</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Checkbox1</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Date1</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
                     </tr>
@@ -231,101 +218,6 @@ const handleDelete = async (employee) => {
                                 {employee.name20_c || "-"}
                             </span>
                         </td>
-<td className="py-3 px-4">
-                                <span className="text-gray-900">
-                                    {employee.number7_c || "-"}
-                                </span>
-                            </td>
-                            <td className="py-3 px-4">
-                                <div className="flex items-center">
-                                    {employee.number8_c !== null && employee.number8_c !== undefined ? <span
-                                        className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                        {employee.number8_c}
-                                    </span> : <span className="text-gray-500">-</span>}
-                                </div>
-                            </td>
-                            <td className="py-3 px-4">
-                                <div className="text-gray-900 max-w-xs">
-                                    {employee.number9_c ? <div className="whitespace-pre-wrap text-sm leading-relaxed">
-                                        {employee.number9_c.length > 100 ? `${employee.number9_c.substring(0, 100)}...` : employee.number9_c}
-                                    </div> : <span className="text-gray-500">-</span>}
-                                </div>
-                            </td>
-                            <td className="py-3 px-4">
-                                <span className="text-gray-900">
-                                    {employee.number10_c || "-"}
-                                </span>
-                            </td>
-                            <td className="py-3 px-4">
-                                <span className="text-gray-900">
-                                    {employee.number11_c || "-"}
-                                </span>
-                            </td>
-                            <td className="py-3 px-4">
-                                <span className="text-gray-900">
-                                    {employee.number12_c || "-"}
-                                </span>
-                            </td>
-                            <td className="py-3 px-4">
-                                <div className="flex items-center">
-                                    {employee.number13_c !== null && employee.number13_c !== undefined ? <span
-                                        className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                        {employee.number13_c}
-                                    </span> : <span className="text-gray-500">-</span>}
-                                </div>
-                            </td>
-                            <td className="py-3 px-4">
-                                {employee.number14_c ? <a
-                                    href={employee.number14_c.startsWith("http") ? employee.number14_c : `https://${employee.number14_c}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-blue-600 hover:text-blue-800 hover:underline">
-                                    {employee.number14_c}
-                                </a> : <span className="text-gray-500">-</span>}
-                            </td>
-                            <td className="py-3 px-4">
-                                <div className="flex items-center">
-                                    {employee.number15_c ? <>
-                                        {[1, 2, 3, 4, 5].map(star => <span
-                                            key={star}
-                                            className={`text-lg ${star <= employee.number15_c ? "text-yellow-400" : "text-gray-300"}`}>★
-                                                                                </span>)}
-                                    </> : <span className="text-gray-500">-</span>}
-                                </div>
-                            </td>
-                            <td className="py-3 px-4">
-                                <div className="flex items-center space-x-2">
-                                    {employee.number16_c ? <>
-                                        <div className="w-20 bg-gray-200 rounded-full h-2">
-                                            <div
-                                                className="bg-blue-600 h-2 rounded-full"
-                                                style={{
-                                                    width: `${parseInt(employee.number16_c) || 0}%`
-                                                }}></div>
-                                        </div>
-                                        <span className="text-sm text-gray-600">{employee.number16_c}%</span>
-                                    </> : <span className="text-gray-500">-</span>}
-                                </div>
-                            </td>
-                            <td className="py-3 px-4">
-                                {employee.name14_c ? <a
-                                    href={employee.name14_c.startsWith("http") ? employee.name14_c : `https://${employee.name14_c}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-blue-600 hover:text-blue-800 hover:underline">
-                                    {employee.name14_c}
-                                </a> : <span className="text-gray-500">-</span>}
-                            </td>
-                            <td className="py-3 px-4">
-                                <span className="text-gray-900">
-                                    {employee.checkbox1_c === true ? "Yes" : employee.checkbox1_c === false ? "No" : "-"}
-                                </span>
-                            </td>
-                            <td className="py-3 px-4">
-                                <span className="text-gray-900">
-                                    {employee.date1_c ? format(new Date(employee.date1_c), "MMM dd, yyyy") : "-"}
-                                </span>
-                            </td>
                             <td className="py-3 px-4">
                                 <StatusBadge status={employee.status_c} />
                             </td>

@@ -37,18 +37,6 @@ name1_c: "",
     name18_c: [],
     name19_c: [],
     name20_c: "",
-number7_c: "",
-number8_c: [],
-number9_c: "",
-number10_c: "",
-number11_c: "",
-number12_c: "",
-    number13_c: [],
-number14_c: "",
-number15_c: 0,
-    number16_c: 0,
-    checkbox1_c: false,
-    date1_c: ""
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -85,18 +73,6 @@ name1_c: employee.name1_c || "",
         name18_c: employee.name18_c ? employee.name18_c.split(',').filter(v => v.trim()) : [],
         name19_c: employee.name19_c ? employee.name19_c.split(',').filter(v => v.trim()) : [],
         name20_c: employee.name20_c || "",
-number7_c: employee.number7_c || "",
-number8_c: employee.number8_c ? employee.number8_c.split(',').filter(v => v.trim()) : [],
-number9_c: employee.number9_c || "",
-number10_c: employee.number10_c || "",
-number11_c: employee.number11_c || "",
-number12_c: employee.number12_c || "",
-        number13_c: employee.number13_c ? employee.number13_c.toString().split(',').filter(Boolean) : [],
-number14_c: employee.number14_c || "",
-number15_c: parseInt(employee.number15_c) || 0,
-        number16_c: parseInt(employee.number16_c) || 0,
-        checkbox1_c: employee.checkbox1_c === true || employee.checkbox1_c === "true",
-        date1_c: employee.date1_c || ""
       });
     }
   }, [employee]);
@@ -179,17 +155,7 @@ if (formData.name20_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name20_c.replace
       newErrors.name20_c = "Please enter a valid phone number";
 }
     
-if (formData.number7_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.number7_c)) newErrors.number7_c = "Please enter a valid email address";
-if (formData.number10_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.number10_c.replace(/[\s\-()]/g, ''))) {
-      newErrors.number10_c = "Please enter a valid phone number";
-    }
-// number12_c is now a radio field, no number validation needed
-// number12_c is now a radio field, no number validation needed
-    if (Array.isArray(formData.number13_c) && formData.number13_c.some(val => isNaN(val))) newErrors.number13_c = "Number13 values must be valid numbers";
-if (formData.number14_c && !/^https?:\/\/.+\..+/.test(formData.number14_c)) newErrors.number14_c = "Please enter a valid website URL (e.g., https://example.com)";
-if (formData.number15_c !== 0 && (formData.number15_c < 1 || formData.number15_c > 5)) newErrors.number15_c = "Rating must be between 1 and 5";
-    if (formData.number16_c !== "" && isNaN(formData.number16_c)) newErrors.number16_c = "Number16 must be a valid number";
-    setErrors(newErrors);
+setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
@@ -216,11 +182,8 @@ const submitData = {
         // Email fields - ensure proper email format
         email_c: formData.email_c && formData.email_c.includes('@') ? formData.email_c : "",
         name7_c: formData.name7_c && formData.name7_c.includes('@') ? formData.name7_c : "",
-        number7_c: formData.number7_c && formData.number7_c.includes('@') ? formData.number7_c : "",
-        
-        // Boolean fields
+// Boolean fields
         name2_c: Boolean(formData.name2_c),
-checkbox1_c: Boolean(formData.checkbox1_c),
         
         // Currency/Decimal fields
         name3_c: parseFloat(formData.name3_c) || 0,
@@ -228,12 +191,6 @@ checkbox1_c: Boolean(formData.checkbox1_c),
         
         // Number fields
         name15_c: parseInt(formData.name15_c) || 0,
-        number8_c: parseInt(formData.number8_c) || 0,
-        number11_c: parseInt(formData.number11_c) || 0,
-        number12_c: parseInt(formData.number12_c) || 0,
-        number13_c: parseInt(formData.number13_c) || 0,
-        number16_c: parseInt(formData.number16_c) || 0,
-        date1_c: parseInt(formData.date1_c) || 0,
         
         // MultiPicklist and Tag fields - join arrays
         name8_c: Array.isArray(formData.name8_c) ? formData.name8_c.join(',') : formData.name8_c || "",
@@ -249,12 +206,8 @@ checkbox1_c: Boolean(formData.checkbox1_c),
         name11_c: formData.name11_c || "",
         name12_c: formData.name12_c || "",
         name14_c: formData.name14_c || "",
-        name16_c: formData.name16_c || "",
-        name20_c: formData.name20_c || "",
-        number9_c: formData.number9_c || "",
-        number10_c: formData.number10_c || "",
-        number14_c: formData.number14_c || "",
-        number15_c: formData.number15_c || ""
+name16_c: formData.name16_c || "",
+        name20_c: formData.name20_c || ""
       };
       if (employee) {
         await employeeService.update(employee.Id, submitData);
@@ -302,19 +255,7 @@ name1_c: "",
       name18_c: [],
       name19_c: [],
       name20_c: "",
-number7_c: "",
-number8_c: [],
-number9_c: "",
-number10_c: "",
-number11_c: "",
-number12_c: "",
-      number13_c: [],
-number14_c: "",
-number15_c: 0,
-      number16_c: 0,
-      checkbox1_c: false,
-      date1_c: ""
-    });
+});
     setErrors({});
     onClose();
   };
@@ -728,196 +669,6 @@ placeholder="Enter phone number"
             />
 
 
-<FormField
-              label="Number7"
-              name="number7_c"
-              type="email"
-              value={formData.number7_c}
-              onChange={handleChange}
-              error={errors.number7_c}
-              placeholder="Enter email address"
-            />
-
-<div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">Number8</label>
-              <div className="flex flex-wrap gap-2">
-                {['option1', 'option2', 'option3', 'value1', 'value2', 'sample'].map(option => (
-                  <button
-                    key={option}
-                    type="button"
-                    onClick={() => handleMultiSelectChange('number8_c', option)}
-                    className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-                      formData.number8_c.includes(option)
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    {option}
-                  </button>
-                ))}
-              </div>
-              {errors.number8_c && (
-                <span className="text-red-500 text-sm">{errors.number8_c}</span>
-              )}
-            </div>
-
-<FormField
-              label="Number9"
-              name="number9_c"
-              type="textarea"
-              value={formData.number9_c}
-              onChange={handleChange}
-              error={errors.number9_c}
-              placeholder="Enter multiline text for number9"
-            />
-
-<FormField
-              label="Number10"
-              name="number10_c"
-              type="tel"
-              value={formData.number10_c}
-              onChange={handleChange}
-              error={errors.number10_c}
-              placeholder="Enter phone number"
-            />
-
-<FormField
-              label="Number11"
-              name="number11_c"
-              type="select"
-              value={formData.number11_c}
-              onChange={handleChange}
-              error={errors.number11_c}
-            >
-              <option value="">Select Number11</option>
-              <option value="Option A">Option A</option>
-              <option value="Option B">Option B</option>
-              <option value="Option C">Option C</option>
-              <option value="Option D">Option D</option>
-            </FormField>
-
-<div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">Number12</label>
-              <div className="flex flex-col space-y-2">
-                {['Option 1', 'Option 2', 'Option 3', 'Option 4'].map(option => (
-                  <label key={option} className="flex items-center space-x-2">
-                    <input
-                      type="radio"
-                      name="number12_c"
-                      value={option}
-                      checked={formData.number12_c === option}
-                      onChange={handleChange}
-                      className="w-4 h-4 text-primary bg-gray-100 border-gray-300 focus:ring-primary focus:ring-2"
-                    />
-                    <span className="text-sm text-gray-700">{option}</span>
-                  </label>
-                ))}
-              </div>
-              {errors.number12_c && (
-                <span className="text-red-500 text-sm">{errors.number12_c}</span>
-              )}
-            </div>
-
-<div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">Number13</label>
-              <div className="flex flex-wrap gap-2">
-                {['tag1', 'tag2', 'tag3', 'option1', 'option2', 'sample', 'demo', 'test'].map(option => (
-                  <button
-                    key={option}
-                    type="button"
-                    onClick={() => handleMultiSelectChange('number13_c', option)}
-                    className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-                      formData.number13_c.includes(option)
-                        ? 'bg-red-600 text-white'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    {option}
-                  </button>
-                ))}
-              </div>
-              {errors.number13_c && (
-                <span className="text-red-500 text-sm">{errors.number13_c}</span>
-              )}
-            </div>
-
-<FormField
-              label="Website"
-              name="number14_c"
-              type="url"
-              value={formData.number14_c}
-              onChange={handleChange}
-              error={errors.number14_c}
-              placeholder="Enter website URL (e.g., https://example.com)"
-            />
-
-<div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">Number15 (Rating)</label>
-              <div className="flex items-center space-x-1">
-                {[1, 2, 3, 4, 5].map(star => (
-                  <button
-                    key={star}
-                    type="button"
-                    onClick={() => setFormData(prev => ({ ...prev, number15_c: star }))}
-                    className={`text-2xl transition-colors hover:scale-110 ${
-                      star <= formData.number15_c ? 'text-yellow-400' : 'text-gray-300 hover:text-yellow-200'
-                    }`}
-                  >
-                    ★
-                  </button>
-                ))}
-                {formData.number15_c > 0 && (
-                  <button
-                    type="button"
-                    onClick={() => setFormData(prev => ({ ...prev, number15_c: 0 }))}
-                    className="ml-2 text-sm text-gray-500 hover:text-gray-700"
-                  >
-                    Clear
-                  </button>
-                )}
-              </div>
-              {errors.number15_c && (
-                <span className="text-red-500 text-sm">{errors.number15_c}</span>
-              )}
-            </div>
-
-<FormField
-              label="Number16 (Range)"
-              name="number16_c"
-              type="range"
-              value={formData.number16_c}
-              onChange={handleChange}
-              error={errors.number16_c}
-              min="0"
-max="100"
-              placeholder="Select range value (0-100)"
-            />
-
-            <div className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id="checkbox1_c"
-                name="checkbox1_c"
-                checked={formData.checkbox1_c}
-                onChange={handleChange}
-                className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2"
-              />
-              <label htmlFor="checkbox1_c" className="text-sm font-medium text-gray-700">
-                Checkbox1
-              </label>
-              {errors.checkbox1_c && (
-                <span className="text-red-500 text-sm">{errors.checkbox1_c}</span>
-)}
-            </div>
-
-            <FormField
-              label="Date1"
-              name="date1_c"
-              type="date"
-              value={formData.date1_c}
-              onChange={handleChange}
-error={errors.date1_c}
-            />
           </div>
 
           <div className="flex justify-end space-x-4 pt-4 border-t border-gray-200">
