@@ -16,10 +16,11 @@ const [formData, setFormData] = useState({
     role_c: "",
     department_id_c: "",
     hire_date_c: "",
-status_c: "active",
+    status_c: "active",
     checkbox1_c: false,
     boolean1_c: "",
     boolean2_c: false,
+    date1_c: "",
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -35,10 +36,11 @@ setFormData({
         role_c: employee.role_c || "",
         department_id_c: employee.department_id_c || "",
         hire_date_c: employee.hire_date_c || "",
-status_c: employee.status_c || "active",
+        status_c: employee.status_c || "active",
         checkbox1_c: employee.checkbox1_c || false,
         boolean1_c: employee.boolean1_c || "",
         boolean2_c: employee.boolean2_c || false,
+        date1_c: employee.date1_c || "",
       });
     }
   }, [employee]);
@@ -115,13 +117,14 @@ const handleSubmit = async (e) => {
     
 try {
       // Format dates properly for database submission
-      const submitData = {
+const submitData = {
         ...formData,
         // Email fields - ensure proper email format
         email_c: formData.email_c && formData.email_c.includes('@') ? formData.email_c : "",
         // Date fields - ensure proper ISO format (YYYY-MM-DD)
         hire_date_c: formData.hire_date_c || "",
         boolean1_c: formData.boolean1_c || "",
+        date1_c: formData.date1_c || "",
       };
       if (employee) {
         await employeeService.update(employee.Id, submitData);
@@ -148,10 +151,11 @@ setFormData({
       role_c: "",
       department_id_c: "",
       hire_date_c: "",
-status_c: "active",
+      status_c: "active",
       checkbox1_c: false,
       boolean1_c: "",
       boolean2_c: false,
+      date1_c: "",
     });
     setErrors({});
     onClose();
@@ -276,13 +280,22 @@ label="Department"
               error={errors.boolean1_c}
             />
 
-            <FormField
+<FormField
               label="Boolean2"
               name="boolean2_c"
               type="checkbox"
               checked={formData.boolean2_c}
               onChange={handleChange}
               error={errors.boolean2_c}
+            />
+
+            <FormField
+              label="Date1"
+              name="date1_c"
+              type="date"
+              value={formData.date1_c}
+              onChange={handleChange}
+              error={errors.date1_c}
             />
           </div>
 

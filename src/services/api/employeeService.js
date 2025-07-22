@@ -38,6 +38,7 @@ fields: [
           { field: { Name: "checkbox1_c" } },
           { field: { Name: "boolean1_c" } },
           { field: { Name: "boolean2_c" } },
+          { field: { Name: "date1_c" } },
           { field: { Name: "CreatedOn" } },
           { field: { Name: "CreatedBy" } },
           { field: { Name: "ModifiedOn" } },
@@ -105,6 +106,7 @@ fields: [
           { field: { Name: "checkbox1_c" } },
           { field: { Name: "boolean1_c" } },
           { field: { Name: "boolean2_c" } },
+          { field: { Name: "date1_c" } },
           { field: { Name: "CreatedOn" } },
           { field: { Name: "CreatedBy" } },
           { field: { Name: "ModifiedOn" } },
@@ -144,7 +146,7 @@ const updateableFields = {
         last_name_c: employeeData.last_name_c,
         email_c: employeeData.email_c,
         phone_c: employeeData.phone_c,
-role_c: employeeData.role_c,
+        role_c: employeeData.role_c,
         hire_date_c: employeeData.hire_date_c || "",
         status_c: employeeData.status_c,
         avatar_c: employeeData.avatar_c,
@@ -152,6 +154,7 @@ role_c: employeeData.role_c,
         checkbox1_c: employeeData.checkbox1_c,
         boolean1_c: employeeData.boolean1_c || "",
         boolean2_c: employeeData.boolean2_c,
+        date1_c: employeeData.date1_c || "",
       };
 
       // Remove undefined fields
@@ -221,7 +224,7 @@ const updateableFields = {
         last_name_c: employeeData.last_name_c,
         email_c: employeeData.email_c,
         phone_c: employeeData.phone_c,
-role_c: employeeData.role_c,
+        role_c: employeeData.role_c,
         hire_date_c: employeeData.hire_date_c || "",
         status_c: employeeData.status_c,
         avatar_c: employeeData.avatar_c,
@@ -229,6 +232,7 @@ role_c: employeeData.role_c,
         checkbox1_c: employeeData.checkbox1_c,
         boolean1_c: employeeData.boolean1_c || "",
         boolean2_c: employeeData.boolean2_c,
+        date1_c: employeeData.date1_c || "",
       };
 
       // Remove undefined fields (except Id)
