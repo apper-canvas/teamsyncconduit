@@ -17,6 +17,7 @@ const [formData, setFormData] = useState({
     department_id_c: "",
     hire_date_c: "",
     status_c: "active",
+    checkbox1_c: false,
     boolean1_c: false,
     boolean2_c: false,
   });
@@ -35,6 +36,7 @@ setFormData({
         department_id_c: employee.department_id_c || "",
         hire_date_c: employee.hire_date_c || "",
         status_c: employee.status_c || "active",
+        checkbox1_c: employee.checkbox1_c || false,
         boolean1_c: employee.boolean1_c || false,
         boolean2_c: employee.boolean2_c || false,
       });
@@ -144,6 +146,7 @@ setFormData({
       department_id_c: "",
       hire_date_c: "",
       status_c: "active",
+      checkbox1_c: false,
       boolean1_c: false,
       boolean2_c: false,
     });
@@ -252,6 +255,14 @@ label="Department"
 <option key="active" value="active">Active</option>
               <option key="inactive" value="inactive">Inactive</option>
 </FormField>
+<FormField
+              label="Checkbox1"
+              name="checkbox1_c"
+              type="checkbox"
+              checked={formData.checkbox1_c}
+              onChange={handleChange}
+              error={errors.checkbox1_c}
+            />
 
             <FormField
               label="Boolean1"
@@ -270,7 +281,6 @@ label="Department"
               onChange={handleChange}
               error={errors.boolean2_c}
             />
-
           </div>
 
           <div className="flex justify-end space-x-4 pt-4 border-t border-gray-200">

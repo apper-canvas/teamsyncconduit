@@ -35,6 +35,7 @@ fields: [
             field: { Name: "department_id_c" },
             referenceField: { field: { Name: "Name" } }
           },
+          { field: { Name: "checkbox1_c" } },
           { field: { Name: "boolean1_c" } },
           { field: { Name: "boolean2_c" } },
           { field: { Name: "CreatedOn" } },
@@ -101,6 +102,7 @@ fields: [
             field: { Name: "department_id_c" },
             referenceField: { field: { Name: "Name" } }
           },
+          { field: { Name: "checkbox1_c" } },
           { field: { Name: "boolean1_c" } },
           { field: { Name: "boolean2_c" } },
           { field: { Name: "CreatedOn" } },
@@ -147,6 +149,7 @@ const updateableFields = {
         status_c: employeeData.status_c,
         avatar_c: employeeData.avatar_c,
         department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
+        checkbox1_c: employeeData.checkbox1_c,
         boolean1_c: employeeData.boolean1_c,
         boolean2_c: employeeData.boolean2_c,
       };
@@ -223,6 +226,7 @@ const updateableFields = {
         status_c: employeeData.status_c,
         avatar_c: employeeData.avatar_c,
         department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
+        checkbox1_c: employeeData.checkbox1_c,
         boolean1_c: employeeData.boolean1_c,
         boolean2_c: employeeData.boolean2_c,
       };
