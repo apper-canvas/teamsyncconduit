@@ -135,9 +135,9 @@ const handleDelete = async (employee) => {
                             </span>
                         </td>
                         <td className="py-3 px-4">
-                            <div className="flex flex-wrap gap-1">
-                                {employee.name8_c && employee.name8_c.split(",").filter(v => v.trim()).map((value, index) => <span
-                                    key={index}
+<div className="flex flex-wrap gap-1">
+                                {employee.name8_c && employee.name8_c.split(",").filter(v => v.trim()).map((value) => <span
+                                    key={`${employee.Id}-${value.trim()}`}
                                     className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                                     {value.trim()}
                                 </span>)}
@@ -151,8 +151,8 @@ const handleDelete = async (employee) => {
                         </td>
                         <td className="py-3 px-4">
                             <div className="flex flex-wrap gap-1">
-                                {employee.name13_c && employee.name13_c.split(",").filter(v => v.trim()).map((value, index) => <span
-                                    key={index}
+{employee.name13_c && employee.name13_c.split(",").filter(v => v.trim()).map((value) => <span
+                                    key={`${employee.Id}-${value.trim()}`}
                                     className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
                                     {value.trim()}
                                 </span>)}
@@ -160,10 +160,10 @@ const handleDelete = async (employee) => {
                             </div>
                         </td>
                         <td className="py-3 px-4">
-                            <div className="flex items-center">
+<div className="flex items-center">
                                 {employee.name15_c ? <>
                                     {[1, 2, 3, 4, 5].map(star => <span
-                                        key={star}
+                                        key={`${employee.Id}-star-${star}`}
                                         className={`text-lg ${star <= employee.name15_c ? "text-yellow-400" : "text-gray-300"}`}>★
                                                                                                                                                     </span>)}
                                 </> : <span className="text-gray-500">-</span>}
@@ -185,8 +185,8 @@ const handleDelete = async (employee) => {
                         </td>
                         <td className="py-3 px-4">
                             <div className="flex flex-wrap gap-1">
-                                {employee.name17_c && employee.name17_c.split(",").filter(v => v.trim()).map((value, index) => <span
-                                    key={index}
+{employee.name17_c && employee.name17_c.split(",").filter(v => v.trim()).map((value) => <span
+                                    key={`${employee.Id}-${value.trim()}`}
                                     className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
                                     {value.trim()}
                                 </span>)}
@@ -195,8 +195,8 @@ const handleDelete = async (employee) => {
                         </td>
                         <td className="py-3 px-4">
                             <div className="flex flex-wrap gap-1">
-                                {employee.name18_c && employee.name18_c.split(",").filter(v => v.trim()).map((value, index) => <span
-                                    key={index}
+{employee.name18_c && employee.name18_c.split(",").filter(v => v.trim()).map((value) => <span
+                                    key={`${employee.Id}-${value.trim()}`}
                                     className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
                                     {value.trim()}
                                 </span>)}
@@ -205,8 +205,8 @@ const handleDelete = async (employee) => {
                         </td>
                         <td className="py-3 px-4">
                             <div className="flex flex-wrap gap-1">
-                                {employee.name19_c && employee.name19_c.split(",").filter(v => v.trim()).map((value, index) => <span
-                                    key={index}
+{employee.name19_c && employee.name19_c.split(",").filter(v => v.trim()).map((value) => <span
+                                    key={`${employee.Id}-${value.trim()}`}
                                     className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
                                     {value.trim()}
                                 </span>)}
