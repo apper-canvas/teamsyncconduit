@@ -144,13 +144,13 @@ const updateableFields = {
         last_name_c: employeeData.last_name_c,
         email_c: employeeData.email_c,
         phone_c: employeeData.phone_c,
-        role_c: employeeData.role_c,
-        hire_date_c: employeeData.hire_date_c,
+role_c: employeeData.role_c,
+        hire_date_c: employeeData.hire_date_c || "",
         status_c: employeeData.status_c,
         avatar_c: employeeData.avatar_c,
         department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
         checkbox1_c: employeeData.checkbox1_c,
-        boolean1_c: employeeData.boolean1_c,
+        boolean1_c: employeeData.boolean1_c || "",
         boolean2_c: employeeData.boolean2_c,
       };
 
@@ -221,13 +221,13 @@ const updateableFields = {
         last_name_c: employeeData.last_name_c,
         email_c: employeeData.email_c,
         phone_c: employeeData.phone_c,
-        role_c: employeeData.role_c,
-        hire_date_c: employeeData.hire_date_c,
+role_c: employeeData.role_c,
+        hire_date_c: employeeData.hire_date_c || "",
         status_c: employeeData.status_c,
         avatar_c: employeeData.avatar_c,
         department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
         checkbox1_c: employeeData.checkbox1_c,
-        boolean1_c: employeeData.boolean1_c,
+        boolean1_c: employeeData.boolean1_c || "",
         boolean2_c: employeeData.boolean2_c,
       };
 

@@ -113,12 +113,15 @@ const handleSubmit = async (e) => {
 
     setLoading(true);
     
-    try {
-      // Ensure name1_c is sent as an integer and name2_c as Boolean
-const submitData = {
-...formData,
-// Email fields - ensure proper email format
+try {
+      // Format dates properly for database submission
+      const submitData = {
+        ...formData,
+        // Email fields - ensure proper email format
         email_c: formData.email_c && formData.email_c.includes('@') ? formData.email_c : "",
+        // Date fields - ensure proper ISO format (YYYY-MM-DD)
+        hire_date_c: formData.hire_date_c || "",
+        boolean1_c: formData.boolean1_c || "",
       };
       if (employee) {
         await employeeService.update(employee.Id, submitData);
