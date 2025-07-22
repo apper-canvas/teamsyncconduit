@@ -50,20 +50,7 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Department</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Role</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Hire Date</th>
-<th className="text-left py-3 px-4 font-semibold text-gray-700">Name1</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Name4</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Name5</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Name6</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Name7</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Name8</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Name12</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Name13</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Name15</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Name16</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Name17</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Name19</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Name20</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
                     </tr>
                 </thead>
@@ -107,115 +94,6 @@ const handleDelete = async (employee) => {
                         <td className="py-3 px-4">
                             <span className="text-gray-900">
                                 {format(new Date(employee.hire_date_c), "MMM dd, yyyy")}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.name1_c ? format(new Date(employee.name1_c), "MMM dd, yyyy") : "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.name4_c ? format(new Date(employee.name4_c), "MMM dd, yyyy") : "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.name5_c ? format(new Date(employee.name5_c), "MMM dd, yyyy HH:mm") : "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.name6_c ? parseFloat(employee.name6_c).toFixed(2) : "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.name7_c || "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-<div className="flex flex-wrap gap-1">
-{employee.name8_c && employee.name8_c.split(",").filter(v => v.trim()).map((value) => <span
-                                    key={`${employee.Id}-name8-${value.trim()}`}
-                                    className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                    {value.trim()}
-                                </span>)}
-                                {(!employee.name8_c || employee.name8_c.split(",").filter(v => v.trim()).length === 0) && <span className="text-gray-500">-</span>}
-                            </div>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.name12_c || "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <div className="flex flex-wrap gap-1">
-{employee.name13_c && employee.name13_c.split(",").filter(v => v.trim()).map((value, index) => <span
-                                    key={`${employee.Id}-name13-${index}-${value.trim()}`}
-                                    className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                    {value.trim()}
-                                </span>)}
-                                {(!employee.name13_c || employee.name13_c.split(",").filter(v => v.trim()).length === 0) && <span className="text-gray-500">-</span>}
-                            </div>
-                        </td>
-                        <td className="py-3 px-4">
-<div className="flex items-center">
-                                {employee.name15_c ? <>
-                                    {[1, 2, 3, 4, 5].map(star => <span
-                                        key={`${employee.Id}-star-${star}`}
-                                        className={`text-lg ${star <= employee.name15_c ? "text-yellow-400" : "text-gray-300"}`}>★
-                                                                                                                                                    </span>)}
-                                </> : <span className="text-gray-500">-</span>}
-                            </div>
-                        </td>
-                        <td className="py-3 px-4">
-                            <div className="flex items-center space-x-2">
-                                {employee.name16_c ? <>
-                                    <div className="w-20 bg-gray-200 rounded-full h-2">
-                                        <div
-                                            className="bg-blue-600 h-2 rounded-full"
-                                            style={{
-                                                width: `${parseInt(employee.name16_c) || 0}%`
-                                            }}></div>
-                                    </div>
-                                    <span className="text-sm text-gray-600">{employee.name16_c}</span>
-                                </> : <span className="text-gray-500">-</span>}
-                            </div>
-                        </td>
-                        <td className="py-3 px-4">
-                            <div className="flex flex-wrap gap-1">
-{employee.name17_c && employee.name17_c.split(",").filter(v => v.trim()).map((value, index) => <span
-                                    key={`${employee.Id}-name17-${index}-${value.trim()}`}
-                                    className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                    {value.trim()}
-                                </span>)}
-                                {(!employee.name17_c || employee.name17_c.split(",").filter(v => v.trim()).length === 0) && <span className="text-gray-500">-</span>}
-                            </div>
-                        </td>
-                        <td className="py-3 px-4">
-                            <div className="flex flex-wrap gap-1">
-{employee.name18_c && employee.name18_c.split(",").filter(v => v.trim()).map((value, index) => <span
-                                    key={`${employee.Id}-name18-${index}-${value.trim()}`}
-                                    className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
-                                    {value.trim()}
-                                </span>)}
-                                {(!employee.name18_c || employee.name18_c.split(",").filter(v => v.trim()).length === 0) && <span className="text-gray-500">-</span>}
-                            </div>
-                        </td>
-                        <td className="py-3 px-4">
-                            <div className="flex flex-wrap gap-1">
-{employee.name19_c && employee.name19_c.split(",").filter(v => v.trim()).map((value, index) => <span
-                                    key={`${employee.Id}-name19-${index}-${value.trim()}`}
-                                    className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-teal-100 text-teal-800">
-                                    {value.trim()}
-                                </span>)}
-                                {(!employee.name19_c || employee.name19_c.split(",").filter(v => v.trim()).length === 0) && <span className="text-gray-500">-</span>}
-                            </div>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.name20_c || "-"}
                             </span>
                         </td>
                             <td className="py-3 px-4">
