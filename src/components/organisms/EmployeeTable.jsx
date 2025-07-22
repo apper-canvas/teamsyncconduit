@@ -39,13 +39,13 @@ const handleDelete = async (employee) => {
     <CardHeader>
         <CardTitle className="flex items-center">
             <ApperIcon name="Users" size={20} className="mr-2" />Employee Directory
-                                </CardTitle>
+                                            </CardTitle>
     </CardHeader>
     <CardContent>
         <div className="overflow-x-auto">
             <table className="w-full table-auto">
                 <thead>
-<tr className="bg-gradient-to-r from-gray-50 to-gray-100">
+                    <tr className="bg-gradient-to-r from-gray-50 to-gray-100">
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Employee</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Department</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Role</th>
@@ -63,11 +63,6 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name17</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name19</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Name20</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number2</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number3</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number4</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number5</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Number6</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number7</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number8</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Number9</th>
@@ -183,7 +178,7 @@ const handleDelete = async (employee) => {
                                     {[1, 2, 3, 4, 5].map(star => <span
                                         key={star}
                                         className={`text-lg ${star <= employee.name15_c ? "text-yellow-400" : "text-gray-300"}`}>★
-                                                                                                            </span>)}
+                                                                                                                                                    </span>)}
                                 </> : <span className="text-gray-500">-</span>}
                             </div>
                         </td>
@@ -237,151 +232,124 @@ const handleDelete = async (employee) => {
                             </span>
                         </td>
                         <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.number2_c === true ? "Yes" : employee.number2_c === false ? "No" : "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.number3_c ? `$${parseFloat(employee.number3_c).toLocaleString("en-US", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-})}` : "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.number4_c ? format(new Date(employee.number4_c), "MMM dd, yyyy") : "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.number5_c || "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.number6_c ? parseFloat(employee.number6_c).toFixed(2) : "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.number7_c || "-"}
-                            </span>
-                        </td>
-<td className="py-3 px-4">
-                            <div className="flex items-center">
-                                {employee.number8_c !== null && employee.number8_c !== undefined ? <span
-                                    className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                    {employee.number8_c}
-                                </span> : <span className="text-gray-500">-</span>}
-                            </div>
-                        </td>
-                        <td className="py-3 px-4">
-                            <div className="text-gray-900 max-w-xs">
-                                {employee.number9_c ? <div className="whitespace-pre-wrap text-sm leading-relaxed">
-                                    {employee.number9_c.length > 100 ? `${employee.number9_c.substring(0, 100)}...` : employee.number9_c}
-                                </div> : <span className="text-gray-500">-</span>}
-                            </div>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.number10_c || "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.number11_c || "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.number12_c || "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <div className="flex items-center">
-                                {employee.number13_c !== null && employee.number13_c !== undefined ? <span
-                                    className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                    {employee.number13_c}
-                                </span> : <span className="text-gray-500">-</span>}
-                            </div>
-                        </td>
-                        <td className="py-3 px-4">
-                            {employee.number14_c ? <a
-                                href={employee.number14_c.startsWith("http") ? employee.number14_c : `https://${employee.number14_c}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-600 hover:text-blue-800 hover:underline">
-                                {employee.number14_c}
-                            </a> : <span className="text-gray-500">-</span>}
-                        </td>
-                        <td className="py-3 px-4">
-                            <div className="flex items-center">
-                                {employee.number15_c ? <>
-                                    {[1, 2, 3, 4, 5].map(star => <span
-                                        key={star}
-                                        className={`text-lg ${star <= employee.number15_c ? "text-yellow-400" : "text-gray-300"}`}>★
-                                    </span>)}
-                                </> : <span className="text-gray-500">-</span>}
-                            </div>
-                        </td>
-                        <td className="py-3 px-4">
-                            <div className="flex items-center space-x-2">
-                                {employee.number16_c ? <>
-                                    <div className="w-20 bg-gray-200 rounded-full h-2">
-                                        <div
-                                            className="bg-blue-600 h-2 rounded-full"
-                                            style={{
-                                                width: `${parseInt(employee.number16_c) || 0}%`
-                                            }}></div>
-                                    </div>
-                                    <span className="text-sm text-gray-600">{employee.number16_c}%</span>
-                                </> : <span className="text-gray-500">-</span>}
-                            </div>
-                        </td>
-                        <td className="py-3 px-4">
-                            {employee.name14_c ? <a
-                                href={employee.name14_c.startsWith("http") ? employee.name14_c : `https://${employee.name14_c}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-blue-600 hover:text-blue-800 hover:underline">
-                                {employee.name14_c}
-                            </a> : <span className="text-gray-500">-</span>}
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.checkbox1_c === true ? "Yes" : employee.checkbox1_c === false ? "No" : "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.date1_c ? format(new Date(employee.date1_c), "MMM dd, yyyy") : "-"}
-                            </span>
-                        </td>
-                        <td className="py-3 px-4">
-                            <StatusBadge status={employee.status_c} />
-                        </td>
-                        <td className="py-3 px-4">
-                            <div className="flex items-center space-x-2">
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={() => onEdit(employee)}
-                                    className="hover:bg-blue-50 hover:text-blue-600">
-                                    <ApperIcon name="Edit" size={16} />
-                                </Button>
-                                <Button
-                                    variant="ghost"
-                                    size="sm"
-                                    onClick={() => handleDelete(employee)}
-                                    disabled={deletingId === employee.Id}
-                                    className="hover:bg-red-50 hover:text-red-600">
-                                    {deletingId === employee.Id ? <ApperIcon name="Loader2" size={16} className="animate-spin" /> : <ApperIcon name="Trash2" size={16} />}
-                                </Button>
-                            </div>
-                        </td>
-                    </motion.tr>)}
+                            <td className="py-3 px-4">
+                                <span className="text-gray-900">
+                                    {employee.number7_c || "-"}
+                                </span>
+                            </td>
+                            <td className="py-3 px-4">
+                                <div className="flex items-center">
+                                    {employee.number8_c !== null && employee.number8_c !== undefined ? <span
+                                        className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                        {employee.number8_c}
+                                    </span> : <span className="text-gray-500">-</span>}
+                                </div>
+                            </td>
+                            <td className="py-3 px-4">
+                                <div className="text-gray-900 max-w-xs">
+                                    {employee.number9_c ? <div className="whitespace-pre-wrap text-sm leading-relaxed">
+                                        {employee.number9_c.length > 100 ? `${employee.number9_c.substring(0, 100)}...` : employee.number9_c}
+                                    </div> : <span className="text-gray-500">-</span>}
+                                </div>
+                            </td>
+                            <td className="py-3 px-4">
+                                <span className="text-gray-900">
+                                    {employee.number10_c || "-"}
+                                </span>
+                            </td>
+                            <td className="py-3 px-4">
+                                <span className="text-gray-900">
+                                    {employee.number11_c || "-"}
+                                </span>
+                            </td>
+                            <td className="py-3 px-4">
+                                <span className="text-gray-900">
+                                    {employee.number12_c || "-"}
+                                </span>
+                            </td>
+                            <td className="py-3 px-4">
+                                <div className="flex items-center">
+                                    {employee.number13_c !== null && employee.number13_c !== undefined ? <span
+                                        className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                        {employee.number13_c}
+                                    </span> : <span className="text-gray-500">-</span>}
+                                </div>
+                            </td>
+                            <td className="py-3 px-4">
+                                {employee.number14_c ? <a
+                                    href={employee.number14_c.startsWith("http") ? employee.number14_c : `https://${employee.number14_c}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-600 hover:text-blue-800 hover:underline">
+                                    {employee.number14_c}
+                                </a> : <span className="text-gray-500">-</span>}
+                            </td>
+                            <td className="py-3 px-4">
+                                <div className="flex items-center">
+                                    {employee.number15_c ? <>
+                                        {[1, 2, 3, 4, 5].map(star => <span
+                                            key={star}
+                                            className={`text-lg ${star <= employee.number15_c ? "text-yellow-400" : "text-gray-300"}`}>★
+                                                                                </span>)}
+                                    </> : <span className="text-gray-500">-</span>}
+                                </div>
+                            </td>
+                            <td className="py-3 px-4">
+                                <div className="flex items-center space-x-2">
+                                    {employee.number16_c ? <>
+                                        <div className="w-20 bg-gray-200 rounded-full h-2">
+                                            <div
+                                                className="bg-blue-600 h-2 rounded-full"
+                                                style={{
+                                                    width: `${parseInt(employee.number16_c) || 0}%`
+                                                }}></div>
+                                        </div>
+                                        <span className="text-sm text-gray-600">{employee.number16_c}%</span>
+                                    </> : <span className="text-gray-500">-</span>}
+                                </div>
+                            </td>
+                            <td className="py-3 px-4">
+                                {employee.name14_c ? <a
+                                    href={employee.name14_c.startsWith("http") ? employee.name14_c : `https://${employee.name14_c}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-blue-600 hover:text-blue-800 hover:underline">
+                                    {employee.name14_c}
+                                </a> : <span className="text-gray-500">-</span>}
+                            </td>
+                            <td className="py-3 px-4">
+                                <span className="text-gray-900">
+                                    {employee.checkbox1_c === true ? "Yes" : employee.checkbox1_c === false ? "No" : "-"}
+                                </span>
+                            </td>
+                            <td className="py-3 px-4">
+                                <span className="text-gray-900">
+                                    {employee.date1_c ? format(new Date(employee.date1_c), "MMM dd, yyyy") : "-"}
+                                </span>
+                            </td>
+                            <td className="py-3 px-4">
+                                <StatusBadge status={employee.status_c} />
+                            </td>
+                            <td className="py-3 px-4">
+                                <div className="flex items-center space-x-2">
+                                    <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => onEdit(employee)}
+                                        className="hover:bg-blue-50 hover:text-blue-600">
+                                        <ApperIcon name="Edit" size={16} />
+                                    </Button>
+                                    <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => handleDelete(employee)}
+                                        disabled={deletingId === employee.Id}
+                                        className="hover:bg-red-50 hover:text-red-600">
+                                        {deletingId === employee.Id ? <ApperIcon name="Loader2" size={16} className="animate-spin" /> : <ApperIcon name="Trash2" size={16} />}
+                                    </Button>
+                                </div>
+                            </td>
+                        </td></motion.tr>)}
                 </tbody>
             </table>
         </div>

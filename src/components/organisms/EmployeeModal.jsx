@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "react-toastify";
-import employeeService from "@/services/api/employeeService";
 import ApperIcon from "@/components/ApperIcon";
 import FormField from "@/components/molecules/FormField";
 import Select from "@/components/atoms/Select";
 import Button from "@/components/atoms/Button";
+import employeeService from "@/services/api/employeeService";
 import departmentService from "@/services/api/departmentService";
 const EmployeeModal = ({ isOpen, onClose, employee, onSuccess }) => {
 const [formData, setFormData] = useState({
@@ -37,11 +37,6 @@ name1_c: "",
     name18_c: [],
     name19_c: [],
     name20_c: "",
-    number2_c: false,
-number3_c: 0,
-    number4_c: "",
-    number5_c: "",
-number6_c: 0.00,
 number7_c: "",
 number8_c: [],
 number9_c: "",
@@ -90,11 +85,6 @@ name1_c: employee.name1_c || "",
         name18_c: employee.name18_c ? employee.name18_c.split(',').filter(v => v.trim()) : [],
         name19_c: employee.name19_c ? employee.name19_c.split(',').filter(v => v.trim()) : [],
         name20_c: employee.name20_c || "",
-        number2_c: employee.number2_c === true || employee.number2_c === "true",
-number3_c: parseFloat(employee.number3_c) || 0,
-        number4_c: employee.number4_c || "",
-number5_c: employee.number5_c || "",
-number6_c: parseFloat(employee.number6_c) || 0.00,
 number7_c: employee.number7_c || "",
 number8_c: employee.number8_c ? employee.number8_c.split(',').filter(v => v.trim()) : [],
 number9_c: employee.number9_c || "",
@@ -189,10 +179,6 @@ if (formData.name20_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.name20_c.replace
       newErrors.name20_c = "Please enter a valid phone number";
 }
     
-if (formData.number3_c !== "" && (isNaN(formData.number3_c) || isNaN(parseFloat(formData.number3_c)))) newErrors.number3_c = "Number3 must be a valid currency amount";
-    // number4_c is now a date field, no number validation needed
-    // number5_c is now a datetime field, no number validation needed
-if (formData.number6_c !== "" && (isNaN(formData.number6_c) || isNaN(parseFloat(formData.number6_c)))) newErrors.number6_c = "Number6 must be a valid decimal number";
 if (formData.number7_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.number7_c)) newErrors.number7_c = "Please enter a valid email address";
 if (formData.number10_c && !/^[+]?[1-9][\d]{0,15}$/.test(formData.number10_c.replace(/[\s\-()]/g, ''))) {
       newErrors.number10_c = "Please enter a valid phone number";
@@ -234,14 +220,11 @@ const submitData = {
         
         // Boolean fields
         name2_c: Boolean(formData.name2_c),
-        number2_c: Boolean(formData.number2_c),
-        checkbox1_c: Boolean(formData.checkbox1_c),
+checkbox1_c: Boolean(formData.checkbox1_c),
         
         // Currency/Decimal fields
         name3_c: parseFloat(formData.name3_c) || 0,
         name6_c: parseFloat(formData.name6_c) || 0,
-        number3_c: parseFloat(formData.number3_c) || 0,
-        number6_c: parseFloat(formData.number6_c) || 0,
         
         // Number fields
         name15_c: parseInt(formData.name15_c) || 0,
@@ -319,11 +302,6 @@ name1_c: "",
       name18_c: [],
       name19_c: [],
       name20_c: "",
-number2_c: false,
-number3_c: 0,
-      number4_c: "",
-      number5_c: "",
-number6_c: 0.00,
 number7_c: "",
 number8_c: [],
 number9_c: "",
@@ -343,26 +321,24 @@ number15_c: 0,
 
   if (!isOpen) return null;
 
-  return (
+return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
-        className="bg-white rounded-xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-xl shadow-2xl max-w-4xl max-h-[90vh] overflow-hidden flex flex-col"
       >
-        <div className="p-6 border-b border-gray-200">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold gradient-text">
-              {employee ? "Edit Employee" : "Add New Employee"}
-            </h2>
-            <Button variant="ghost" size="sm" onClick={handleClose}>
-              <ApperIcon name="X" size={20} />
-            </Button>
-          </div>
+        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+          <h2 className="text-2xl font-bold gradient-text">
+            {employee ? "Edit Employee" : "Add New Employee"}
+          </h2>
+          <Button variant="ghost" size="sm" onClick={handleClose}>
+            <ApperIcon name="X" size={20} />
+          </Button>
         </div>
 
-        <form onSubmit={handleSubmit} className="p-6 space-y-6">
+        <form onSubmit={handleSubmit} className="p-6 space-y-6 overflow-y-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 <FormField
               label="First Name"
@@ -751,64 +727,6 @@ label="Name1"
 placeholder="Enter phone number"
             />
 
-
-<div className="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id="number2_c"
-                name="number2_c"
-                checked={formData.number2_c}
-                onChange={handleChange}
-                className="w-4 h-4 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2"
-              />
-              <label htmlFor="number2_c" className="text-sm font-medium text-gray-700">
-                Number2
-              </label>
-              {errors.number2_c && (
-                <span className="text-red-500 text-sm">{errors.number2_c}</span>
-              )}
-            </div>
-
-<FormField
-              label="Number3 (Currency)"
-              name="number3_c"
-              type="text"
-              value={formData.number3_c}
-              onChange={handleChange}
-              error={errors.number3_c}
-              placeholder="Enter currency amount (e.g., 1234.56)"
-            />
-
-<FormField
-              label="Number4"
-              name="number4_c"
-              type="date"
-              value={formData.number4_c}
-              onChange={handleChange}
-              error={errors.number4_c}
-              placeholder="Select date"
-            />
-
-<FormField
-              label="Number5"
-              name="number5_c"
-              type="datetime-local"
-              value={formData.number5_c}
-              onChange={handleChange}
-              error={errors.number5_c}
-              placeholder="Select date and time"
-            />
-
-<FormField
-              label="Number6"
-              name="number6_c"
-              type="number"
-              step="0.01"
-              value={formData.number6_c}
-              onChange={handleChange}
-              error={errors.number6_c}
-              placeholder="Enter decimal value"
-            />
 
 <FormField
               label="Number7"
