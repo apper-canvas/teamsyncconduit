@@ -54,9 +54,9 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
                     </tr>
                 </thead>
-                <tbody>
+<tbody>
                     {employees.map((employee, index) => <motion.tr
-                        key={employee.Id}
+                        key={employee.Id || `employee-${index}`}
                         initial={{
                             opacity: 0,
                             y: 20
