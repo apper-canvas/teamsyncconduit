@@ -136,8 +136,8 @@ const handleDelete = async (employee) => {
                         </td>
                         <td className="py-3 px-4">
 <div className="flex flex-wrap gap-1">
-                                {employee.name8_c && employee.name8_c.split(",").filter(v => v.trim()).map((value) => <span
-                                    key={`${employee.Id}-${value.trim()}`}
+{employee.name8_c && employee.name8_c.split(",").filter(v => v.trim()).map((value) => <span
+                                    key={`${employee.Id}-name8-${value.trim()}`}
                                     className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                                     {value.trim()}
                                 </span>)}
