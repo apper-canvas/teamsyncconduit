@@ -51,7 +51,7 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Role</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Hire Date</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Boolean1 Date</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Decimal1</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Rating</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Decimal2</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
@@ -104,10 +104,24 @@ const handleDelete = async (employee) => {
                                 {employee.boolean1_c ? format(new Date(employee.boolean1_c), "MMM dd, yyyy") : "N/A"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.decimal1_c ? parseFloat(employee.decimal1_c).toFixed(2) : "0.00"}
-                            </span>
+<td className="py-3 px-4">
+                            <div className="flex items-center space-x-1">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                    <ApperIcon
+                                        key={star}
+                                        name="Star"
+                                        size={16}
+                                        className={`${
+                                            star <= (employee.decimal1_c || 0)
+                                                ? "text-yellow-400 fill-current"
+                                                : "text-gray-300"
+                                        }`}
+                                    />
+                                ))}
+                                <span className="text-sm text-gray-600 ml-2">
+                                    ({employee.decimal1_c || 0}/5)
+                                </span>
+                            </div>
                         </td>
                         <td className="py-3 px-4">
                             <span className="text-gray-900">

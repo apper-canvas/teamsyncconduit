@@ -21,7 +21,7 @@ checkbox1_c: false,
     boolean1_c: "",
     boolean2_c: false,
     date1_c: "",
-    decimal1_c: "",
+decimal1_c: 0,
     decimal2_c: "",
   });
   const [departments, setDepartments] = useState([]);
@@ -43,7 +43,7 @@ setFormData({
         boolean1_c: employee.boolean1_c || "",
         boolean2_c: employee.boolean2_c || false,
         date1_c: employee.date1_c || "",
-        decimal1_c: employee.decimal1_c || "",
+decimal1_c: employee.decimal1_c || 0,
         decimal2_c: employee.decimal2_c || "",
       });
     }
@@ -130,7 +130,7 @@ const submitData = {
         // Date fields - date1_c is Date type, format as ISO date string
         date1_c: formData.date1_c || null,
         // Decimal fields - convert to proper decimal format
-        decimal1_c: formData.decimal1_c ? parseFloat(formData.decimal1_c) || null : null,
+decimal1_c: formData.decimal1_c ? parseInt(formData.decimal1_c) || null : null,
         decimal2_c: formData.decimal2_c ? parseFloat(formData.decimal2_c) || null : null,
       };
       if (employee) {
@@ -163,7 +163,7 @@ setFormData({
       boolean1_c: "",
       boolean2_c: false,
       date1_c: "",
-      decimal1_c: "",
+decimal1_c: 0,
       decimal2_c: "",
     });
     setErrors({});
@@ -307,16 +307,37 @@ label="Department"
               error={errors.date1_c}
             />
 
-            <FormField
-              label="Decimal1"
-              name="decimal1_c"
-              type="number"
-              step="0.01"
-              value={formData.decimal1_c}
-              onChange={handleChange}
-              error={errors.decimal1_c}
-              placeholder="Enter decimal value"
-            />
+<div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Rating
+              </label>
+              <div className="flex items-center space-x-2">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <button
+                    key={star}
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, decimal1_c: star }))}
+                    className="transition-colors hover:scale-110 transform"
+                  >
+                    <ApperIcon
+                      name="Star"
+                      size={24}
+                      className={`${
+                        star <= formData.decimal1_c
+                          ? "text-yellow-400 fill-current"
+                          : "text-gray-300 hover:text-yellow-200"
+                      }`}
+                    />
+                  </button>
+                ))}
+                <span className="text-sm text-gray-600 ml-3">
+                  {formData.decimal1_c}/5
+                </span>
+              </div>
+              {errors.decimal1_c && (
+                <p className="text-sm text-red-600">{errors.decimal1_c}</p>
+              )}
+            </div>
 
             <FormField
               label="Decimal2"

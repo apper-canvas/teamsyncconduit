@@ -180,7 +180,7 @@ const updateableFields = {
         date1_c: employeeData.date1_c || null, // Date type
         boolean1_c: employeeData.boolean1_c || null, // Date type (changed from Boolean)
         boolean2_c: employeeData.boolean2_c, // Boolean type
-        decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null, // Decimal type
+decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
         decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
       };
       // Remove undefined fields
@@ -279,7 +279,7 @@ const updateableFields = {
         date1_c: employeeData.date1_c || null, // Date type
         boolean1_c: employeeData.boolean1_c || null, // Date type (changed from Boolean)
         boolean2_c: employeeData.boolean2_c, // Boolean type
-        decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null, // Decimal type
+decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
         decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
       };
       // Remove undefined fields (except Id)
