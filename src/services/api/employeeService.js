@@ -149,19 +149,39 @@ const updateableFields = {
         Owner: employeeData.Owner ? parseInt(employeeData.Owner) : undefined,
         first_name_c: employeeData.first_name_c,
         last_name_c: employeeData.last_name_c,
-        email_c: employeeData.email_c || null, // Send null instead of empty string
+        email_c: employeeData.email_c || null,
         phone_c: employeeData.phone_c,
         role_c: employeeData.role_c,
         hire_date_c: employeeData.hire_date_c || null,
         status_c: employeeData.status_c,
         avatar_c: employeeData.avatar_c,
         department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
-        checkbox1_c: employeeData.checkbox1_c,
-        boolean1_c: employeeData.boolean1_c || null, // Date field type - send null for empty
-        boolean2_c: employeeData.boolean2_c,
-        date1_c: employeeData.date1_c || null, // Date field type - send as date string or null
-        decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null,
-        decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null,
+        name1_c: employeeData.name1_c || null, // Date type
+        name2_c: employeeData.name2_c, // Boolean type
+        name3_c: employeeData.name3_c ? parseFloat(employeeData.name3_c) : null, // Currency type
+        name4_c: employeeData.name4_c || null, // Date type
+        name5_c: employeeData.name5_c || null, // DateTime type
+        name6_c: employeeData.name6_c ? parseFloat(employeeData.name6_c) : null, // Decimal type
+        name7_c: employeeData.name7_c || null, // Email type
+        name8_c: employeeData.name8_c, // MultiPicklist type
+        name9_c: employeeData.name9_c, // MultilineText type
+        name10_c: employeeData.name10_c, // Phone type
+        name11_c: employeeData.name11_c, // Text type
+        name12_c: employeeData.name12_c, // Text type
+        name13_c: employeeData.name13_c, // Tag type
+        name14_c: employeeData.name14_c, // Text type
+        name15_c: employeeData.name15_c ? parseInt(employeeData.name15_c) : null, // Number type
+        name16_c: employeeData.name16_c, // Text type
+        name17_c: employeeData.name17_c, // MultiPicklist type
+        name18_c: employeeData.name18_c, // MultiPicklist type
+        name19_c: employeeData.name19_c, // Tag type
+        name20_c: employeeData.name20_c, // Phone type
+        checkbox1_c: employeeData.checkbox1_c, // Boolean type
+        date1_c: employeeData.date1_c || null, // Date type
+        boolean1_c: employeeData.boolean1_c || null, // Date type (changed from Boolean)
+        boolean2_c: employeeData.boolean2_c, // Boolean type
+        decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null, // Decimal type
+        decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
       };
       // Remove undefined fields
       Object.keys(updateableFields).forEach(key => {
@@ -228,19 +248,39 @@ const updateableFields = {
         Owner: employeeData.Owner ? parseInt(employeeData.Owner) : undefined,
         first_name_c: employeeData.first_name_c,
         last_name_c: employeeData.last_name_c,
-        email_c: employeeData.email_c || null, // Send null instead of empty string
+        email_c: employeeData.email_c || null,
         phone_c: employeeData.phone_c,
         role_c: employeeData.role_c,
         hire_date_c: employeeData.hire_date_c || null,
         status_c: employeeData.status_c,
         avatar_c: employeeData.avatar_c,
         department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
-        checkbox1_c: employeeData.checkbox1_c,
-        boolean1_c: employeeData.boolean1_c || null, // Date field type - send null for empty
-        boolean2_c: employeeData.boolean2_c,
-        date1_c: employeeData.date1_c || null, // Date field type - send as date string or null
-        decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null,
-        decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null,
+        name1_c: employeeData.name1_c || null, // Date type
+        name2_c: employeeData.name2_c, // Boolean type
+        name3_c: employeeData.name3_c ? parseFloat(employeeData.name3_c) : null, // Currency type
+        name4_c: employeeData.name4_c || null, // Date type
+        name5_c: employeeData.name5_c || null, // DateTime type
+        name6_c: employeeData.name6_c ? parseFloat(employeeData.name6_c) : null, // Decimal type
+        name7_c: employeeData.name7_c || null, // Email type
+        name8_c: employeeData.name8_c, // MultiPicklist type
+        name9_c: employeeData.name9_c, // MultilineText type
+        name10_c: employeeData.name10_c, // Phone type
+        name11_c: employeeData.name11_c, // Text type
+        name12_c: employeeData.name12_c, // Text type
+        name13_c: employeeData.name13_c, // Tag type
+        name14_c: employeeData.name14_c, // Text type
+        name15_c: employeeData.name15_c ? parseInt(employeeData.name15_c) : null, // Number type
+        name16_c: employeeData.name16_c, // Text type
+        name17_c: employeeData.name17_c, // MultiPicklist type
+        name18_c: employeeData.name18_c, // MultiPicklist type
+        name19_c: employeeData.name19_c, // Tag type
+        name20_c: employeeData.name20_c, // Phone type
+        checkbox1_c: employeeData.checkbox1_c, // Boolean type
+        date1_c: employeeData.date1_c || null, // Date type
+        boolean1_c: employeeData.boolean1_c || null, // Date type (changed from Boolean)
+        boolean2_c: employeeData.boolean2_c, // Boolean type
+        decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null, // Decimal type
+        decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
       };
       // Remove undefined fields (except Id)
       Object.keys(updateableFields).forEach(key => {
