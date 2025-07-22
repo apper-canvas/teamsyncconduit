@@ -16,9 +16,9 @@ const [formData, setFormData] = useState({
     role_c: "",
     department_id_c: "",
     hire_date_c: "",
-    status_c: "active",
+status_c: "active",
     checkbox1_c: false,
-    boolean1_c: false,
+    boolean1_c: "",
     boolean2_c: false,
   });
   const [departments, setDepartments] = useState([]);
@@ -35,9 +35,9 @@ setFormData({
         role_c: employee.role_c || "",
         department_id_c: employee.department_id_c || "",
         hire_date_c: employee.hire_date_c || "",
-        status_c: employee.status_c || "active",
+status_c: employee.status_c || "active",
         checkbox1_c: employee.checkbox1_c || false,
-        boolean1_c: employee.boolean1_c || false,
+        boolean1_c: employee.boolean1_c || "",
         boolean2_c: employee.boolean2_c || false,
       });
     }
@@ -145,9 +145,9 @@ setFormData({
       role_c: "",
       department_id_c: "",
       hire_date_c: "",
-      status_c: "active",
+status_c: "active",
       checkbox1_c: false,
-      boolean1_c: false,
+      boolean1_c: "",
       boolean2_c: false,
     });
     setErrors({});
@@ -264,11 +264,11 @@ label="Department"
               error={errors.checkbox1_c}
             />
 
-            <FormField
+<FormField
               label="Boolean1"
               name="boolean1_c"
-              type="checkbox"
-              checked={formData.boolean1_c}
+              type="date"
+              value={formData.boolean1_c}
               onChange={handleChange}
               error={errors.boolean1_c}
             />
