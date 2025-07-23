@@ -163,13 +163,13 @@ const response = await apperClient.getRecordById(tableName, parseInt(id), params
   },
 
   // Create new employee(s)
-  async create(employeeData) {
+async create(employeeData) {
     try {
       const apperClient = this.getClient();
       const tableName = 'employee_c';
       
       // Filter to only include Updateable fields
-const updateableFields = {
+      const updateableFields = {
         Name: employeeData.Name,
         Tags: employeeData.Tags,
         Owner: employeeData.Owner ? parseInt(employeeData.Owner) : undefined,
@@ -206,7 +206,7 @@ const updateableFields = {
         date1_c: employeeData.date1_c || null, // Email type
         boolean1_c: employeeData.boolean1_c || null, // Date type (changed from Boolean)
         boolean2_c: employeeData.boolean2_c, // Boolean type
-        decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
+        decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null, // Decimal type
         decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
         multilinetext1_c: employeeData.multilinetext1_c, // Text type
         autonumber1_c: employeeData.autonumber1_c || null, // Date type
@@ -214,14 +214,8 @@ const updateableFields = {
         autonumber3_c: employeeData.autonumber3_c ? parseInt(employeeData.autonumber3_c) : null, // Number type
         autonumber4_c: employeeData.autonumber4_c ? parseInt(employeeData.autonumber4_c) : null, // Number type
         autonumber5_c: employeeData.autonumber5_c ? parseInt(employeeData.autonumber5_c) : null, // Number type
-        sample1_c: employeeData.sample1_c, // Number type
-        sample2_c: employeeData.sample2_c // MultilineText type
-      };
-decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
-        decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
-        multilinetext1_c: employeeData.multilinetext1_c, // Text type
-sample1_c: employeeData.sample1_c, // Number type
-        sample2_c: employeeData.sample2_c // MultilineText type
+        sample1_c: employeeData.sample1_c ? parseInt(employeeData.sample1_c) : null, // Number type
+        sample2_c: employeeData.sample2_c ? parseInt(employeeData.sample2_c) : null // Number type
       };
       
       // Remove undefined fields
@@ -230,7 +224,59 @@ sample1_c: employeeData.sample1_c, // Number type
           delete updateableFields[key];
         }
       });
-const updateableFields = {
+      
+      const params = {
+        records: [updateableFields]
+      };
+      
+      const response = await apperClient.createRecord(tableName, params);
+      
+      if (!response.success) {
+        console.error(response.message);
+        toast.error(response.message);
+        return null;
+      }
+      
+      if (response.results) {
+        const successfulCreations = response.results.filter(result => result.success);
+        const failedCreations = response.results.filter(result => !result.success);
+        
+        if (failedCreations.length > 0) {
+          console.error(`Failed to create ${failedCreations.length} employee records:${JSON.stringify(failedCreations)}`);
+          
+          failedCreations.forEach(record => {
+            record.errors?.forEach(error => {
+              toast.error(`${error.fieldLabel}: ${error.message}`);
+            });
+            if (record.message) toast.error(record.message);
+          });
+        }
+
+        if (successfulCreations.length > 0) {
+          toast.success('Employee created successfully');
+          return successfulCreations[0].data;
+        }
+      }
+      
+      return null;
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error creating employee:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return null;
+    }
+  },
+
+  // Update existing employee
+  async update(id, employeeData) {
+    try {
+      const apperClient = this.getClient();
+      const tableName = 'employee_c';
+      
+      // Filter to only include Updateable fields (plus Id for update)
+      const updateableFields = {
         Id: parseInt(id),
         Name: employeeData.Name,
         Tags: employeeData.Tags,
@@ -268,7 +314,7 @@ const updateableFields = {
         date1_c: employeeData.date1_c || null, // Email type
         boolean1_c: employeeData.boolean1_c || null, // Date type (changed from Boolean)
         boolean2_c: employeeData.boolean2_c, // Boolean type
-        decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
+        decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null, // Decimal type
         decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
         multilinetext1_c: employeeData.multilinetext1_c, // Text type
         autonumber1_c: employeeData.autonumber1_c || null, // Date type
@@ -276,9 +322,10 @@ const updateableFields = {
         autonumber3_c: employeeData.autonumber3_c ? parseInt(employeeData.autonumber3_c) : null, // Number type
         autonumber4_c: employeeData.autonumber4_c ? parseInt(employeeData.autonumber4_c) : null, // Number type
         autonumber5_c: employeeData.autonumber5_c ? parseInt(employeeData.autonumber5_c) : null, // Number type
-        sample1_c: employeeData.sample1_c, // Number type
-        sample2_c: employeeData.sample2_c // MultilineText type
+        sample1_c: employeeData.sample1_c ? parseInt(employeeData.sample1_c) : null, // Number type
+        sample2_c: employeeData.sample2_c ? parseInt(employeeData.sample2_c) : null // Number type
       };
+      
       // Remove undefined fields (except Id)
       Object.keys(updateableFields).forEach(key => {
         if (key !== 'Id' && updateableFields[key] === undefined) {
@@ -329,7 +376,6 @@ const updateableFields = {
       return null;
     }
   },
-
   // Delete employee(s)
   async delete(recordIds) {
     try {
