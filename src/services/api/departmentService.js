@@ -32,10 +32,10 @@ class DepartmentService {
   }
 
   // Helper method to filter only updateable fields
-  filterUpdateableFields(data) {
+filterUpdateableFields(data) {
     const filtered = {};
     this.updateableFields.forEach(field => {
-      if (data.hasOwnProperty(field) && data[field] !== undefined) {
+      if (Object.prototype.hasOwnProperty.call(data, field) && data[field] !== undefined) {
         filtered[field] = data[field];
       }
     });

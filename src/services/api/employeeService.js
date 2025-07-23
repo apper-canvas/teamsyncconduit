@@ -78,10 +78,10 @@ class EmployeeService {
   }
 
   // Helper method to filter only updateable fields
-  filterUpdateableFields(data) {
+filterUpdateableFields(data) {
     const filtered = {};
     this.updateableFields.forEach(field => {
-      if (data.hasOwnProperty(field) && data[field] !== undefined) {
+      if (Object.prototype.hasOwnProperty.call(data, field) && data[field] !== undefined) {
         // Handle lookup fields - convert to integer if needed
         if (field === 'department_id_c' && data[field]) {
           filtered[field] = parseInt(data[field]?.Id || data[field]);
