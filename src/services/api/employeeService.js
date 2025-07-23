@@ -209,11 +209,11 @@ async create(employeeData) {
         decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null, // Decimal type
         decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
         multilinetext1_c: employeeData.multilinetext1_c, // Text type
+multilinetext1_c: employeeData.multilinetext1_c, // Text type
         autonumber1_c: employeeData.autonumber1_c || null, // Date type
-        autonumber2_c: employeeData.autonumber2_c ? parseInt(employeeData.autonumber2_c) : null, // Number type
-        autonumber3_c: employeeData.autonumber3_c ? parseInt(employeeData.autonumber3_c) : null, // Number type
+        autonumber2_c: employeeData.autonumber2_c ? parseFloat(employeeData.autonumber2_c) : null, // Decimal type
+        autonumber3_c: employeeData.autonumber3_c || null, // Email type
         autonumber4_c: employeeData.autonumber4_c ? parseInt(employeeData.autonumber4_c) : null, // Number type
-        autonumber5_c: employeeData.autonumber5_c ? parseInt(employeeData.autonumber5_c) : null, // Number type
         sample1_c: employeeData.sample1_c ? parseInt(employeeData.sample1_c) : null, // Number type
         sample2_c: employeeData.sample2_c ? parseInt(employeeData.sample2_c) : null // Number type
       };
@@ -316,10 +316,10 @@ async create(employeeData) {
         boolean2_c: employeeData.boolean2_c, // Boolean type
         decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null, // Decimal type
         decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
-        multilinetext1_c: employeeData.multilinetext1_c, // Text type
+multilinetext1_c: employeeData.multilinetext1_c, // Text type
         autonumber1_c: employeeData.autonumber1_c || null, // Date type
-        autonumber2_c: employeeData.autonumber2_c ? parseInt(employeeData.autonumber2_c) : null, // Number type
-        autonumber3_c: employeeData.autonumber3_c ? parseInt(employeeData.autonumber3_c) : null, // Number type
+        autonumber2_c: employeeData.autonumber2_c ? parseFloat(employeeData.autonumber2_c) : null, // Decimal type
+        autonumber3_c: employeeData.autonumber3_c || null, // Email type
         autonumber4_c: employeeData.autonumber4_c ? parseInt(employeeData.autonumber4_c) : null, // Number type
         autonumber5_c: employeeData.autonumber5_c ? parseInt(employeeData.autonumber5_c) : null, // Number type
         sample1_c: employeeData.sample1_c ? parseInt(employeeData.sample1_c) : null, // Number type

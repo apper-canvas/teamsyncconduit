@@ -27,9 +27,9 @@ checkbox1_c: false,
     decimal2_c: "",
     multilinetext1_c: "",
 name11_c: 0,
-    autonumber1_c: "",
-    autonumber2_c: 0,
-    autonumber3_c: 0,
+autonumber1_c: "",
+    autonumber2_c: "",
+    autonumber3_c: "",
     autonumber4_c: 0,
     autonumber5_c: 0,
     sample1_c: 0,
@@ -60,9 +60,9 @@ checkbox1_c: employee.checkbox1_c || false,
         decimal2_c: employee.decimal2_c || "",
         multilinetext1_c: employee.multilinetext1_c || "",
 name11_c: employee.name11_c || 0,
-        autonumber1_c: employee.autonumber1_c || "",
-        autonumber2_c: parseInt(employee.autonumber2_c) || 0,
-        autonumber3_c: parseInt(employee.autonumber3_c) || 0,
+autonumber1_c: employee.autonumber1_c || "",
+        autonumber2_c: employee.autonumber2_c || "",
+        autonumber3_c: employee.autonumber3_c || "",
         autonumber4_c: parseInt(employee.autonumber4_c) || 0,
         autonumber5_c: parseInt(employee.autonumber5_c) || 0,
         sample1_c: parseInt(employee.sample1_c) || 0,
@@ -129,8 +129,11 @@ const validateForm = () => {
 if (formData.email_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email_c)) {
       newErrors.email_c = "Please enter a valid email address";
     }
-    if (formData.date1_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.date1_c)) {
+if (formData.date1_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.date1_c)) {
       newErrors.date1_c = "Please enter a valid email address";
+    }
+    if (formData.autonumber3_c && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.autonumber3_c)) {
+      newErrors.autonumber3_c = "Please enter a valid email address";
     }
     
 setErrors(newErrors);
@@ -198,9 +201,9 @@ checkbox1_c: false,
       decimal2_c: "",
 multilinetext1_c: "",
       name11_c: 0,
-      autonumber1_c: "",
-      autonumber2_c: 0,
-      autonumber3_c: 0,
+autonumber1_c: "",
+      autonumber2_c: "",
+      autonumber3_c: "",
       autonumber4_c: 0,
       autonumber5_c: 0,
       sample1_c: 0,
@@ -457,24 +460,25 @@ placeholder="Enter decimal value"
               placeholder="Enter numeric value"
             />
 
-            <FormField
+<FormField
               label="Autonumber2"
               name="autonumber2_c"
               type="number"
+              step="0.01"
               value={formData.autonumber2_c}
               onChange={handleChange}
               error={errors.autonumber2_c}
-              placeholder="Enter numeric value"
+              placeholder="Enter decimal value"
             />
 
-            <FormField
+<FormField
               label="Autonumber3"
               name="autonumber3_c"
-              type="number"
+              type="email"
               value={formData.autonumber3_c}
               onChange={handleChange}
               error={errors.autonumber3_c}
-              placeholder="Enter numeric value"
+              placeholder="Enter email address"
             />
 
             <FormField

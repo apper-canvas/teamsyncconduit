@@ -58,9 +58,9 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Decimal2</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Multilinetext1</th>
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name11</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber1 Date</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber2</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber3</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber1 Date</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber2 Decimal</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber3 Email</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber4</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber5</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Sample1</th>
@@ -156,9 +156,9 @@ const handleDelete = async (employee) => {
                                 {employee.autonumber1_c ? format(new Date(employee.autonumber1_c), "MMM dd, yyyy") : "N/A"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
+<td className="py-3 px-4">
                             <span className="text-gray-900">
-                                {employee.autonumber2_c || "N/A"}
+                                {employee.autonumber2_c ? parseFloat(employee.autonumber2_c).toFixed(2) : "0.00"}
                             </span>
                         </td>
                         <td className="py-3 px-4">
