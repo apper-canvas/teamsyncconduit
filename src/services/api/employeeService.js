@@ -1,92 +1,118 @@
-import { toast } from "react-toastify";
-import React from "react";
-import Error from "@/components/ui/Error";
-
-const employeeService = {
-  // Initialize ApperClient
-getClient() {
-    if (!window.ApperSDK) {
-      throw new Error('ApperSDK is not loaded. Please check your internet connection and try again.');
-    }
-    
+// Employee Service - ApperClient Integration
+class EmployeeService {
+  constructor() {
+    // Initialize ApperClient with Project ID and Public Key
     const { ApperClient } = window.ApperSDK;
-    if (!ApperClient) {
-      throw new Error('ApperClient is not available. Please refresh the page and try again.');
-    }
-    
-    return new ApperClient({
+    this.apperClient = new ApperClient({
       apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
       apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
     });
-  },
+    this.tableName = 'employee_c';
+    
+    // Define updateable fields based on Tables & Fields JSON
+    this.updateableFields = [
+      'Name', 'Tags', 'Owner', 'first_name_c', 'last_name_c', 'email_c', 
+      'phone_c', 'role_c', 'hire_date_c', 'status_c', 'avatar_c', 'department_id_c',
+      'name1_c', 'name2_c', 'name3_c', 'name4_c', 'name5_c', 'name6_c', 'name7_c',
+      'name8_c', 'name9_c', 'name10_c', 'name11_c', 'name12_c', 'name13_c', 'name14_c',
+      'name15_c', 'name16_c', 'name17_c', 'name18_c', 'name19_c', 'name20_c', 'checkbox1_c',
+      'date1_c', 'boolean1_c', 'boolean2_c', 'decimal1_c', 'decimal2_c', 'multilinetext1_c',
+      'autonumber1_c', 'sample1_c', 'sample2_c', 'autonumber2_c', 'autonumber3_c',
+      'autonumber4_c', 'autonumber5_c'
+    ];
+    
+    // Define all fields for fetch operations
+    this.allFields = [
+      { field: { Name: "Id" } },
+      { field: { Name: "Name" } },
+      { field: { Name: "Tags" } },
+      { field: { Name: "Owner" } },
+      { field: { Name: "CreatedOn" } },
+      { field: { Name: "CreatedBy" } },
+      { field: { Name: "ModifiedOn" } },
+      { field: { Name: "ModifiedBy" } },
+      { field: { Name: "first_name_c" } },
+      { field: { Name: "last_name_c" } },
+      { field: { Name: "email_c" } },
+      { field: { Name: "phone_c" } },
+      { field: { Name: "role_c" } },
+      { field: { Name: "hire_date_c" } },
+      { field: { Name: "status_c" } },
+      { field: { Name: "avatar_c" } },
+      { field: { Name: "department_id_c" } },
+      { field: { Name: "name1_c" } },
+      { field: { Name: "name2_c" } },
+      { field: { Name: "name3_c" } },
+      { field: { Name: "name4_c" } },
+      { field: { Name: "name5_c" } },
+      { field: { Name: "name6_c" } },
+      { field: { Name: "name7_c" } },
+      { field: { Name: "name8_c" } },
+      { field: { Name: "name9_c" } },
+      { field: { Name: "name10_c" } },
+      { field: { Name: "name11_c" } },
+      { field: { Name: "name12_c" } },
+      { field: { Name: "name13_c" } },
+      { field: { Name: "name14_c" } },
+      { field: { Name: "name15_c" } },
+      { field: { Name: "name16_c" } },
+      { field: { Name: "name17_c" } },
+      { field: { Name: "name18_c" } },
+      { field: { Name: "name19_c" } },
+      { field: { Name: "name20_c" } },
+      { field: { Name: "checkbox1_c" } },
+      { field: { Name: "date1_c" } },
+      { field: { Name: "boolean1_c" } },
+      { field: { Name: "boolean2_c" } },
+      { field: { Name: "decimal1_c" } },
+      { field: { Name: "decimal2_c" } },
+      { field: { Name: "multilinetext1_c" } },
+      { field: { Name: "autonumber1_c" } },
+      { field: { Name: "sample1_c" } },
+      { field: { Name: "sample2_c" } },
+      { field: { Name: "autonumber2_c" } },
+      { field: { Name: "autonumber3_c" } },
+      { field: { Name: "autonumber4_c" } },
+      { field: { Name: "autonumber5_c" } }
+    ];
+  }
 
-  // Get all employees with pagination and filtering
-  async getAll(options = {}) {
+  // Helper method to filter only updateable fields
+  filterUpdateableFields(data) {
+    const filtered = {};
+    this.updateableFields.forEach(field => {
+      if (data.hasOwnProperty(field) && data[field] !== undefined) {
+        // Handle lookup fields - convert to integer if needed
+        if (field === 'department_id_c' && data[field]) {
+          filtered[field] = parseInt(data[field]?.Id || data[field]);
+        } else {
+          filtered[field] = data[field];
+        }
+      }
+    });
+    return filtered;
+  }
+
+  async getAll() {
     try {
-      const apperClient = this.getClient();
-      const tableName = 'employee_c';
-      
-const params = {
-        fields: [
-          { field: { Name: "Name" } },
-          { field: { Name: "Tags" } },
-          { field: { Name: "Owner" } },
-          { field: { Name: "first_name_c" } },
-          { field: { Name: "last_name_c" } },
-          { field: { Name: "email_c" } },
-          { field: { Name: "phone_c" } },
-          { field: { Name: "role_c" } },
-          { field: { Name: "hire_date_c" } },
-          { field: { Name: "status_c" } },
-          { field: { Name: "avatar_c" } },
-          { 
-            field: { Name: "department_id_c" },
-            referenceField: { field: { Name: "Name" } }
-          },
-          { field: { Name: "checkbox1_c" } },
-          { field: { Name: "boolean1_c" } },
-          { field: { Name: "boolean2_c" } },
-          { field: { Name: "date1_c" } },
-          { field: { Name: "decimal1_c" } },
-          { field: { Name: "decimal2_c" } },
-          { field: { Name: "multilinetext1_c" } },
-          { field: { Name: "name11_c" } },
-          { field: { Name: "autonumber1_c" } },
-          { field: { Name: "autonumber2_c" } },
-          { field: { Name: "autonumber3_c" } },
-          { field: { Name: "autonumber4_c" } },
-{ field: { Name: "autonumber5_c" } },
-          { field: { Name: "sample1_c" } },
-          { field: { Name: "sample2_c" } },
-          { field: { Name: "sample3_c" } },
-          { field: { Name: "sample4_c" } },
-          { field: { Name: "CreatedOn" } },
-          { field: { Name: "CreatedBy" } },
-          { field: { Name: "ModifiedOn" } },
-          { field: { Name: "ModifiedBy" } }
-        ],
+      const params = {
+        fields: this.allFields,
         orderBy: [
           {
-            fieldName: "CreatedOn",
+            fieldName: "Id",
             sorttype: "DESC"
           }
         ],
         pagingInfo: {
-          limit: options.limit || 20,
-          offset: options.offset || 0
+          limit: 100,
+          offset: 0
         }
       };
 
-      // Add filtering if provided
-      if (options.where) {
-        params.where = options.where;
-      }
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
 
-      const response = await apperClient.fetchRecords(tableName, params);
-      
       if (!response.success) {
         console.error(response.message);
-        toast.error(response.message);
         return [];
       }
 
@@ -99,171 +125,58 @@ const params = {
       }
       return [];
     }
-  },
+  }
 
-  // Get employee by ID
   async getById(id) {
     try {
-      const apperClient = this.getClient();
-      const tableName = 'employee_c';
-      
-const params = {
-        fields: [
-          { field: { Name: "Name" } },
-          { field: { Name: "Tags" } },
-          { field: { Name: "Owner" } },
-          { field: { Name: "first_name_c" } },
-          { field: { Name: "last_name_c" } },
-          { field: { Name: "email_c" } },
-          { field: { Name: "phone_c" } },
-          { field: { Name: "role_c" } },
-          { field: { Name: "hire_date_c" } },
-          { field: { Name: "status_c" } },
-          { field: { Name: "avatar_c" } },
-          { 
-            field: { Name: "department_id_c" },
-            referenceField: { field: { Name: "Name" } }
-          },
-          { field: { Name: "checkbox1_c" } },
-          { field: { Name: "boolean1_c" } },
-          { field: { Name: "boolean2_c" } },
-          { field: { Name: "date1_c" } },
-          { field: { Name: "decimal1_c" } },
-          { field: { Name: "decimal2_c" } },
-          { field: { Name: "multilinetext1_c" } },
-          { field: { Name: "name11_c" } },
-          { field: { Name: "autonumber1_c" } },
-          { field: { Name: "autonumber2_c" } },
-          { field: { Name: "autonumber3_c" } },
-          { field: { Name: "autonumber4_c" } },
-{ field: { Name: "autonumber5_c" } },
-          { field: { Name: "sample1_c" } },
-          { field: { Name: "sample2_c" } },
-          { field: { Name: "sample3_c" } },
-          { field: { Name: "sample4_c" } },
-          { field: { Name: "CreatedOn" } },
-          { field: { Name: "CreatedBy" } },
-          { field: { Name: "ModifiedOn" } },
-          { field: { Name: "ModifiedBy" } }
-        ]
+      const params = {
+        fields: this.allFields
       };
-      
-const response = await apperClient.getRecordById(tableName, parseInt(id), params);
-      
-      if (!response || !response.data) {
+
+      const response = await this.apperClient.getRecordById(this.tableName, parseInt(id), params);
+
+      if (!response.success) {
+        console.error(response.message);
         return null;
       }
-      
+
       return response.data;
     } catch (error) {
-      console.error('Error fetching employee by ID:', error);
       if (error?.response?.data?.message) {
-        toast.error(error.response.data.message);
+        console.error(`Error fetching employee with ID ${id}:`, error?.response?.data?.message);
       } else {
-        toast.error('Failed to fetch employee');
+        console.error(error.message);
       }
       return null;
     }
-  },
+  }
 
-  // Create new employee(s)
-async create(employeeData) {
+  async create(employeeData) {
     try {
-      const apperClient = this.getClient();
-      const tableName = 'employee_c';
-      
-      // Filter to only include Updateable fields
-      const updateableFields = {
-        Name: employeeData.Name,
-        Tags: employeeData.Tags,
-        Owner: employeeData.Owner ? parseInt(employeeData.Owner) : undefined,
-        first_name_c: employeeData.first_name_c,
-        last_name_c: employeeData.last_name_c,
-        email_c: employeeData.email_c || null,
-        phone_c: employeeData.phone_c,
-        role_c: employeeData.role_c,
-        hire_date_c: employeeData.hire_date_c || null,
-        status_c: employeeData.status_c,
-        avatar_c: employeeData.avatar_c,
-        department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
-        name1_c: employeeData.name1_c || null, // Date type
-        name2_c: employeeData.name2_c, // Boolean type
-        name3_c: employeeData.name3_c ? parseFloat(employeeData.name3_c) : null, // Currency type
-        name4_c: employeeData.name4_c || null, // Date type
-        name5_c: employeeData.name5_c || null, // DateTime type
-        name6_c: employeeData.name6_c ? parseFloat(employeeData.name6_c) : null, // Decimal type
-        name7_c: employeeData.name7_c || null, // Email type
-        name8_c: employeeData.name8_c, // MultiPicklist type
-        name9_c: employeeData.name9_c, // MultilineText type
-        name10_c: employeeData.name10_c, // Phone type
-        name11_c: employeeData.name11_c ? parseInt(employeeData.name11_c) : null, // Number type
-        name12_c: employeeData.name12_c, // Text type
-        name13_c: employeeData.name13_c, // Tag type
-        name14_c: employeeData.name14_c, // Text type
-        name15_c: employeeData.name15_c ? parseInt(employeeData.name15_c) : null, // Number type
-        name16_c: employeeData.name16_c, // Text type
-        name17_c: employeeData.name17_c, // MultiPicklist type
-        name18_c: employeeData.name18_c, // MultiPicklist type
-        name19_c: employeeData.name19_c, // Tag type
-        name20_c: employeeData.name20_c, // Phone type
-        checkbox1_c: employeeData.checkbox1_c, // Boolean type
-        date1_c: employeeData.date1_c || null, // Email type
-        boolean1_c: employeeData.boolean1_c || null, // Date type (changed from Boolean)
-        boolean2_c: employeeData.boolean2_c, // Boolean type
-decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null, // Decimal type
-        decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
-        multilinetext1_c: employeeData.multilinetext1_c, // Text type
-        autonumber1_c: employeeData.autonumber1_c || null, // Date type
-        autonumber2_c: employeeData.autonumber2_c ? parseFloat(employeeData.autonumber2_c) : null, // Decimal type
-        autonumber3_c: employeeData.autonumber3_c || null, // Email type
-autonumber4_c: employeeData.autonumber4_c ? parseInt(employeeData.autonumber4_c) : null, // Number type
-sample1_c: employeeData.sample1_c ? parseInt(employeeData.sample1_c) : null, // Number type
-        sample2_c: employeeData.sample2_c ? parseInt(employeeData.sample2_c) : null, // Number type
-        sample3_c: employeeData.sample3_c, // Text type
-        sample4_c: employeeData.sample4_c // Text type
-      };
-      
-      // Remove undefined fields
-      Object.keys(updateableFields).forEach(key => {
-        if (updateableFields[key] === undefined) {
-          delete updateableFields[key];
-        }
-      });
+      const filteredData = this.filterUpdateableFields(employeeData);
       
       const params = {
-        records: [updateableFields]
+        records: [filteredData]
       };
-      
-      const response = await apperClient.createRecord(tableName, params);
-      
+
+      const response = await this.apperClient.createRecord(this.tableName, params);
+
       if (!response.success) {
         console.error(response.message);
-        toast.error(response.message);
         return null;
       }
-      
+
       if (response.results) {
-        const successfulCreations = response.results.filter(result => result.success);
-        const failedCreations = response.results.filter(result => !result.success);
-        
-        if (failedCreations.length > 0) {
-          console.error(`Failed to create ${failedCreations.length} employee records:${JSON.stringify(failedCreations)}`);
-          
-          failedCreations.forEach(record => {
-            record.errors?.forEach(error => {
-              toast.error(`${error.fieldLabel}: ${error.message}`);
-            });
-            if (record.message) toast.error(record.message);
-          });
+        const successfulRecords = response.results.filter(result => result.success);
+        const failedRecords = response.results.filter(result => !result.success);
+
+        if (failedRecords.length > 0) {
+          console.error(`Failed to create employee ${failedRecords.length} records:${JSON.stringify(failedRecords)}`);
+          return null;
         }
 
-        if (successfulCreations.length > 0) {
-          toast.success('Employee created successfully');
-          return successfulCreations[0].data;
-        }
+        return successfulRecords[0]?.data;
       }
-      
-      return null;
     } catch (error) {
       if (error?.response?.data?.message) {
         console.error("Error creating employee:", error?.response?.data?.message);
@@ -272,108 +185,35 @@ sample1_c: employeeData.sample1_c ? parseInt(employeeData.sample1_c) : null, // 
       }
       return null;
     }
-  },
+  }
 
-  // Update existing employee
   async update(id, employeeData) {
     try {
-      const apperClient = this.getClient();
-      const tableName = 'employee_c';
-      
-      // Filter to only include Updateable fields (plus Id for update)
-      const updateableFields = {
-        Id: parseInt(id),
-        Name: employeeData.Name,
-        Tags: employeeData.Tags,
-        Owner: employeeData.Owner ? parseInt(employeeData.Owner) : undefined,
-        first_name_c: employeeData.first_name_c,
-        last_name_c: employeeData.last_name_c,
-        email_c: employeeData.email_c || null,
-        phone_c: employeeData.phone_c,
-        role_c: employeeData.role_c,
-        hire_date_c: employeeData.hire_date_c || null,
-        status_c: employeeData.status_c,
-        avatar_c: employeeData.avatar_c,
-        department_id_c: employeeData.department_id_c ? parseInt(employeeData.department_id_c) : undefined,
-        name1_c: employeeData.name1_c || null, // Date type
-        name2_c: employeeData.name2_c, // Boolean type
-        name3_c: employeeData.name3_c ? parseFloat(employeeData.name3_c) : null, // Currency type
-        name4_c: employeeData.name4_c || null, // Date type
-        name5_c: employeeData.name5_c || null, // DateTime type
-        name6_c: employeeData.name6_c ? parseFloat(employeeData.name6_c) : null, // Decimal type
-        name7_c: employeeData.name7_c || null, // Email type
-        name8_c: employeeData.name8_c, // MultiPicklist type
-        name9_c: employeeData.name9_c, // MultilineText type
-        name10_c: employeeData.name10_c, // Phone type
-        name11_c: employeeData.name11_c ? parseInt(employeeData.name11_c) : null, // Number type
-        name12_c: employeeData.name12_c, // Text type
-        name13_c: employeeData.name13_c, // Tag type
-        name14_c: employeeData.name14_c, // Text type
-        name15_c: employeeData.name15_c ? parseInt(employeeData.name15_c) : null, // Number type
-        name16_c: employeeData.name16_c, // Text type
-        name17_c: employeeData.name17_c, // MultiPicklist type
-        name18_c: employeeData.name18_c, // MultiPicklist type
-        name19_c: employeeData.name19_c, // Tag type
-        name20_c: employeeData.name20_c, // Phone type
-        checkbox1_c: employeeData.checkbox1_c, // Boolean type
-        date1_c: employeeData.date1_c || null, // Email type
-        boolean1_c: employeeData.boolean1_c || null, // Date type (changed from Boolean)
-        boolean2_c: employeeData.boolean2_c, // Boolean type
-        decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null, // Decimal type
-        decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
-multilinetext1_c: employeeData.multilinetext1_c, // Text type
-        autonumber1_c: employeeData.autonumber1_c || null, // Date type
-        autonumber2_c: employeeData.autonumber2_c ? parseFloat(employeeData.autonumber2_c) : null, // Decimal type
-        autonumber3_c: employeeData.autonumber3_c || null, // Email type
-        autonumber4_c: employeeData.autonumber4_c ? parseInt(employeeData.autonumber4_c) : null, // Number type
-autonumber5_c: employeeData.autonumber5_c ? parseInt(employeeData.autonumber5_c) : null, // Number type
-sample1_c: employeeData.sample1_c ? parseInt(employeeData.sample1_c) : null, // Number type
-        sample2_c: employeeData.sample2_c ? parseInt(employeeData.sample2_c) : null, // Number type
-        sample3_c: employeeData.sample3_c, // Text type
-        sample4_c: employeeData.sample4_c // Text type
-      };
-      
-      // Remove undefined fields (except Id)
-      Object.keys(updateableFields).forEach(key => {
-        if (key !== 'Id' && updateableFields[key] === undefined) {
-          delete updateableFields[key];
-        }
-      });
+      const filteredData = this.filterUpdateableFields(employeeData);
+      filteredData.Id = parseInt(id);
       
       const params = {
-        records: [updateableFields]
+        records: [filteredData]
       };
-      
-      const response = await apperClient.updateRecord(tableName, params);
-      
+
+      const response = await this.apperClient.updateRecord(this.tableName, params);
+
       if (!response.success) {
         console.error(response.message);
-        toast.error(response.message);
         return null;
       }
-      
+
       if (response.results) {
         const successfulUpdates = response.results.filter(result => result.success);
         const failedUpdates = response.results.filter(result => !result.success);
-        
+
         if (failedUpdates.length > 0) {
-          console.error(`Failed to update ${failedUpdates.length} employee records:${JSON.stringify(failedUpdates)}`);
-          
-          failedUpdates.forEach(record => {
-            record.errors?.forEach(error => {
-              toast.error(`${error.fieldLabel}: ${error.message}`);
-            });
-            if (record.message) toast.error(record.message);
-          });
+          console.error(`Failed to update employee ${failedUpdates.length} records:${JSON.stringify(failedUpdates)}`);
+          return null;
         }
 
-        if (successfulUpdates.length > 0) {
-          toast.success('Employee updated successfully');
-          return successfulUpdates[0].data;
-        }
+        return successfulUpdates[0]?.data;
       }
-      
-      return null;
     } catch (error) {
       if (error?.response?.data?.message) {
         console.error("Error updating employee:", error?.response?.data?.message);
@@ -382,49 +222,32 @@ sample1_c: employeeData.sample1_c ? parseInt(employeeData.sample1_c) : null, // 
       }
       return null;
     }
-  },
-  // Delete employee(s)
-  async delete(recordIds) {
+  }
+
+  async delete(id) {
     try {
-      const apperClient = this.getClient();
-      const tableName = 'employee_c';
-      
-      // Ensure recordIds is an array
-      const ids = Array.isArray(recordIds) ? recordIds : [recordIds];
-      const integerIds = ids.map(id => parseInt(id));
-      
       const params = {
-        RecordIds: integerIds
+        RecordIds: [parseInt(id)]
       };
-      
-      const response = await apperClient.deleteRecord(tableName, params);
-      
+
+      const response = await this.apperClient.deleteRecord(this.tableName, params);
+
       if (!response.success) {
         console.error(response.message);
-        toast.error(response.message);
         return false;
       }
-      
+
       if (response.results) {
         const successfulDeletions = response.results.filter(result => result.success);
         const failedDeletions = response.results.filter(result => !result.success);
-        
+
         if (failedDeletions.length > 0) {
-          console.error(`Failed to delete ${failedDeletions.length} employee records:${JSON.stringify(failedDeletions)}`);
-          
-          failedDeletions.forEach(record => {
-            if (record.message) toast.error(record.message);
-          });
+          console.error(`Failed to delete employee ${failedDeletions.length} records:${JSON.stringify(failedDeletions)}`);
+          return false;
         }
 
-        if (successfulDeletions.length > 0) {
-          toast.success(`${successfulDeletions.length} employee(s) deleted successfully`);
-        }
-        
-        return successfulDeletions.length === integerIds.length;
+        return successfulDeletions.length > 0;
       }
-      
-      return false;
     } catch (error) {
       if (error?.response?.data?.message) {
         console.error("Error deleting employee:", error?.response?.data?.message);
@@ -433,67 +256,371 @@ sample1_c: employeeData.sample1_c ? parseInt(employeeData.sample1_c) : null, // 
       }
       return false;
     }
-  },
+  }
 
-  // Search employees
+  async bulkDelete(ids) {
+    try {
+      const params = {
+        RecordIds: ids.map(id => parseInt(id))
+      };
+
+      const response = await this.apperClient.deleteRecord(this.tableName, params);
+
+      if (!response.success) {
+        console.error(response.message);
+        return { deleted: [], failed: ids };
+      }
+
+      if (response.results) {
+        const successfulDeletions = response.results.filter(result => result.success);
+        const failedDeletions = response.results.filter(result => !result.success);
+
+        if (failedDeletions.length > 0) {
+          console.error(`Failed to delete employees ${failedDeletions.length} records:${JSON.stringify(failedDeletions)}`);
+        }
+
+        return {
+          deleted: successfulDeletions.map(result => result.data),
+          failed: failedDeletions.map(result => result.id)
+        };
+      }
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error bulk deleting employees:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return { deleted: [], failed: ids };
+    }
+  }
+
   async search(query) {
     try {
-      const searchOptions = {
-        where: [
+      const params = {
+        fields: this.allFields,
+        whereGroups: [
           {
-            FieldName: "Name",
-            Operator: "Contains",
-            Values: [query]
+            operator: "OR",
+            subGroups: [
+              {
+                conditions: [
+                  {
+                    fieldName: "Name",
+                    operator: "Contains",
+                    values: [query],
+                    include: true
+                  }
+                ],
+                operator: "OR"
+              },
+              {
+                conditions: [
+                  {
+                    fieldName: "first_name_c",
+                    operator: "Contains",
+                    values: [query],
+                    include: true
+                  }
+                ],
+                operator: "OR"
+              },
+              {
+                conditions: [
+                  {
+                    fieldName: "last_name_c",
+                    operator: "Contains",
+                    values: [query],
+                    include: true
+                  }
+                ],
+                operator: "OR"
+              },
+              {
+                conditions: [
+                  {
+                    fieldName: "email_c",
+                    operator: "Contains",
+                    values: [query],
+                    include: true
+                  }
+                ],
+                operator: "OR"
+              },
+              {
+                conditions: [
+                  {
+                    fieldName: "role_c",
+                    operator: "Contains",
+                    values: [query],
+                    include: true
+                  }
+                ],
+                operator: "OR"
+              }
+            ]
           }
-        ]
+        ],
+        pagingInfo: {
+          limit: 50,
+          offset: 0
+        }
       };
-      
-      return await this.getAll(searchOptions);
+
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
+
+      if (!response.success) {
+        console.error(response.message);
+        return [];
+      }
+
+      return response.data || [];
     } catch (error) {
-      console.error('Error searching employees:', error);
+      if (error?.response?.data?.message) {
+        console.error("Error searching employees:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
       return [];
     }
-  },
+  }
 
-  // Get employees by department
   async getByDepartment(departmentId) {
     try {
-      const filterOptions = {
+      const params = {
+        fields: this.allFields,
         where: [
           {
             FieldName: "department_id_c",
             Operator: "EqualTo",
             Values: [parseInt(departmentId)]
           }
-        ]
+        ],
+        pagingInfo: {
+          limit: 50,
+          offset: 0
+        }
       };
-      
-      return await this.getAll(filterOptions);
+
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
+
+      if (!response.success) {
+        console.error(response.message);
+        return [];
+      }
+
+      return response.data || [];
     } catch (error) {
-      console.error('Error fetching employees by department:', error);
+      if (error?.response?.data?.message) {
+        console.error("Error fetching employees by department:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
       return [];
     }
-  },
+  }
 
-  // Get employees by status
   async getByStatus(status) {
     try {
-      const filterOptions = {
+      const params = {
+        fields: this.allFields,
         where: [
           {
             FieldName: "status_c",
             Operator: "EqualTo",
             Values: [status]
-}
-        ]
+          }
+        ],
+        pagingInfo: {
+          limit: 50,
+          offset: 0
+        }
       };
-      
-      return await this.getAll(filterOptions);
+
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
+
+      if (!response.success) {
+        console.error(response.message);
+        return [];
+      }
+
+      return response.data || [];
     } catch (error) {
-      console.error('Error fetching employees by status:', error);
+      if (error?.response?.data?.message) {
+        console.error("Error fetching employees by status:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
       return [];
     }
   }
-};
 
-export default employeeService;
+  async updateStatus(id, status) {
+    try {
+      const params = {
+        records: [
+          {
+            Id: parseInt(id),
+            status_c: status
+          }
+        ]
+      };
+
+      const response = await this.apperClient.updateRecord(this.tableName, params);
+
+      if (!response.success) {
+        console.error(response.message);
+        return null;
+      }
+
+      if (response.results) {
+        const successfulUpdates = response.results.filter(result => result.success);
+        const failedUpdates = response.results.filter(result => !result.success);
+
+        if (failedUpdates.length > 0) {
+          console.error(`Failed to update employee status ${failedUpdates.length} records:${JSON.stringify(failedUpdates)}`);
+          return null;
+        }
+
+        return successfulUpdates[0]?.data;
+      }
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error updating employee status:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return null;
+    }
+  }
+
+  async getStats() {
+    try {
+      const params = {
+        aggregators: [
+          {
+            id: "totalEmployees",
+            fields: [
+              {
+                field: { Name: "Id" },
+                Function: "Count"
+              }
+            ]
+          },
+          {
+            id: "activeEmployees",
+            fields: [
+              {
+                field: { Name: "Id" },
+                Function: "Count"
+              }
+            ],
+            where: [
+              {
+                FieldName: "status_c",
+                Operator: "EqualTo",
+                Values: ["active"]
+              }
+            ]
+          },
+          {
+            id: "inactiveEmployees",
+            fields: [
+              {
+                field: { Name: "Id" },
+                Function: "Count"
+              }
+            ],
+            where: [
+              {
+                FieldName: "status_c",
+                Operator: "EqualTo",
+                Values: ["inactive"]
+              }
+            ]
+          }
+        ]
+      };
+
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
+
+      if (!response.success) {
+        console.error(response.message);
+        return { total: 0, active: 0, inactive: 0 };
+      }
+
+      // Process aggregation results
+      let total = 0, active = 0, inactive = 0;
+      
+      if (response.aggregators) {
+        response.aggregators.forEach(agg => {
+          switch (agg.id) {
+            case 'totalEmployees':
+              total = agg.value || 0;
+              break;
+            case 'activeEmployees':
+              active = agg.value || 0;
+              break;
+            case 'inactiveEmployees':
+              inactive = agg.value || 0;
+              break;
+          }
+        });
+      }
+
+      return { total, active, inactive };
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error fetching employee stats:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return { total: 0, active: 0, inactive: 0 };
+    }
+  }
+
+  async bulkUpdate(updates) {
+    try {
+      const records = updates.map(update => {
+        const filteredData = this.filterUpdateableFields(update.data);
+        return {
+          Id: parseInt(update.Id),
+          ...filteredData
+        };
+      });
+
+      const params = { records };
+
+      const response = await this.apperClient.updateRecord(this.tableName, params);
+
+      if (!response.success) {
+        console.error(response.message);
+        return [];
+      }
+
+      if (response.results) {
+        const results = response.results.map(result => ({
+          success: result.success,
+          data: result.success ? result.data : null,
+          error: result.success ? null : result.message,
+          id: result.success ? result.data?.Id : null
+        }));
+
+        const failedUpdates = results.filter(result => !result.success);
+        if (failedUpdates.length > 0) {
+          console.error(`Failed to bulk update employees ${failedUpdates.length} records:${JSON.stringify(failedUpdates)}`);
+        }
+
+        return results;
+      }
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error bulk updating employees:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return [];
+    }
+  }
+}
+
+export default new EmployeeService();

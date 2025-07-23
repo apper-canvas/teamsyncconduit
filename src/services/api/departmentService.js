@@ -1,65 +1,67 @@
-import { toast } from "react-toastify";
-
-const departmentService = {
-  // Initialize ApperClient
-getClient() {
-    if (!window.ApperSDK) {
-      throw new Error('ApperSDK is not loaded. Please check your internet connection and try again.');
-    }
-    
+// Department Service - ApperClient Integration
+class DepartmentService {
+  constructor() {
+    // Initialize ApperClient with Project ID and Public Key
     const { ApperClient } = window.ApperSDK;
-    if (!ApperClient) {
-      throw new Error('ApperClient is not available. Please refresh the page and try again.');
-    }
-    
-    return new ApperClient({
+    this.apperClient = new ApperClient({
       apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
       apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
     });
-  },
+    this.tableName = 'department_c';
+    
+    // Define updateable fields based on Tables & Fields JSON
+    this.updateableFields = [
+      'Name', 'Tags', 'Owner', 'description_c', 'head_id_c', 'member_count_c', 'date1_c'
+    ];
+    
+    // Define all fields for fetch operations
+    this.allFields = [
+      { field: { Name: "Id" } },
+      { field: { Name: "Name" } },
+      { field: { Name: "Tags" } },
+      { field: { Name: "Owner" } },
+      { field: { Name: "CreatedOn" } },
+      { field: { Name: "CreatedBy" } },
+      { field: { Name: "ModifiedOn" } },
+      { field: { Name: "ModifiedBy" } },
+      { field: { Name: "description_c" } },
+      { field: { Name: "head_id_c" } },
+      { field: { Name: "member_count_c" } },
+      { field: { Name: "date1_c" } }
+    ];
+  }
 
-  // Get all departments with pagination and filtering
-  async getAll(options = {}) {
+  // Helper method to filter only updateable fields
+  filterUpdateableFields(data) {
+    const filtered = {};
+    this.updateableFields.forEach(field => {
+      if (data.hasOwnProperty(field) && data[field] !== undefined) {
+        filtered[field] = data[field];
+      }
+    });
+    return filtered;
+  }
+
+  async getAll() {
     try {
-      const apperClient = this.getClient();
-      const tableName = 'department_c';
-      
       const params = {
-fields: [
-          { field: { Name: "Name" } },
-          { field: { Name: "Tags" } },
-          { field: { Name: "Owner" } },
-          { field: { Name: "description_c" } },
-          { field: { Name: "head_id_c" } },
-          { field: { Name: "member_count_c" } },
-          { field: { Name: "date1_c" } },
-          { field: { Name: "CreatedOn" } },
-          { field: { Name: "CreatedBy" } },
-          { field: { Name: "ModifiedOn" } },
-          { field: { Name: "ModifiedBy" } }
-        ],
+        fields: this.allFields,
         orderBy: [
           {
-            fieldName: "CreatedOn",
+            fieldName: "Id",
             sorttype: "DESC"
           }
         ],
         pagingInfo: {
-          limit: options.limit || 20,
-          offset: options.offset || 0
+          limit: 100,
+          offset: 0
         }
       };
 
-      // Add filtering if provided
-      if (options.where) {
-        params.where = options.where;
-      }
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
 
-      const response = await apperClient.fetchRecords(tableName, params);
-      
       if (!response.success) {
         console.error(response.message);
-        toast.error(response.message);
         return [];
       }
 
@@ -72,36 +74,21 @@ fields: [
       }
       return [];
     }
-  },
+  }
 
-  // Get department by ID
   async getById(id) {
     try {
-      const apperClient = this.getClient();
-      const tableName = 'department_c';
-      
       const params = {
-fields: [
-          { field: { Name: "Name" } },
-          { field: { Name: "Tags" } },
-          { field: { Name: "Owner" } },
-          { field: { Name: "description_c" } },
-          { field: { Name: "head_id_c" } },
-          { field: { Name: "member_count_c" } },
-          { field: { Name: "date1_c" } },
-          { field: { Name: "CreatedOn" } },
-          { field: { Name: "CreatedBy" } },
-          { field: { Name: "ModifiedOn" } },
-          { field: { Name: "ModifiedBy" } }
-        ]
+        fields: this.allFields
       };
-      
-      const response = await apperClient.getRecordById(tableName, parseInt(id), params);
-      
-      if (!response || !response.data) {
+
+      const response = await this.apperClient.getRecordById(this.tableName, parseInt(id), params);
+
+      if (!response.success) {
+        console.error(response.message);
         return null;
       }
-      
+
       return response.data;
     } catch (error) {
       if (error?.response?.data?.message) {
@@ -111,66 +98,34 @@ fields: [
       }
       return null;
     }
-  },
+  }
 
-  // Create new department(s)
   async create(departmentData) {
     try {
-      const apperClient = this.getClient();
-      const tableName = 'department_c';
-      
-      // Filter to only include Updateable fields
-const updateableFields = {
-        Name: departmentData.Name,
-        Tags: departmentData.Tags,
-        Owner: departmentData.Owner ? parseInt(departmentData.Owner) : undefined,
-        description_c: departmentData.description_c,
-        head_id_c: departmentData.head_id_c,
-        member_count_c: departmentData.member_count_c,
-        date1_c: departmentData.date1_c
-      };
-
-      // Remove undefined fields
-      Object.keys(updateableFields).forEach(key => {
-        if (updateableFields[key] === undefined) {
-          delete updateableFields[key];
-        }
-      });
+      const filteredData = this.filterUpdateableFields(departmentData);
       
       const params = {
-        records: [updateableFields]
+        records: [filteredData]
       };
-      
-      const response = await apperClient.createRecord(tableName, params);
-      
+
+      const response = await this.apperClient.createRecord(this.tableName, params);
+
       if (!response.success) {
         console.error(response.message);
-        toast.error(response.message);
         return null;
       }
-      
+
       if (response.results) {
         const successfulRecords = response.results.filter(result => result.success);
         const failedRecords = response.results.filter(result => !result.success);
-        
+
         if (failedRecords.length > 0) {
-          console.error(`Failed to create ${failedRecords.length} department records:${JSON.stringify(failedRecords)}`);
-          
-          failedRecords.forEach(record => {
-            record.errors?.forEach(error => {
-              toast.error(`${error.fieldLabel}: ${error.message}`);
-            });
-            if (record.message) toast.error(record.message);
-          });
+          console.error(`Failed to create department ${failedRecords.length} records:${JSON.stringify(failedRecords)}`);
+          return null;
         }
 
-        if (successfulRecords.length > 0) {
-          toast.success('Department created successfully');
-          return successfulRecords[0].data;
-        }
+        return successfulRecords[0]?.data;
       }
-      
-      return null;
     } catch (error) {
       if (error?.response?.data?.message) {
         console.error("Error creating department:", error?.response?.data?.message);
@@ -179,67 +134,35 @@ const updateableFields = {
       }
       return null;
     }
-  },
+  }
 
-  // Update department(s)
   async update(id, departmentData) {
     try {
-      const apperClient = this.getClient();
-      const tableName = 'department_c';
-      
-      // Filter to only include Updateable fields
-const updateableFields = {
-        Id: parseInt(id),
-        Name: departmentData.Name,
-        Tags: departmentData.Tags,
-        Owner: departmentData.Owner ? parseInt(departmentData.Owner) : undefined,
-        description_c: departmentData.description_c,
-        head_id_c: departmentData.head_id_c,
-        member_count_c: departmentData.member_count_c,
-        date1_c: departmentData.date1_c
-      };
-
-      // Remove undefined fields (except Id)
-      Object.keys(updateableFields).forEach(key => {
-        if (key !== 'Id' && updateableFields[key] === undefined) {
-          delete updateableFields[key];
-        }
-      });
+      const filteredData = this.filterUpdateableFields(departmentData);
+      filteredData.Id = parseInt(id);
       
       const params = {
-        records: [updateableFields]
+        records: [filteredData]
       };
-      
-      const response = await apperClient.updateRecord(tableName, params);
-      
+
+      const response = await this.apperClient.updateRecord(this.tableName, params);
+
       if (!response.success) {
         console.error(response.message);
-        toast.error(response.message);
         return null;
       }
-      
+
       if (response.results) {
         const successfulUpdates = response.results.filter(result => result.success);
         const failedUpdates = response.results.filter(result => !result.success);
-        
+
         if (failedUpdates.length > 0) {
-          console.error(`Failed to update ${failedUpdates.length} department records:${JSON.stringify(failedUpdates)}`);
-          
-          failedUpdates.forEach(record => {
-            record.errors?.forEach(error => {
-              toast.error(`${error.fieldLabel}: ${error.message}`);
-            });
-            if (record.message) toast.error(record.message);
-          });
+          console.error(`Failed to update department ${failedUpdates.length} records:${JSON.stringify(failedUpdates)}`);
+          return null;
         }
 
-        if (successfulUpdates.length > 0) {
-          toast.success('Department updated successfully');
-          return successfulUpdates[0].data;
-        }
+        return successfulUpdates[0]?.data;
       }
-      
-      return null;
     } catch (error) {
       if (error?.response?.data?.message) {
         console.error("Error updating department:", error?.response?.data?.message);
@@ -248,50 +171,32 @@ const updateableFields = {
       }
       return null;
     }
-  },
+  }
 
-  // Delete department(s)
-  async delete(recordIds) {
+  async delete(id) {
     try {
-      const apperClient = this.getClient();
-      const tableName = 'department_c';
-      
-      // Ensure recordIds is an array
-      const ids = Array.isArray(recordIds) ? recordIds : [recordIds];
-      const integerIds = ids.map(id => parseInt(id));
-      
       const params = {
-        RecordIds: integerIds
+        RecordIds: [parseInt(id)]
       };
-      
-      const response = await apperClient.deleteRecord(tableName, params);
-      
+
+      const response = await this.apperClient.deleteRecord(this.tableName, params);
+
       if (!response.success) {
         console.error(response.message);
-        toast.error(response.message);
         return false;
       }
-      
+
       if (response.results) {
         const successfulDeletions = response.results.filter(result => result.success);
         const failedDeletions = response.results.filter(result => !result.success);
-        
+
         if (failedDeletions.length > 0) {
-          console.error(`Failed to delete ${failedDeletions.length} department records:${JSON.stringify(failedDeletions)}`);
-          
-          failedDeletions.forEach(record => {
-            if (record.message) toast.error(record.message);
-          });
+          console.error(`Failed to delete department ${failedDeletions.length} records:${JSON.stringify(failedDeletions)}`);
+          return false;
         }
 
-        if (successfulDeletions.length > 0) {
-          toast.success(`${successfulDeletions.length} department(s) deleted successfully`);
-        }
-        
-        return successfulDeletions.length === integerIds.length;
+        return successfulDeletions.length > 0;
       }
-      
-      return false;
     } catch (error) {
       if (error?.response?.data?.message) {
         console.error("Error deleting department:", error?.response?.data?.message);
@@ -301,6 +206,209 @@ const updateableFields = {
       return false;
     }
   }
-};
 
-export default departmentService;
+  async search(query) {
+    try {
+      const params = {
+        fields: this.allFields,
+        whereGroups: [
+          {
+            operator: "OR",
+            subGroups: [
+              {
+                conditions: [
+                  {
+                    fieldName: "Name",
+                    operator: "Contains",
+                    values: [query],
+                    include: true
+                  }
+                ],
+                operator: "OR"
+              },
+              {
+                conditions: [
+                  {
+                    fieldName: "description_c",
+                    operator: "Contains",
+                    values: [query],
+                    include: true
+                  }
+                ],
+                operator: "OR"
+              }
+            ]
+          }
+        ],
+        pagingInfo: {
+          limit: 50,
+          offset: 0
+        }
+      };
+
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
+
+      if (!response.success) {
+        console.error(response.message);
+        return [];
+      }
+
+      return response.data || [];
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error searching departments:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return [];
+    }
+  }
+
+  async getStats() {
+    try {
+      const params = {
+        aggregators: [
+          {
+            id: "totalDepartments",
+            fields: [
+              {
+                field: { Name: "Id" },
+                Function: "Count"
+              }
+            ]
+          },
+          {
+            id: "totalMembers",
+            fields: [
+              {
+                field: { Name: "member_count_c" },
+                Function: "Sum"
+              }
+            ]
+          },
+          {
+            id: "avgMembers",
+            fields: [
+              {
+                field: { Name: "member_count_c" },
+                Function: "Average"
+              }
+            ]
+          }
+        ]
+      };
+
+      const response = await this.apperClient.fetchRecords(this.tableName, params);
+
+      if (!response.success) {
+        console.error(response.message);
+        return { total: 0, totalMembers: 0, avgMembers: 0 };
+      }
+
+      // Process aggregation results
+      let total = 0, totalMembers = 0, avgMembers = 0;
+      
+      if (response.aggregators) {
+        response.aggregators.forEach(agg => {
+          switch (agg.id) {
+            case 'totalDepartments':
+              total = agg.value || 0;
+              break;
+            case 'totalMembers':
+              totalMembers = agg.value || 0;
+              break;
+            case 'avgMembers':
+              avgMembers = Math.round(agg.value || 0);
+              break;
+          }
+        });
+      }
+
+      return { total, totalMembers, avgMembers };
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error fetching department stats:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return { total: 0, totalMembers: 0, avgMembers: 0 };
+    }
+  }
+
+  async bulkDelete(ids) {
+    try {
+      const params = {
+        RecordIds: ids.map(id => parseInt(id))
+      };
+
+      const response = await this.apperClient.deleteRecord(this.tableName, params);
+
+      if (!response.success) {
+        console.error(response.message);
+        return { deleted: [], failed: ids };
+      }
+
+      if (response.results) {
+        const successfulDeletions = response.results.filter(result => result.success);
+        const failedDeletions = response.results.filter(result => !result.success);
+
+        if (failedDeletions.length > 0) {
+          console.error(`Failed to delete departments ${failedDeletions.length} records:${JSON.stringify(failedDeletions)}`);
+        }
+
+        return {
+          deleted: successfulDeletions.map(result => result.data),
+          failed: failedDeletions.map(result => result.id)
+        };
+      }
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error bulk deleting departments:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return { deleted: [], failed: ids };
+    }
+  }
+
+  async updateMemberCount(id, count) {
+    try {
+      const params = {
+        records: [
+          {
+            Id: parseInt(id),
+            member_count_c: parseInt(count)
+          }
+        ]
+      };
+
+      const response = await this.apperClient.updateRecord(this.tableName, params);
+
+      if (!response.success) {
+        console.error(response.message);
+        return null;
+      }
+
+      if (response.results) {
+        const successfulUpdates = response.results.filter(result => result.success);
+        const failedUpdates = response.results.filter(result => !result.success);
+
+        if (failedUpdates.length > 0) {
+          console.error(`Failed to update department member count ${failedUpdates.length} records:${JSON.stringify(failedUpdates)}`);
+          return null;
+        }
+
+        return successfulUpdates[0]?.data;
+      }
+    } catch (error) {
+      if (error?.response?.data?.message) {
+        console.error("Error updating department member count:", error?.response?.data?.message);
+      } else {
+        console.error(error.message);
+      }
+      return null;
+    }
+  }
+}
+
+export default new DepartmentService();
