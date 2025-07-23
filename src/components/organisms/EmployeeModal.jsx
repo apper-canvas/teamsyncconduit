@@ -26,7 +26,7 @@ checkbox1_c: false,
     decimal1_c: 0,
     decimal2_c: "",
     multilinetext1_c: "",
-    name11_c: "",
+name11_c: 0,
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -52,7 +52,7 @@ checkbox1_c: employee.checkbox1_c || false,
         decimal1_c: employee.decimal1_c || 0,
         decimal2_c: employee.decimal2_c || "",
         multilinetext1_c: employee.multilinetext1_c || "",
-        name11_c: employee.name11_c || "",
+name11_c: employee.name11_c || 0,
       });
     }
   }, [employee]);
@@ -180,7 +180,7 @@ checkbox1_c: false,
       decimal1_c: 0,
       decimal2_c: "",
       multilinetext1_c: "",
-      name11_c: "",
+name11_c: 0,
     });
     setErrors({});
     onClose();
@@ -395,14 +395,14 @@ placeholder="Enter decimal value"
               placeholder="Enter text"
             />
 
-            <FormField
+<FormField
               label="Name11"
               name="name11_c"
-              type="text"
+              type="number"
               value={formData.name11_c}
               onChange={handleChange}
               error={errors.name11_c}
-              placeholder="Enter name11 value"
+              placeholder="Enter numeric value"
             />
           </div>
 

@@ -170,7 +170,7 @@ const updateableFields = {
         name8_c: employeeData.name8_c, // MultiPicklist type
         name9_c: employeeData.name9_c, // MultilineText type
         name10_c: employeeData.name10_c, // Phone type
-        name11_c: employeeData.name11_c, // Text type
+name11_c: employeeData.name11_c ? parseInt(employeeData.name11_c) : null, // Number type
         name12_c: employeeData.name12_c, // Text type
         name13_c: employeeData.name13_c, // Tag type
         name14_c: employeeData.name14_c, // Text type
@@ -270,7 +270,7 @@ const updateableFields = {
         name8_c: employeeData.name8_c, // MultiPicklist type
         name9_c: employeeData.name9_c, // MultilineText type
         name10_c: employeeData.name10_c, // Phone type
-        name11_c: employeeData.name11_c, // Text type
+name11_c: employeeData.name11_c ? parseInt(employeeData.name11_c) : null, // Number type
         name12_c: employeeData.name12_c, // Text type
         name13_c: employeeData.name13_c, // Tag type
         name14_c: employeeData.name14_c, // Text type
