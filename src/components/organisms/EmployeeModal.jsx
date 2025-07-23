@@ -18,6 +18,7 @@ const [formData, setFormData] = useState({
     hire_date_c: "",
     status_c: "active",
     name1_c: "",
+    name2_c: false,
 checkbox1_c: false,
     boolean1_c: "",
     boolean2_c: false,
@@ -42,6 +43,7 @@ setFormData({
         hire_date_c: employee.hire_date_c || "",
         status_c: employee.status_c || "active",
         name1_c: employee.name1_c || "",
+        name2_c: employee.name2_c || false,
 checkbox1_c: employee.checkbox1_c || false,
         boolean1_c: employee.boolean1_c || "",
         boolean2_c: employee.boolean2_c || false,
@@ -168,6 +170,7 @@ setFormData({
       hire_date_c: "",
       status_c: "active",
       name1_c: "",
+      name2_c: false,
 checkbox1_c: false,
       boolean1_c: "",
       boolean2_c: false,
@@ -300,6 +303,15 @@ label="Department"
             />
 
 <FormField
+              label="Name2"
+              name="name2_c"
+              type="checkbox"
+              checked={formData.name2_c}
+              onChange={handleChange}
+              error={errors.name2_c}
+            />
+
+            <FormField
               label="Boolean2"
               name="boolean2_c"
               type="checkbox"
