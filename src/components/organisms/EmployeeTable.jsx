@@ -157,9 +157,9 @@ const handleDelete = async (employee) => {
                                 {employee.sample1_c || "N/A"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
+<td className="py-3 px-4">
                             <span className="text-gray-900">
-                                {employee.sample2_c || "N/A"}
+                                {employee.sample2_c || "0"}
                             </span>
                         </td>
                         <td className="py-3 px-4">

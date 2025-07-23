@@ -9,9 +9,9 @@
     "role": "Software Engineer",
 "departmentId": 1,
     "hireDate": "2023-01-15",
-    "status": "active",
+"status": "active",
     "avatar": "",
-    "sample2": "Experienced software engineer specializing in full-stack development.\nProficient in React, Node.js, and database management.\nStrong problem-solving skills and team collaboration."
+    "sample2": 1001
   },
   {
     "Id": 2,
@@ -23,9 +23,9 @@
     "role": "Product Manager",
 "departmentId": 2,
     "hireDate": "2023-02-01",
-    "status": "active",
+"status": "active",
     "avatar": "",
-    "sample2": "Strategic product manager with 5+ years of experience.\nLed multiple successful product launches and feature rollouts.\nExcellent stakeholder management and market analysis skills."
+    "sample2": 1002
   },
   {
     "Id": 3,
@@ -37,9 +37,9 @@
     "role": "UX Designer",
 "departmentId": 3,
     "hireDate": "2023-03-10",
-    "status": "active",
+"status": "active",
     "avatar": "",
-    "sample2": "Creative UX designer passionate about user-centered design.\nSpecializes in user research, wireframing, and prototyping.\nStrong background in design systems and accessibility standards."
+    "sample2": 1003
   },
   {
     "Id": 4,
@@ -51,9 +51,9 @@
     "role": "HR Manager",
 "departmentId": 4,
     "hireDate": "2023-01-20",
-    "status": "active",
+"status": "active",
     "avatar": "",
-    "sample2": "Experienced HR manager focused on employee development and retention.\nManages recruitment, onboarding, and performance review processes.\nCertified in conflict resolution and workplace diversity training."
+    "sample2": 1004
   },
   {
     "Id": 5,
@@ -65,9 +65,9 @@
     "role": "Marketing Specialist",
 "departmentId": 5,
     "hireDate": "2023-04-05",
-    "status": "active",
+"status": "active",
     "avatar": "",
-    "sample2": "Digital marketing specialist with expertise in content strategy.\nManages social media campaigns, SEO optimization, and email marketing.\nAnalytics-driven approach to marketing performance and ROI improvement."
+    "sample2": 1005
   },
   {
     "Id": 6,
@@ -79,9 +79,9 @@
     "role": "Senior Developer",
 "departmentId": 1,
     "hireDate": "2022-11-15",
-    "status": "active",
+"status": "active",
     "avatar": "",
-    "sample2": "Senior developer with 8+ years of experience in web technologies.\nMentors junior developers and leads technical architecture decisions.\nContributes to open-source projects and stays current with industry trends."
+    "sample2": 1006
   },
   {
     "Id": 7,
@@ -93,9 +93,9 @@
     "role": "Sales Representative",
 "departmentId": 6,
     "hireDate": "2023-05-12",
-    "status": "active",
+"status": "active",
     "avatar": "",
-    "sample2": "Results-driven sales representative with strong client relationship skills.\nConsistently exceeds sales targets and maintains high customer satisfaction.\nSpecializes in B2B sales and account management for enterprise clients."
+    "sample2": 1007
   },
   {
     "Id": 8,
@@ -107,8 +107,8 @@
     "role": "Accountant",
 "departmentId": 7,
     "hireDate": "2023-02-28",
-    "status": "inactive",
+"status": "inactive",
     "avatar": "",
-    "sample2": "Detail-oriented accountant with CPA certification.\nManages financial reporting, tax preparation, and budget analysis.\nCurrently on leave for professional development and certification renewal."
+    "sample2": 1008
   }
 ]

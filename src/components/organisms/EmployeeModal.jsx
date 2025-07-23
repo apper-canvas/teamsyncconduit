@@ -29,7 +29,7 @@ checkbox1_c: false,
 name11_c: 0,
     autonumber1_c: "",
     sample1_c: 0,
-    sample2_c: "",
+    sample2_c: 0,
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -58,7 +58,7 @@ checkbox1_c: employee.checkbox1_c || false,
 name11_c: employee.name11_c || 0,
         autonumber1_c: employee.autonumber1_c || "",
         sample1_c: parseInt(employee.sample1_c) || 0,
-        sample2_c: employee.sample2_c || "",
+        sample2_c: parseInt(employee.sample2_c) || 0,
       });
     }
   }, [employee]);
@@ -187,11 +187,11 @@ checkbox1_c: false,
       date1_c: "",
       decimal1_c: 0,
       decimal2_c: "",
-      multilinetext1_c: "",
-name11_c: 0,
+multilinetext1_c: "",
+      name11_c: 0,
       autonumber1_c: "",
       sample1_c: 0,
-      sample2_c: "",
+      sample2_c: 0,
     });
     setErrors({});
     onClose();
@@ -434,14 +434,14 @@ placeholder="Enter decimal value"
               placeholder="Enter sample1 value"
             />
 
-            <FormField
+<FormField
               label="Sample2"
               name="sample2_c"
-              type="textarea"
+              type="number"
               value={formData.sample2_c}
               onChange={handleChange}
               error={errors.sample2_c}
-              placeholder="Enter multiline text"
+              placeholder="Enter numeric value"
             />
           </div>
 
