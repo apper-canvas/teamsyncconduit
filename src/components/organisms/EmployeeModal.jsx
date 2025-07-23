@@ -152,6 +152,7 @@ date1_c: formData.date1_c || null,
         decimal2_c: formData.decimal2_c ? parseFloat(formData.decimal2_c) || null : null,
         // Number fields - convert to proper integer format
         sample1_c: formData.sample1_c ? parseInt(formData.sample1_c) || null : null,
+        sample2_c: formData.sample2_c ? parseInt(formData.sample2_c) || null : null,
       };
       if (employee) {
         await employeeService.update(employee.Id, submitData);
