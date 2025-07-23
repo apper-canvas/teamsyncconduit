@@ -10,11 +10,20 @@ export const useEmployees = () => {
     setLoading(true);
     setError("");
     
-    try {
+try {
       const data = await employeeService.getAll();
-      setEmployees(data);
+      setEmployees(data || []);
     } catch (err) {
-      setError(err.message || "Failed to load employees");
+      console.error("Error loading employees:", err);
+      
+      // Handle specific SDK-related errors
+      if (err.message?.includes('ApperSDK')) {
+        setError("Service is temporarily unavailable. Please refresh the page and try again.");
+      } else if (err.message?.includes('Network Error')) {
+        setError("Network connection failed. Please check your internet connection.");
+      } else {
+        setError(err.message || "Failed to load employees. Please try again.");
+      }
     } finally {
       setLoading(false);
     }

@@ -2,8 +2,16 @@ import { toast } from "react-toastify";
 
 const employeeService = {
   // Initialize ApperClient
-  getClient() {
+getClient() {
+    if (!window.ApperSDK) {
+      throw new Error('ApperSDK is not loaded. Please check your internet connection and try again.');
+    }
+    
     const { ApperClient } = window.ApperSDK;
+    if (!ApperClient) {
+      throw new Error('ApperClient is not available. Please refresh the page and try again.');
+    }
+    
     return new ApperClient({
       apperProjectId: import.meta.env.VITE_APPER_PROJECT_ID,
       apperPublicKey: import.meta.env.VITE_APPER_PUBLIC_KEY
