@@ -7,10 +7,11 @@
     "email": "john.doe@teamsync.com",
     "phone": "+1 (555) 123-4567",
     "role": "Software Engineer",
-    "departmentId": 1,
+"departmentId": 1,
     "hireDate": "2023-01-15",
     "status": "active",
-    "avatar": ""
+    "avatar": "",
+    "sample2": "Experienced software engineer specializing in full-stack development.\nProficient in React, Node.js, and database management.\nStrong problem-solving skills and team collaboration."
   },
   {
     "Id": 2,
@@ -20,10 +21,11 @@
     "email": "jane.smith@teamsync.com",
     "phone": "+1 (555) 234-5678",
     "role": "Product Manager",
-    "departmentId": 2,
+"departmentId": 2,
     "hireDate": "2023-02-01",
     "status": "active",
-    "avatar": ""
+    "avatar": "",
+    "sample2": "Strategic product manager with 5+ years of experience.\nLed multiple successful product launches and feature rollouts.\nExcellent stakeholder management and market analysis skills."
   },
   {
     "Id": 3,
@@ -33,10 +35,11 @@
     "email": "michael.johnson@teamsync.com",
     "phone": "+1 (555) 345-6789",
     "role": "UX Designer",
-    "departmentId": 3,
+"departmentId": 3,
     "hireDate": "2023-03-10",
     "status": "active",
-    "avatar": ""
+    "avatar": "",
+    "sample2": "Creative UX designer passionate about user-centered design.\nSpecializes in user research, wireframing, and prototyping.\nStrong background in design systems and accessibility standards."
   },
   {
     "Id": 4,
@@ -46,10 +49,11 @@
     "email": "sarah.williams@teamsync.com",
     "phone": "+1 (555) 456-7890",
     "role": "HR Manager",
-    "departmentId": 4,
+"departmentId": 4,
     "hireDate": "2023-01-20",
     "status": "active",
-    "avatar": ""
+    "avatar": "",
+    "sample2": "Experienced HR manager focused on employee development and retention.\nManages recruitment, onboarding, and performance review processes.\nCertified in conflict resolution and workplace diversity training."
   },
   {
     "Id": 5,
@@ -59,10 +63,11 @@
     "email": "david.brown@teamsync.com",
     "phone": "+1 (555) 567-8901",
     "role": "Marketing Specialist",
-    "departmentId": 5,
+"departmentId": 5,
     "hireDate": "2023-04-05",
     "status": "active",
-    "avatar": ""
+    "avatar": "",
+    "sample2": "Digital marketing specialist with expertise in content strategy.\nManages social media campaigns, SEO optimization, and email marketing.\nAnalytics-driven approach to marketing performance and ROI improvement."
   },
   {
     "Id": 6,
@@ -72,10 +77,11 @@
     "email": "emily.davis@teamsync.com",
     "phone": "+1 (555) 678-9012",
     "role": "Senior Developer",
-    "departmentId": 1,
+"departmentId": 1,
     "hireDate": "2022-11-15",
     "status": "active",
-    "avatar": ""
+    "avatar": "",
+    "sample2": "Senior developer with 8+ years of experience in web technologies.\nMentors junior developers and leads technical architecture decisions.\nContributes to open-source projects and stays current with industry trends."
   },
   {
     "Id": 7,
@@ -85,10 +91,11 @@
     "email": "robert.miller@teamsync.com",
     "phone": "+1 (555) 789-0123",
     "role": "Sales Representative",
-    "departmentId": 6,
+"departmentId": 6,
     "hireDate": "2023-05-12",
     "status": "active",
-    "avatar": ""
+    "avatar": "",
+    "sample2": "Results-driven sales representative with strong client relationship skills.\nConsistently exceeds sales targets and maintains high customer satisfaction.\nSpecializes in B2B sales and account management for enterprise clients."
   },
   {
     "Id": 8,
@@ -98,9 +105,10 @@
     "email": "lisa.wilson@teamsync.com",
     "phone": "+1 (555) 890-1234",
     "role": "Accountant",
-    "departmentId": 7,
+"departmentId": 7,
     "hireDate": "2023-02-28",
     "status": "inactive",
-    "avatar": ""
+    "avatar": "",
+    "sample2": "Detail-oriented accountant with CPA certification.\nManages financial reporting, tax preparation, and budget analysis.\nCurrently on leave for professional development and certification renewal."
   }
 ]
