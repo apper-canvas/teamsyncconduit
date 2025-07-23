@@ -31,9 +31,10 @@ autonumber1_c: "",
     autonumber2_c: "",
     autonumber3_c: "",
     autonumber4_c: 0,
-    autonumber5_c: 0,
+autonumber5_c: 0,
     sample1_c: 0,
     sample2_c: 0,
+    sample3_c: "",
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -64,9 +65,10 @@ autonumber1_c: employee.autonumber1_c || "",
         autonumber2_c: employee.autonumber2_c || "",
         autonumber3_c: employee.autonumber3_c || "",
         autonumber4_c: parseInt(employee.autonumber4_c) || 0,
-        autonumber5_c: parseInt(employee.autonumber5_c) || 0,
+autonumber5_c: parseInt(employee.autonumber5_c) || 0,
         sample1_c: parseInt(employee.sample1_c) || 0,
         sample2_c: parseInt(employee.sample2_c) || 0,
+        sample3_c: employee.sample3_c || "",
       });
     }
   }, [employee]);
@@ -205,9 +207,10 @@ autonumber1_c: "",
       autonumber2_c: "",
       autonumber3_c: "",
       autonumber4_c: 0,
-      autonumber5_c: 0,
+autonumber5_c: 0,
       sample1_c: 0,
       sample2_c: 0,
+      sample3_c: "",
     });
     setErrors({});
     onClose();
@@ -497,8 +500,18 @@ placeholder="Enter decimal value"
               type="number"
               value={formData.autonumber5_c}
               onChange={handleChange}
-              error={errors.autonumber5_c}
+error={errors.autonumber5_c}
               placeholder="Enter numeric value"
+            />
+
+            <FormField
+              label="Sample3"
+              name="sample3_c"
+              type="text"
+              value={formData.sample3_c}
+              onChange={handleChange}
+              error={errors.sample3_c}
+              placeholder="Enter sample3 value"
             />
           </div>
 
