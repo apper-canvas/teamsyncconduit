@@ -28,6 +28,7 @@ checkbox1_c: false,
     multilinetext1_c: "",
 name11_c: 0,
     autonumber1_c: "",
+    sample1_c: "",
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -55,6 +56,7 @@ checkbox1_c: employee.checkbox1_c || false,
         multilinetext1_c: employee.multilinetext1_c || "",
 name11_c: employee.name11_c || 0,
         autonumber1_c: employee.autonumber1_c || "",
+        sample1_c: employee.sample1_c || "",
       });
     }
   }, [employee]);
@@ -184,6 +186,7 @@ checkbox1_c: false,
       multilinetext1_c: "",
 name11_c: 0,
       autonumber1_c: "",
+      sample1_c: "",
     });
     setErrors({});
     onClose();
@@ -415,6 +418,15 @@ placeholder="Enter decimal value"
               value={formData.autonumber1_c}
               onChange={handleChange}
               error={errors.autonumber1_c}
+            />
+
+            <FormField
+              label="Sample1"
+              name="sample1_c"
+              value={formData.sample1_c}
+              onChange={handleChange}
+              error={errors.sample1_c}
+              placeholder="Enter sample1 value"
             />
           </div>
 
