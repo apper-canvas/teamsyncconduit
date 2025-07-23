@@ -26,6 +26,7 @@ checkbox1_c: false,
     decimal1_c: 0,
     decimal2_c: "",
     multilinetext1_c: "",
+    name11_c: "",
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -51,6 +52,7 @@ checkbox1_c: employee.checkbox1_c || false,
         decimal1_c: employee.decimal1_c || 0,
         decimal2_c: employee.decimal2_c || "",
         multilinetext1_c: employee.multilinetext1_c || "",
+        name11_c: employee.name11_c || "",
       });
     }
   }, [employee]);
@@ -178,6 +180,7 @@ checkbox1_c: false,
       decimal1_c: 0,
       decimal2_c: "",
       multilinetext1_c: "",
+      name11_c: "",
     });
     setErrors({});
     onClose();
@@ -390,6 +393,16 @@ placeholder="Enter decimal value"
               onChange={handleChange}
               error={errors.multilinetext1_c}
               placeholder="Enter text"
+            />
+
+            <FormField
+              label="Name11"
+              name="name11_c"
+              type="text"
+              value={formData.name11_c}
+              onChange={handleChange}
+              error={errors.name11_c}
+              placeholder="Enter name11 value"
             />
           </div>
 
