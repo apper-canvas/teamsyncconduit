@@ -7,7 +7,7 @@ import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
 import ApperIcon from "@/components/ApperIcon";
-import { attendanceService } from "@/services/api/attendanceService";
+import attendanceService from "@/services/api/attendanceService";
 import employeeService from "@/services/api/employeeService";
 const Attendance = () => {
   const [attendance, setAttendance] = useState([]);
