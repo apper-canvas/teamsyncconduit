@@ -61,7 +61,7 @@ const handleDelete = async (employee) => {
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber1 Date</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber2 Decimal</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber3 Email</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber4</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber4 Rating</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber5</th>
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Sample1</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Sample2</th>
@@ -167,10 +167,16 @@ const handleDelete = async (employee) => {
                                 {employee.autonumber3_c || "N/A"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
-                            <span className="text-gray-900">
-                                {employee.autonumber4_c || "N/A"}
-                            </span>
+<td className="py-3 px-4">
+                            <div className="flex items-center space-x-1">
+                                {[1, 2, 3, 4, 5].map(star => <ApperIcon
+                                    key={star}
+                                    name="Star"
+                                    size={16}
+                                    className={`${star <= (employee.autonumber4_c || 0) ? "text-yellow-400 fill-current" : "text-gray-300"}`} />)}
+                                <span className="text-sm text-gray-600 ml-2">({employee.autonumber4_c || 0}/5)
+                                                                    </span>
+                            </div>
                         </td>
                         <td className="py-3 px-4">
                             <span className="text-gray-900">

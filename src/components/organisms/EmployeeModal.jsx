@@ -484,16 +484,37 @@ placeholder="Enter decimal value"
               placeholder="Enter email address"
             />
 
-            <FormField
-              label="Autonumber4"
-              name="autonumber4_c"
-              type="number"
-              value={formData.autonumber4_c}
-              onChange={handleChange}
-              error={errors.autonumber4_c}
-              placeholder="Enter numeric value"
-            />
-
+<div className="space-y-2">
+              <label className="block text-sm font-medium text-gray-700">
+                Autonumber4 Rating
+              </label>
+              <div className="flex items-center space-x-2">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <button
+                    key={star}
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, autonumber4_c: star }))}
+                    className="transition-colors hover:scale-110 transform"
+                  >
+                    <ApperIcon
+                      name="Star"
+                      size={24}
+                      className={`${
+                        star <= formData.autonumber4_c
+                          ? "text-yellow-400 fill-current"
+                          : "text-gray-300 hover:text-yellow-200"
+                      }`}
+                    />
+                  </button>
+                ))}
+                <span className="text-sm text-gray-600 ml-3">
+                  {formData.autonumber4_c}/5
+                </span>
+              </div>
+              {errors.autonumber4_c && (
+                <p className="text-sm text-red-600">{errors.autonumber4_c}</p>
+              )}
+            </div>
             <FormField
               label="Autonumber5"
               name="autonumber5_c"
