@@ -1,4 +1,6 @@
 import { toast } from "react-toastify";
+import React from "react";
+import Error from "@/components/ui/Error";
 
 const employeeService = {
   // Initialize ApperClient
@@ -24,8 +26,8 @@ getClient() {
       const apperClient = this.getClient();
       const tableName = 'employee_c';
       
-      const params = {
-fields: [
+const params = {
+        fields: [
           { field: { Name: "Name" } },
           { field: { Name: "Tags" } },
           { field: { Name: "Owner" } },
@@ -45,11 +47,15 @@ fields: [
           { field: { Name: "boolean1_c" } },
           { field: { Name: "boolean2_c" } },
           { field: { Name: "date1_c" } },
-{ field: { Name: "decimal1_c" } },
+          { field: { Name: "decimal1_c" } },
           { field: { Name: "decimal2_c" } },
           { field: { Name: "multilinetext1_c" } },
           { field: { Name: "name11_c" } },
-{ field: { Name: "autonumber1_c" } },
+          { field: { Name: "autonumber1_c" } },
+          { field: { Name: "autonumber2_c" } },
+          { field: { Name: "autonumber3_c" } },
+          { field: { Name: "autonumber4_c" } },
+          { field: { Name: "autonumber5_c" } },
           { field: { Name: "sample1_c" } },
           { field: { Name: "sample2_c" } },
           { field: { Name: "CreatedOn" } },
@@ -99,8 +105,8 @@ fields: [
       const apperClient = this.getClient();
       const tableName = 'employee_c';
       
-      const params = {
-fields: [
+const params = {
+        fields: [
           { field: { Name: "Name" } },
           { field: { Name: "Tags" } },
           { field: { Name: "Owner" } },
@@ -120,11 +126,15 @@ fields: [
           { field: { Name: "boolean1_c" } },
           { field: { Name: "boolean2_c" } },
           { field: { Name: "date1_c" } },
-{ field: { Name: "decimal1_c" } },
+          { field: { Name: "decimal1_c" } },
           { field: { Name: "decimal2_c" } },
           { field: { Name: "multilinetext1_c" } },
           { field: { Name: "name11_c" } },
-{ field: { Name: "autonumber1_c" } },
+          { field: { Name: "autonumber1_c" } },
+          { field: { Name: "autonumber2_c" } },
+          { field: { Name: "autonumber3_c" } },
+          { field: { Name: "autonumber4_c" } },
+          { field: { Name: "autonumber5_c" } },
           { field: { Name: "sample1_c" } },
           { field: { Name: "sample2_c" } },
           { field: { Name: "CreatedOn" } },
@@ -182,7 +192,7 @@ const updateableFields = {
         name8_c: employeeData.name8_c, // MultiPicklist type
         name9_c: employeeData.name9_c, // MultilineText type
         name10_c: employeeData.name10_c, // Phone type
-name11_c: employeeData.name11_c ? parseInt(employeeData.name11_c) : null, // Number type
+        name11_c: employeeData.name11_c ? parseInt(employeeData.name11_c) : null, // Number type
         name12_c: employeeData.name12_c, // Text type
         name13_c: employeeData.name13_c, // Tag type
         name14_c: employeeData.name14_c, // Text type
@@ -193,74 +203,33 @@ name11_c: employeeData.name11_c ? parseInt(employeeData.name11_c) : null, // Num
         name19_c: employeeData.name19_c, // Tag type
         name20_c: employeeData.name20_c, // Phone type
         checkbox1_c: employeeData.checkbox1_c, // Boolean type
-date1_c: employeeData.date1_c || null, // Email type
+        date1_c: employeeData.date1_c || null, // Email type
         boolean1_c: employeeData.boolean1_c || null, // Date type (changed from Boolean)
         boolean2_c: employeeData.boolean2_c, // Boolean type
+        decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
+        decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
+        multilinetext1_c: employeeData.multilinetext1_c, // Text type
+        autonumber1_c: employeeData.autonumber1_c || null, // Date type
+        autonumber2_c: employeeData.autonumber2_c ? parseInt(employeeData.autonumber2_c) : null, // Number type
+        autonumber3_c: employeeData.autonumber3_c ? parseInt(employeeData.autonumber3_c) : null, // Number type
+        autonumber4_c: employeeData.autonumber4_c ? parseInt(employeeData.autonumber4_c) : null, // Number type
+        autonumber5_c: employeeData.autonumber5_c ? parseInt(employeeData.autonumber5_c) : null, // Number type
+        sample1_c: employeeData.sample1_c, // Number type
+        sample2_c: employeeData.sample2_c // MultilineText type
+      };
 decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
         decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
-multilinetext1_c: employeeData.multilinetext1_c, // Text type
-autonumber1_c: employeeData.autonumber1_c || null, // Date type
-        sample1_c: employeeData.sample1_c, // Number type
-        sample2_c: employeeData.sample2_c, // MultilineText type
+        multilinetext1_c: employeeData.multilinetext1_c, // Text type
+sample1_c: employeeData.sample1_c, // Number type
+        sample2_c: employeeData.sample2_c // MultilineText type
       };
+      
       // Remove undefined fields
       Object.keys(updateableFields).forEach(key => {
         if (updateableFields[key] === undefined) {
           delete updateableFields[key];
         }
       });
-      
-      const params = {
-        records: [updateableFields]
-      };
-      
-      const response = await apperClient.createRecord(tableName, params);
-      
-      if (!response.success) {
-        console.error(response.message);
-        toast.error(response.message);
-        return null;
-      }
-      
-      if (response.results) {
-        const successfulRecords = response.results.filter(result => result.success);
-        const failedRecords = response.results.filter(result => !result.success);
-        
-        if (failedRecords.length > 0) {
-          console.error(`Failed to create ${failedRecords.length} employee records:${JSON.stringify(failedRecords)}`);
-          
-          failedRecords.forEach(record => {
-            record.errors?.forEach(error => {
-              toast.error(`${error.fieldLabel}: ${error.message}`);
-            });
-            if (record.message) toast.error(record.message);
-          });
-        }
-
-        if (successfulRecords.length > 0) {
-          toast.success('Employee created successfully');
-          return successfulRecords[0].data;
-        }
-      }
-      
-      return null;
-    } catch (error) {
-      if (error?.response?.data?.message) {
-        console.error("Error creating employee:", error?.response?.data?.message);
-      } else {
-        console.error(error.message);
-      }
-      return null;
-    }
-  },
-
-  // Update employee(s)
-  async update(id, employeeData) {
-    try {
-      const apperClient = this.getClient();
-      const tableName = 'employee_c';
-      
-      // Filter to only include Updateable fields
 const updateableFields = {
         Id: parseInt(id),
         Name: employeeData.Name,
@@ -285,7 +254,7 @@ const updateableFields = {
         name8_c: employeeData.name8_c, // MultiPicklist type
         name9_c: employeeData.name9_c, // MultilineText type
         name10_c: employeeData.name10_c, // Phone type
-name11_c: employeeData.name11_c ? parseInt(employeeData.name11_c) : null, // Number type
+        name11_c: employeeData.name11_c ? parseInt(employeeData.name11_c) : null, // Number type
         name12_c: employeeData.name12_c, // Text type
         name13_c: employeeData.name13_c, // Tag type
         name14_c: employeeData.name14_c, // Text type
@@ -296,15 +265,19 @@ name11_c: employeeData.name11_c ? parseInt(employeeData.name11_c) : null, // Num
         name19_c: employeeData.name19_c, // Tag type
         name20_c: employeeData.name20_c, // Phone type
         checkbox1_c: employeeData.checkbox1_c, // Boolean type
-date1_c: employeeData.date1_c || null, // Email type
+        date1_c: employeeData.date1_c || null, // Email type
         boolean1_c: employeeData.boolean1_c || null, // Date type (changed from Boolean)
         boolean2_c: employeeData.boolean2_c, // Boolean type
-decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
+        decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, // Rating type
         decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
-multilinetext1_c: employeeData.multilinetext1_c, // Text type
-autonumber1_c: employeeData.autonumber1_c || null, // Date type
+        multilinetext1_c: employeeData.multilinetext1_c, // Text type
+        autonumber1_c: employeeData.autonumber1_c || null, // Date type
+        autonumber2_c: employeeData.autonumber2_c ? parseInt(employeeData.autonumber2_c) : null, // Number type
+        autonumber3_c: employeeData.autonumber3_c ? parseInt(employeeData.autonumber3_c) : null, // Number type
+        autonumber4_c: employeeData.autonumber4_c ? parseInt(employeeData.autonumber4_c) : null, // Number type
+        autonumber5_c: employeeData.autonumber5_c ? parseInt(employeeData.autonumber5_c) : null, // Number type
         sample1_c: employeeData.sample1_c, // Number type
-        sample2_c: employeeData.sample2_c, // MultilineText type
+        sample2_c: employeeData.sample2_c // MultilineText type
       };
       // Remove undefined fields (except Id)
       Object.keys(updateableFields).forEach(key => {
@@ -458,8 +431,8 @@ autonumber1_c: employeeData.autonumber1_c || null, // Date type
             FieldName: "status_c",
             Operator: "EqualTo",
             Values: [status]
-          }
-]
+}
+        ]
       };
       
       return await this.getAll(filterOptions);

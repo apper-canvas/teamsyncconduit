@@ -44,7 +44,7 @@ const handleDelete = async (employee) => {
     <CardContent>
         <div className="overflow-x-auto">
             <table className="w-full table-auto">
-                <thead>
+<thead>
                     <tr className="bg-gradient-to-r from-gray-50 to-gray-100">
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Employee</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Department</th>
@@ -59,6 +59,10 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Multilinetext1</th>
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Name11</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber1 Date</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber2</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber3</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber4</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber5</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Sample1</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Sample2</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
@@ -150,6 +154,26 @@ const handleDelete = async (employee) => {
 <td className="py-3 px-4">
                             <span className="text-gray-900">
                                 {employee.autonumber1_c ? format(new Date(employee.autonumber1_c), "MMM dd, yyyy") : "N/A"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.autonumber2_c || "N/A"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.autonumber3_c || "N/A"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.autonumber4_c || "N/A"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.autonumber5_c || "N/A"}
                             </span>
                         </td>
 <td className="py-3 px-4">

@@ -28,6 +28,10 @@ checkbox1_c: false,
     multilinetext1_c: "",
 name11_c: 0,
     autonumber1_c: "",
+    autonumber2_c: 0,
+    autonumber3_c: 0,
+    autonumber4_c: 0,
+    autonumber5_c: 0,
     sample1_c: 0,
     sample2_c: 0,
   });
@@ -57,6 +61,10 @@ checkbox1_c: employee.checkbox1_c || false,
         multilinetext1_c: employee.multilinetext1_c || "",
 name11_c: employee.name11_c || 0,
         autonumber1_c: employee.autonumber1_c || "",
+        autonumber2_c: parseInt(employee.autonumber2_c) || 0,
+        autonumber3_c: parseInt(employee.autonumber3_c) || 0,
+        autonumber4_c: parseInt(employee.autonumber4_c) || 0,
+        autonumber5_c: parseInt(employee.autonumber5_c) || 0,
         sample1_c: parseInt(employee.sample1_c) || 0,
         sample2_c: parseInt(employee.sample2_c) || 0,
       });
@@ -191,6 +199,10 @@ checkbox1_c: false,
 multilinetext1_c: "",
       name11_c: 0,
       autonumber1_c: "",
+      autonumber2_c: 0,
+      autonumber3_c: 0,
+      autonumber4_c: 0,
+      autonumber5_c: 0,
       sample1_c: 0,
       sample2_c: 0,
     });
@@ -442,6 +454,46 @@ placeholder="Enter decimal value"
               value={formData.sample2_c}
               onChange={handleChange}
               error={errors.sample2_c}
+              placeholder="Enter numeric value"
+            />
+
+            <FormField
+              label="Autonumber2"
+              name="autonumber2_c"
+              type="number"
+              value={formData.autonumber2_c}
+              onChange={handleChange}
+              error={errors.autonumber2_c}
+              placeholder="Enter numeric value"
+            />
+
+            <FormField
+              label="Autonumber3"
+              name="autonumber3_c"
+              type="number"
+              value={formData.autonumber3_c}
+              onChange={handleChange}
+              error={errors.autonumber3_c}
+              placeholder="Enter numeric value"
+            />
+
+            <FormField
+              label="Autonumber4"
+              name="autonumber4_c"
+              type="number"
+              value={formData.autonumber4_c}
+              onChange={handleChange}
+              error={errors.autonumber4_c}
+              placeholder="Enter numeric value"
+            />
+
+            <FormField
+              label="Autonumber5"
+              name="autonumber5_c"
+              type="number"
+              value={formData.autonumber5_c}
+              onChange={handleChange}
+              error={errors.autonumber5_c}
               placeholder="Enter numeric value"
             />
           </div>
