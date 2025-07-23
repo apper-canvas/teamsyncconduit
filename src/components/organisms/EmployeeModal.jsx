@@ -36,6 +36,11 @@ sample1_c: 0,
     sample2_c: 0,
     sample3_c: "",
     sample4_c: "",
+    formula1_c: "",
+    formula2_c: "",
+    formula3_c: "",
+    formula4_c: "",
+    formula5_c: "",
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -71,6 +76,11 @@ sample1_c: parseInt(employee.sample1_c) || 0,
         sample2_c: parseInt(employee.sample2_c) || 0,
         sample3_c: employee.sample3_c || "",
         sample4_c: employee.sample4_c || "",
+        formula1_c: employee.formula1_c || "",
+        formula2_c: employee.formula2_c || "",
+        formula3_c: employee.formula3_c || "",
+        formula4_c: employee.formula4_c || "",
+        formula5_c: employee.formula5_c || "",
       });
     }
   }, [employee]);
@@ -214,6 +224,11 @@ sample1_c: 0,
       sample2_c: 0,
       sample3_c: "",
       sample4_c: "",
+      formula1_c: "",
+      formula2_c: "",
+      formula3_c: "",
+      formula4_c: "",
+      formula5_c: "",
     });
     setErrors({});
     onClose();
@@ -546,6 +561,56 @@ error={errors.autonumber5_c}
               onChange={handleChange}
               error={errors.sample4_c}
               placeholder="Enter sample4 value"
+/>
+
+            <FormField
+              label="Formula1"
+              name="formula1_c"
+              type="text"
+              value={formData.formula1_c}
+              onChange={handleChange}
+              error={errors.formula1_c}
+              placeholder="Enter formula1 value"
+            />
+
+            <FormField
+              label="Formula2"
+              name="formula2_c"
+              type="text"
+              value={formData.formula2_c}
+              onChange={handleChange}
+              error={errors.formula2_c}
+              placeholder="Enter formula2 value"
+            />
+
+            <FormField
+              label="Formula3"
+              name="formula3_c"
+              type="text"
+              value={formData.formula3_c}
+              onChange={handleChange}
+              error={errors.formula3_c}
+              placeholder="Enter formula3 value"
+            />
+
+            <FormField
+              label="Formula4"
+              name="formula4_c"
+              type="text"
+              value={formData.formula4_c}
+              onChange={handleChange}
+              error={errors.formula4_c}
+              placeholder="Enter formula4 value"
+            />
+
+            <FormField
+              label="Formula5"
+              name="formula5_c"
+              type="text"
+              value={formData.formula5_c}
+              onChange={handleChange}
+              error={errors.formula5_c}
+              placeholder="Enter formula5 value"
             />
           </div>
 

@@ -16,9 +16,9 @@ class EmployeeService {
       'name1_c', 'name2_c', 'name3_c', 'name4_c', 'name5_c', 'name6_c', 'name7_c',
       'name8_c', 'name9_c', 'name10_c', 'name11_c', 'name12_c', 'name13_c', 'name14_c',
       'name15_c', 'name16_c', 'name17_c', 'name18_c', 'name19_c', 'name20_c', 'checkbox1_c',
-      'date1_c', 'boolean1_c', 'boolean2_c', 'decimal1_c', 'decimal2_c', 'multilinetext1_c',
+'date1_c', 'boolean1_c', 'boolean2_c', 'decimal1_c', 'decimal2_c', 'multilinetext1_c',
       'autonumber1_c', 'sample1_c', 'sample2_c', 'autonumber2_c', 'autonumber3_c',
-      'autonumber4_c', 'autonumber5_c'
+      'autonumber4_c', 'autonumber5_c', 'formula1_c', 'formula2_c', 'formula3_c', 'formula4_c', 'formula5_c'
     ];
     
     // Define all fields for fetch operations
@@ -72,8 +72,13 @@ class EmployeeService {
       { field: { Name: "sample2_c" } },
       { field: { Name: "autonumber2_c" } },
       { field: { Name: "autonumber3_c" } },
-      { field: { Name: "autonumber4_c" } },
-      { field: { Name: "autonumber5_c" } }
+{ field: { Name: "autonumber4_c" } },
+      { field: { Name: "autonumber5_c" } },
+      { field: { Name: "formula1_c" } },
+      { field: { Name: "formula2_c" } },
+      { field: { Name: "formula3_c" } },
+      { field: { Name: "formula4_c" } },
+      { field: { Name: "formula5_c" } }
     ];
   }
 
