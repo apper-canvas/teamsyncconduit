@@ -28,7 +28,7 @@ checkbox1_c: false,
     multilinetext1_c: "",
 name11_c: 0,
     autonumber1_c: "",
-    sample1_c: "",
+    sample1_c: 0,
   });
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -56,7 +56,7 @@ checkbox1_c: employee.checkbox1_c || false,
         multilinetext1_c: employee.multilinetext1_c || "",
 name11_c: employee.name11_c || 0,
         autonumber1_c: employee.autonumber1_c || "",
-        sample1_c: employee.sample1_c || "",
+        sample1_c: parseInt(employee.sample1_c) || 0,
       });
     }
   }, [employee]);
@@ -144,10 +144,12 @@ const submitData = {
         name1_c: formData.name1_c || null, // Date type field
 boolean1_c: formData.boolean1_c || null, // This is actually a Date field type
         // Email fields - date1_c is Email type, send as string
-        date1_c: formData.date1_c || null,
+date1_c: formData.date1_c || null,
         // Decimal fields - convert to proper decimal format
         decimal1_c: formData.decimal1_c ? parseInt(formData.decimal1_c) || null : null,
         decimal2_c: formData.decimal2_c ? parseFloat(formData.decimal2_c) || null : null,
+        // Number fields - convert to proper integer format
+        sample1_c: formData.sample1_c ? parseInt(formData.sample1_c) || null : null,
       };
       if (employee) {
         await employeeService.update(employee.Id, submitData);
@@ -186,7 +188,7 @@ checkbox1_c: false,
       multilinetext1_c: "",
 name11_c: 0,
       autonumber1_c: "",
-      sample1_c: "",
+      sample1_c: 0,
     });
     setErrors({});
     onClose();
