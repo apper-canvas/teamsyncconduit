@@ -51,6 +51,7 @@ fields: [
           { field: { Name: "name11_c" } },
 { field: { Name: "autonumber1_c" } },
           { field: { Name: "sample1_c" } },
+          { field: { Name: "sample2_c" } },
           { field: { Name: "CreatedOn" } },
           { field: { Name: "CreatedBy" } },
           { field: { Name: "ModifiedOn" } },
@@ -125,6 +126,7 @@ fields: [
           { field: { Name: "name11_c" } },
 { field: { Name: "autonumber1_c" } },
           { field: { Name: "sample1_c" } },
+          { field: { Name: "sample2_c" } },
           { field: { Name: "CreatedOn" } },
           { field: { Name: "CreatedBy" } },
           { field: { Name: "ModifiedOn" } },
@@ -198,7 +200,8 @@ decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, 
         decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
 multilinetext1_c: employeeData.multilinetext1_c, // Text type
 autonumber1_c: employeeData.autonumber1_c || null, // Date type
-        sample1_c: employeeData.sample1_c, // Text type
+        sample1_c: employeeData.sample1_c, // Number type
+        sample2_c: employeeData.sample2_c, // MultilineText type
       };
       // Remove undefined fields
       Object.keys(updateableFields).forEach(key => {
@@ -300,7 +303,8 @@ decimal1_c: employeeData.decimal1_c ? parseInt(employeeData.decimal1_c) : null, 
         decimal2_c: employeeData.decimal2_c ? parseFloat(employeeData.decimal2_c) : null, // Decimal type
 multilinetext1_c: employeeData.multilinetext1_c, // Text type
 autonumber1_c: employeeData.autonumber1_c || null, // Date type
-        sample1_c: employeeData.sample1_c, // Text type
+        sample1_c: employeeData.sample1_c, // Number type
+        sample2_c: employeeData.sample2_c, // MultilineText type
       };
       // Remove undefined fields (except Id)
       Object.keys(updateableFields).forEach(key => {

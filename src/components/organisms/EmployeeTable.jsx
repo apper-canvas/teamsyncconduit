@@ -57,9 +57,10 @@ const handleDelete = async (employee) => {
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Rating</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Decimal2</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Multilinetext1</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Name11</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Name11</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber1 Date</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Sample1</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Sample2</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
                     </tr></thead>
@@ -151,9 +152,14 @@ const handleDelete = async (employee) => {
                                 {employee.autonumber1_c ? format(new Date(employee.autonumber1_c), "MMM dd, yyyy") : "N/A"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
+<td className="py-3 px-4">
                             <span className="text-gray-900">
                                 {employee.sample1_c || "N/A"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.sample2_c || "N/A"}
                             </span>
                         </td>
                         <td className="py-3 px-4">
