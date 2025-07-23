@@ -7,7 +7,7 @@ import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
 import employeeService from "@/services/api/employeeService";
 import departmentService from "@/services/api/departmentService";
-import { attendanceService } from "@/services/api/attendanceService";
+import attendanceService from "@/services/api/attendanceService";
 
 const Dashboard = () => {
   const [employees, setEmployees] = useState([]);
