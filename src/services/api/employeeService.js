@@ -59,6 +59,7 @@ const params = {
           { field: { Name: "sample1_c" } },
           { field: { Name: "sample2_c" } },
           { field: { Name: "sample3_c" } },
+          { field: { Name: "sample4_c" } },
           { field: { Name: "CreatedOn" } },
           { field: { Name: "CreatedBy" } },
           { field: { Name: "ModifiedOn" } },
@@ -139,6 +140,7 @@ const params = {
           { field: { Name: "sample1_c" } },
           { field: { Name: "sample2_c" } },
           { field: { Name: "sample3_c" } },
+          { field: { Name: "sample4_c" } },
           { field: { Name: "CreatedOn" } },
           { field: { Name: "CreatedBy" } },
           { field: { Name: "ModifiedOn" } },
@@ -215,9 +217,10 @@ decimal1_c: employeeData.decimal1_c ? parseFloat(employeeData.decimal1_c) : null
         autonumber2_c: employeeData.autonumber2_c ? parseFloat(employeeData.autonumber2_c) : null, // Decimal type
         autonumber3_c: employeeData.autonumber3_c || null, // Email type
 autonumber4_c: employeeData.autonumber4_c ? parseInt(employeeData.autonumber4_c) : null, // Number type
-        sample1_c: employeeData.sample1_c ? parseInt(employeeData.sample1_c) : null, // Number type
+sample1_c: employeeData.sample1_c ? parseInt(employeeData.sample1_c) : null, // Number type
         sample2_c: employeeData.sample2_c ? parseInt(employeeData.sample2_c) : null, // Number type
-        sample3_c: employeeData.sample3_c // Text type
+        sample3_c: employeeData.sample3_c, // Text type
+        sample4_c: employeeData.sample4_c // Text type
       };
       
       // Remove undefined fields
@@ -324,9 +327,10 @@ multilinetext1_c: employeeData.multilinetext1_c, // Text type
         autonumber3_c: employeeData.autonumber3_c || null, // Email type
         autonumber4_c: employeeData.autonumber4_c ? parseInt(employeeData.autonumber4_c) : null, // Number type
 autonumber5_c: employeeData.autonumber5_c ? parseInt(employeeData.autonumber5_c) : null, // Number type
-        sample1_c: employeeData.sample1_c ? parseInt(employeeData.sample1_c) : null, // Number type
+sample1_c: employeeData.sample1_c ? parseInt(employeeData.sample1_c) : null, // Number type
         sample2_c: employeeData.sample2_c ? parseInt(employeeData.sample2_c) : null, // Number type
-        sample3_c: employeeData.sample3_c // Text type
+        sample3_c: employeeData.sample3_c, // Text type
+        sample4_c: employeeData.sample4_c // Text type
       };
       
       // Remove undefined fields (except Id)

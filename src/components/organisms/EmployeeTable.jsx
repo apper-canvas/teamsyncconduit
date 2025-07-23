@@ -64,8 +64,9 @@ const handleDelete = async (employee) => {
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber4 Rating</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Autonumber5</th>
 <th className="text-left py-3 px-4 font-semibold text-gray-700">Sample1</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Sample2</th>
+<th className="text-left py-3 px-4 font-semibold text-gray-700">Sample2</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Sample3</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Sample4</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Status</th>
                         <th className="text-left py-3 px-4 font-semibold text-gray-700">Actions</th>
                     </tr></thead>
@@ -193,9 +194,14 @@ const handleDelete = async (employee) => {
                                 {employee.sample2_c || "0"}
                             </span>
                         </td>
-                        <td className="py-3 px-4">
+<td className="py-3 px-4">
                             <span className="text-gray-900">
                                 {employee.sample3_c || "N/A"}
+                            </span>
+                        </td>
+                        <td className="py-3 px-4">
+                            <span className="text-gray-900">
+                                {employee.sample4_c || "N/A"}
                             </span>
                         </td>
                         <td className="py-3 px-4">
